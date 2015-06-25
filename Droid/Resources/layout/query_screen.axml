@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#DEDEDC"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/query_screen">
+    <TextView
+        android:text="Query"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/queryTitle"
+        android:textAllCaps="true"
+        android:gravity="left"
+        android:textColor="#ff220f0f"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
+    <EditText
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="SIN Number"
+        android:textColorHint="#d3d3d3"
+        android:textColor="#000"
+        android:background="@drawable/edit_text_style"
+        android:id="@+id/txtSecurityNumberQS" />
+    <TextView
+        android:text="Submit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submitButton"
+        android:layout_marginTop="20dp"
+        android:textColor="#ff160a0a" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:id="@+id/buttonGO"
+            android:background="@drawable/ButtonSignUpStyle"
+            android:text="GO"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2">
+        <Button
+            android:id="@+id/buttonQueryCancel"
+            android:background="#7491A3"
+            android:text="Cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

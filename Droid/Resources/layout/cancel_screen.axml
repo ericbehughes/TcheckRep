@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#DEDEDC"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:id="@+id/cancel_screen">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/linearLayout1">
+        <TextView
+            android:text="Do you wish to cancel?"
+            android:textColor="#000"
+            android:id="@+id/txtCancelPopUp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:paddingTop="20dp" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtCancelPopUp"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/relativeLayout2"
+        android:layout_marginTop="50dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:layout_marginTop="20dp">
+            <Button
+                android:id="@+id/yesCancelButton"
+                android:text="Yes"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:height="70dp"
+                android:paddingTop="2dp"
+                android:background="@drawable/ButtonSignUpStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/noCancelButton"
+                android:text="No"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:height="70dp"
+                android:paddingTop="2dp"
+                android:background="#7491A3"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

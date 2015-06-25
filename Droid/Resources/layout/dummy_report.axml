@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#DEDEDC"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/dummy_report">
+    <TextView
+        android:text="Dummy Report"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleDummyReport"
+        android:textColor="#ff000000"
+        android:layout_marginTop="5dp" />
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollViewDummyReport"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <TextView
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            android:layout_width="match_parent"
+            android:lines="18"
+            android:layout_height="match_parent"
+            android:id="@+id/txtDummyReport"
+            android:textSize="15dp"
+            android:background="#ff0e0202" />
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+        <Button
+            android:id="@+id/buttonHome"
+            android:text="Home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="400dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:height="70dp"
+            android:paddingTop="2dp"
+            android:background="#7491A3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp" />
+    </RelativeLayout>
+</RelativeLayout>
