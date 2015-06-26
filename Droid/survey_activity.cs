@@ -25,8 +25,8 @@ namespace TCheck.Droid
 			SetContentView (Resource.Layout.survey_screen);
 
 
-			mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
-			mButtonMenuButton.Click += mButtonMenuButton_Click;
+			//mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
+			//mButtonMenuButton.Click += mButtonMenuButton_Click;
 
 
 			mButtonSurveySubmit = FindViewById<Button>(Resource.Id.buttonSurveySubmit);
@@ -40,12 +40,7 @@ namespace TCheck.Droid
 
 		}
 
-		void mButtonMenuButton_Click (object sender, EventArgs args)
-		{
-			Intent intent = new Intent (this, typeof(main_menu_activity));
-			this.StartActivity (intent);
 
-		}
 
 
 	}
