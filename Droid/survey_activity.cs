@@ -17,11 +17,16 @@ namespace TCheck.Droid
 	public class survey_activity : Activity
 	{
 		private Button mButtonSurveySubmit;
+		private Button mButtonMenuButton;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.survey_screen);
-			// Create your application here
+
+
+			mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
+			mButtonMenuButton.Click += mButtonMenuButton_Click;
 
 
 			mButtonSurveySubmit = FindViewById<Button>(Resource.Id.buttonSurveySubmit);
@@ -34,6 +39,14 @@ namespace TCheck.Droid
 			this.StartActivity (intent);
 
 		}
+
+		void mButtonMenuButton_Click (object sender, EventArgs args)
+		{
+			Intent intent = new Intent (this, typeof(main_menu_activity));
+			this.StartActivity (intent);
+
+		}
+
 
 	}
 }

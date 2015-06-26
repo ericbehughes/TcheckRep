@@ -18,6 +18,7 @@ namespace TCheck.Droid
 	{
 		private Button mButtonSurvey; // id -> buttonSurvey
 		private Button mButtonHome; //id-> buttonHome
+		private Button mButtonMenuButton;
 
 
 		protected override void OnCreate (Bundle bundle)
@@ -25,11 +26,21 @@ namespace TCheck.Droid
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.review_screen);
 
+			mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
+			mButtonMenuButton.Click += mButtonMenuButton_Click;
+
 			mButtonSurvey = FindViewById<Button>(Resource.Id.buttonSurvey);
 			mButtonSurvey.Click += mButtonSurvey_Click;
 
 			mButtonHome = FindViewById<Button>(Resource.Id.buttonHome);
 			mButtonHome.Click += mButtonHome_Click;
+
+		}
+
+		void mButtonMenuButton_Click (object sender, EventArgs args)
+		{
+			Intent intent = new Intent (this, typeof(main_menu_activity));
+			this.StartActivity (intent);
 
 		}
 
@@ -48,4 +59,5 @@ namespace TCheck.Droid
 		}
 	}
 }
+
 

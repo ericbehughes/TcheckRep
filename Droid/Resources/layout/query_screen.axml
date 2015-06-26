@@ -5,6 +5,29 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/query_screen">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="15px"
+        android:minHeight="15px"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/linearMenuBar"
+        android:weightSum="100">
+        <Button
+            android:id="@+id/buttonMenuBar1"
+            android:text="Main Menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7491A3"
+            android:layout_weight="65" />
+        <Button
+            android:id="@+id/buttonMenuBar2"
+            android:text="RentProof"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7491A3"
+            android:layout_weight="35" />
+    </LinearLayout>
     <TextView
         android:text="Query"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -12,10 +35,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/queryTitle"
         android:textAllCaps="true"
-        android:gravity="left"
+        android:gravity="center"
         android:textColor="#ff220f0f"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="25dp"
+        android:layout_weight="1" />
+    <TextView
+        android:id="@+id/txtPayee"
+        android:text="Person A"
+        android:inputType="number"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
     <EditText
         android:inputType="number"
         android:layout_width="match_parent"
@@ -25,40 +59,218 @@
         android:textColor="#000"
         android:background="@drawable/edit_text_style"
         android:id="@+id/txtSecurityNumberQS" />
-    <TextView
-        android:text="Submit"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/submitButton"
-        android:layout_marginTop="20dp"
-        android:textColor="#ff160a0a" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1">
-        <Button
-            android:id="@+id/buttonGO"
-            android:background="@drawable/ButtonSignUpStyle"
-            android:text="GO"
+        android:id="@+id/payeeHeader">
+        <TextView
+            android:id="@+id/titlePayment"
+            android:text="Payment"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:textColor="#ff190f0f"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp" />
+        <TextView
+            android:text="Credits: 0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleCredits"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2">
-        <Button
-            android:id="@+id/buttonQueryCancel"
-            android:background="#7491A3"
-            android:text="Cancel"
+        android:id="@+id/creditCardType"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:text="CreditCard Type"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:textColor="#000"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:textSize="18dp" />
+        <RadioGroup
+            android:minWidth="25px"
+            android:minHeight="25px"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroup1"
+            android:layout_weight="0"
+            android:layout_marginRight="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#7491A3">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="MasterCard"
+                android:id="@+id/radioMasterCard" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visa"
+                android:id="@+id/radioVisa" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="American Express"
+                android:id="@+id/radioAmericanExpress" />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/creditCardField"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:text="Credit Card Number"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView2"
+            android:textColor="#000"
+            android:layout_marginRight="5dp"
+            android:textSize="18dp"
+            android:paddingTop="5dp" />
+        <EditText
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Credit Card Number"
+            android:textColorHint="#d3d3d3"
+            android:textColor="#000"
+            android:background="@drawable/edit_text_style"
+            android:id="@+id/numCreditCardNumber" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/expiryField"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:text="Expiry Date"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/numExpiryDate"
+            android:textColor="#000"
+            android:layout_marginRight="5dp"
+            android:textSize="18dp"
+            android:paddingTop="10dp" />
+        <EditText
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Month"
+            android:textColorHint="#d3d3d3"
+            android:textColor="#000"
+            android:background="@drawable/edit_text_style"
+            android:id="@+id/numExpiryMonth"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp" />
+        <EditText
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Year"
+            android:textColorHint="#d3d3d3"
+            android:textColor="#000"
+            android:background="@drawable/edit_text_style"
+            android:id="@+id/numExpiryYear"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/creditDigitCodeField"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:text="Code"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/numCreditCode"
+            android:textColor="#000"
+            android:layout_marginRight="10dp"
+            android:textSize="18dp"
+            android:paddingTop="10dp" />
+        <EditText
+            android:inputType="number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="3 Digit Code"
+            android:textColorHint="#d3d3d3"
+            android:textColor="#000"
+            android:background="@drawable/edit_text_style"
+            android:id="@+id/numCreditCardNumber"
+            android:layout_weight="0" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonPaymentSubmit"
+        android:layout_weight="100">
+        <Button
+            android:id="@+id/buttonCancel"
+            android:text="Cancel"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="2dp"
+            android:background="#7491A3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:layout_gravity="bottom" />
+        <Button
+            android:id="@+id/buttonPay"
+            android:text="Pay"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="2dp"
+            android:background="#7491A3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:layout_gravity="bottom" />
     </LinearLayout>
 </LinearLayout>

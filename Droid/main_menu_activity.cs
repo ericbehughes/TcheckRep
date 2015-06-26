@@ -16,25 +16,31 @@ namespace TCheck.Droid
 	[Activity (Label = "main_menu_activity")]			
 	public class main_menu_activity : Activity
 	{
-		private Button mButtonQueryMM;
+		private Button mButtonBG;
 		private Button mButtonReviewMM;
-		//private Button mCopyButtonMM;
+		private Button mButtonMyQueries;
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
 			SetContentView (Resource.Layout.main_menu);
-			mButtonQueryMM = FindViewById<Button>(Resource.Id.buttonQuery);
-			mButtonQueryMM.Click += mButtonQueryMM_Click;
+
+
+
+			mButtonBG = FindViewById<Button>(Resource.Id.buttonQuery);
+			mButtonBG.Click += mButtonBG_Click;
 
 			mButtonReviewMM = FindViewById<Button>(Resource.Id.buttonReview);
 			mButtonReviewMM.Click += mButtonReviewMM_Click;
+
+			mButtonMyQueries = FindViewById<Button>(Resource.Id.buttonMyQueries);
+			mButtonMyQueries.Click += mButtonMyQueries_Click;
 
 
 
 
 		}
-		void mButtonQueryMM_Click (object sender, EventArgs args)
+		void mButtonBG_Click (object sender, EventArgs args)
 		{
 			Intent intent = new Intent (this, typeof(query_activity));
 			this.StartActivity (intent);
@@ -44,6 +50,13 @@ namespace TCheck.Droid
 		void mButtonReviewMM_Click (object sender, EventArgs e)
 		{
 			Intent intent = new Intent (this, typeof(review_activity));
+			this.StartActivity (intent);
+
+		}
+
+		void mButtonMyQueries_Click (object sender, EventArgs args)
+		{
+			Intent intent = new Intent (this, typeof(my_queries_activity));
 			this.StartActivity (intent);
 
 		}

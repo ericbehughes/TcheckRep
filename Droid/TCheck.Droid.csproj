@@ -56,12 +56,12 @@
     <Compile Include="dialog_SignUp.cs" />
     <Compile Include="main_menu_activity.cs" />
     <Compile Include="query_activity.cs" />
-    <Compile Include="query_payment_activity.cs" />
     <Compile Include="login_activity.cs" />
     <Compile Include="dummy_report_activity.cs" />
     <Compile Include="review_activity.cs" />
     <Compile Include="survey_activity.cs" />
     <Compile Include="cancel_activity.cs" />
+    <Compile Include="my_queries_activity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -84,22 +84,24 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\layout\main_menu.axml" />
     <AndroidResource Include="Resources\layout\query_screen.axml" />
-    <AndroidResource Include="Resources\layout\query_payment_screen.axml" />
     <AndroidResource Include="Resources\layout\login_screen.axml" />
     <AndroidResource Include="Resources\layout\dummy_report.axml" />
     <AndroidResource Include="Resources\layout\review_screen.axml" />
-    <AndroidResource Include="Resources\drawable\brit190x150.jpg" />
-    <AndroidResource Include="Resources\drawable\lease.jpg" />
     <AndroidResource Include="Resources\drawable\happyFace.jpg" />
     <AndroidResource Include="Resources\layout\survey_screen.axml" />
     <AndroidResource Include="Resources\layout\cancel_screen.axml" />
     <AndroidResource Include="Resources\values\creditcardspinner.xml" />
     <AndroidResource Include="Resources\layout\launch_screen.axml" />
+    <AndroidResource Include="Resources\layout\my_queries_screen.axml" />
+    <AndroidResource Include="Resources\drawable\governmentId.jpg" />
+    <AndroidResource Include="Resources\drawable\lease190x150.png" />
+    <AndroidResource Include="Resources\drawable\govID190x150.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\New Folder\" />
     <Folder Include="Resources\drawable\" />
     <Folder Include="Resources\anim\" />
+    <Folder Include="Resources\styles\" />
   </ItemGroup>
 </Project>

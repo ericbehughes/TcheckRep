@@ -4,6 +4,29 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/review_screen">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="15px"
+        android:minHeight="15px"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/linearMenuBar"
+        android:weightSum="100">
+        <Button
+            android:id="@+id/buttonMenuBar1"
+            android:text="Main Menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7491A3"
+            android:layout_weight="65" />
+        <Button
+            android:id="@+id/buttonMenuBar2"
+            android:text="RentProof"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7491A3"
+            android:layout_weight="35" />
+    </LinearLayout>
     <TextView
         android:text="Reviewer Account"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -11,7 +34,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/titleReviewerAccount"
         android:textColor="#ff000000"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/linearMenuBar" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
@@ -22,19 +46,19 @@
         android:layout_marginTop="75dp">
         <ImageView
             android:id="@+id/imgPerson"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
             android:layout_width="190dp"
             android:layout_height="150dp"
             android:background="#ff2f2626"
-            android:src="@drawable/happyface" />
+            android:src="@drawable/governmentId" />
         <ImageView
             android:id="@+id/imgLease"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
             android:layout_width="190dp"
             android:layout_height="150dp"
             android:background="#ff2f2626"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/lease" />
+            android:src="@drawable/lease190x150" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

@@ -58,13 +58,33 @@
         android:paddingLeft="10dp"
         android:textColor="#000"
         android:layout_below="@+id/txtSecurityNumber" />
-    <TextView
-        android:text="I Agree To Terms and Conditions"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/titleTermsAndConditions"
-        android:layout_below="@+id/txtPassword" />
+        android:id="@+id/layoutTermsAndConditions"
+        android:layout_below="@+id/txtPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:text="I Agree To Terms and Conditions"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/titleTermsAndConditions"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/checkBox1"
+            android:textColor="#000"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp" />
+    </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"

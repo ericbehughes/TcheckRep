@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#DEDEDC"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/main_menu">
+    android:minWidth="25px"
+    android:background="#DEDEDC"
+    android:minHeight="25px">
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="15px"
@@ -28,32 +29,10 @@
             android:background="#7491A3"
             android:layout_weight="35" />
     </LinearLayout>
-    <Button
-        android:id="@+id/buttonQuery"
-        android:text="Background Check"
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="80dp"
-        android:background="#7491A3" />
-    <Button
-        android:id="@+id/buttonReview"
-        android:text="Reviews"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="#7491A3" />
-    <Button
-        android:id="@+id/buttonMyQueries"
-        android:text="My Queries"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#7491A3"
-        android:layout_marginBottom="20dp" />
-    <Button
-        android:id="@+id/buttonMyProfile"
-        android:text="My Profile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#7491A3" />
+        android:layout_height="match_parent"
+        android:id="@+id/listViewMyQueries" />
 </LinearLayout>
