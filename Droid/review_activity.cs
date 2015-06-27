@@ -41,6 +41,7 @@ namespace TCheck.Droid
 		{
 			Intent intent = new Intent (this, typeof(main_menu_activity));
 			this.StartActivity (intent);
+			Finish ();
 
 		}
 
@@ -49,12 +50,14 @@ namespace TCheck.Droid
 			Intent intent = new Intent (this, typeof(survey_activity));
 			this.StartActivity (intent);
 
+
 		}
 
 		void mButtonHome_Click (object sender, EventArgs e)
 		{
 			Intent intent = new Intent (this, typeof(main_menu_activity));
 			this.StartActivity (intent);
+			Finish ();
 
 		}
 	}

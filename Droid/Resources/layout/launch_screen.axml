@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:id="@+id/main_menu">
     <TextView
-        android:text="TenantCheck"
+        android:text="RentProof"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

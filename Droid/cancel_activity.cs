@@ -10,6 +10,9 @@ using Android.OS;
 
 namespace TCheck.Droid
 {
+	public class OnCancelFragmentEvent : EventArgs{
+		public OnCancelFragmentEvent(){}
+	}
 	
 	class cancel_activity : DialogFragment
 	{
@@ -17,7 +20,7 @@ namespace TCheck.Droid
 		private Button mYesCancelButton;
 		private Button mNoCancelButton;
 
-		public event EventHandler<OnSignUpEventArgs> mOnSignUpComplete;
+		public event EventHandler<OnCancelFragmentEvent> mOnCancel ;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -44,19 +47,20 @@ namespace TCheck.Droid
 		void mYesCancelButton_Click(object sender, EventArgs e){
 
 			//user has clicked on signup button
-			//mOnSignUpComplete.Invoke(this, new OnSignUpEventArgs());
+			mOnCancel.Invoke(this, new OnCancelFragmentEvent());
 			this.Dismiss();
 
-
 		}
-
 		void mNoCancelButton_Click(object sender, EventArgs e){
 
 			//user has clicked on signup button
-			//mOnSignUpComplete.Invoke(this, new OnSignUpEventArgs());
+			//mOnSignUpComplete.Invoke(this, new OnSignUpEventArgs(mTxtFirstName.Text, mTxtEmail.Text,mTxtSecurityNumber.Text, mTxtPassword.Text ));
 			this.Dismiss();
 
+
 		}
+
+
 	}
 }
 

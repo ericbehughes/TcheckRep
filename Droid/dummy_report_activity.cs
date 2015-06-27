@@ -31,6 +31,7 @@ namespace TCheck.Droid
 		{
 			Intent intent = new Intent (this, typeof(main_menu_activity));
 			this.StartActivity (intent);
+			Finish ();
 
 		}
 	}

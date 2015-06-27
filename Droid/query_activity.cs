@@ -14,12 +14,12 @@ using Android.Widget;
 namespace TCheck.Droid
 {
 
-	public class OnCancel : EventArgs{}
+
 
 	[Activity (Label = "query_activity")]			
 	public class query_activity : Activity
 	{
-		private Button mPayButtonQS;
+		private Button mButtonPay;
 		private Button mButtonCancelQuery;
 		private Button mButtonMenuButton;
 		protected override void OnCreate (Bundle bundle)
@@ -32,8 +32,8 @@ namespace TCheck.Droid
 			mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
 			mButtonMenuButton.Click += mButtonMenuButton_Click;
 
-			mPayButtonQS = FindViewById<Button>(Resource.Id.buttonPay);
-			mPayButtonQS.Click += mQueryButtonQueryScreen_Click;
+			mButtonPay = FindViewById<Button>(Resource.Id.buttonPay);
+			mButtonPay.Click += mButtonPay_Click;
 
 			mButtonCancelQuery = FindViewById<Button>(Resource.Id.buttonCancel);
 			mButtonCancelQuery.Click += (object sender, EventArgs args) =>
@@ -42,7 +42,7 @@ namespace TCheck.Droid
 				FragmentTransaction transaction = FragmentManager.BeginTransaction();
 				cancel_activity cancelScreen = new cancel_activity();
 				cancelScreen.Show(transaction, "cancel fragment");
-				cancelScreen.mOnSignUpComplete += cancelScreen_mOnCancel;
+				cancelScreen.mOnCancel += cancelScreen_mOnCancel;
 			};
 		}
 
@@ -51,13 +51,15 @@ namespace TCheck.Droid
 		{
 			Intent intent = new Intent (this, typeof(main_menu_activity));
 			this.StartActivity (intent);
+			Finish ();
 
 		}
 
-		void mQueryButtonQueryScreen_Click (object sender, EventArgs args)
+		void mButtonPay_Click (object sender, EventArgs args)
 		{
 			Intent intent = new Intent (this, typeof(dummy_report_activity));
 			this.StartActivity (intent);
+			Finish ();
 
 		}
 			

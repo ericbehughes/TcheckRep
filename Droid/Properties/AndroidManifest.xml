@@ -3,5 +3,12 @@
 	<uses-sdk android:minSdkVersion="15" />
 	<application android:label="TCheck"
 	android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+
+
+
 	</application>
+
+
+
+
 </manifest>

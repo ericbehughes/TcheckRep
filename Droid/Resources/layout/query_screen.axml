@@ -17,16 +17,19 @@
             android:id="@+id/buttonMenuBar1"
             android:text="Main Menu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
             android:background="#7491A3"
-            android:layout_weight="65" />
+            android:layout_marginRight="0dp"
+            android:paddingLeft="5dp"
+            android:gravity="fill_vertical" />
         <Button
             android:id="@+id/buttonMenuBar2"
-            android:text="RentProof"
+            android:text="Rent Proof"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#7491A3"
-            android:layout_weight="35" />
+            android:layout_height="match_parent"
+            android:background="#000"
+            android:layout_weight="65" />
     </LinearLayout>
     <TextView
         android:text="Query"
@@ -183,7 +186,7 @@
             android:paddingTop="10dp" />
         <EditText
             android:inputType="number"
-            android:layout_width="match_parent"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:hint="Month"
             android:textColorHint="#d3d3d3"
@@ -194,7 +197,7 @@
             android:layout_marginRight="5dp" />
         <EditText
             android:inputType="number"
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:hint="Year"
             android:textColorHint="#d3d3d3"
@@ -252,7 +255,7 @@
             android:paddingBottom="5dp"
             android:paddingRight="5dp"
             android:paddingTop="2dp"
-            android:background="#7491A3"
+            android:background="#000"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="50"
