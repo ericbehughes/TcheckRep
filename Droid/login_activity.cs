@@ -25,6 +25,7 @@ namespace TCheck.Droid
 			mButtonLogin = FindViewById<Button>(Resource.Id.buttonLogIn);
 			mButtonLogin.Click += mButtonLogin_Click;
 
+
 		}
 
 		void mButtonLogin_Click (object sender, EventArgs args)

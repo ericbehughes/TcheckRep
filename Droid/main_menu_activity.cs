@@ -49,7 +49,7 @@ namespace TCheck.Droid
 
 		void mButtonReviewMM_Click (object sender, EventArgs e)
 		{
-			Intent intent = new Intent (this, typeof(review_activity));
+			Intent intent = new Intent (this, typeof(my_reviews_activity));
 			this.StartActivity (intent);
 
 		}

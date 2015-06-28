@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "TCheck.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "TCheck.Droid", MainLauncher = true, Icon = "@drawable/rent_proof_icon")]
 	public class MainActivity : Activity
 	{
 		
@@ -23,14 +23,15 @@ namespace TCheck.Droid
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.launch_screen);
 
+
 			mButtonSignUp = FindViewById<Button>(Resource.Id.buttonSignUp);
 			mButtonSignUp.Click += (object sender, EventArgs args) =>
 				{
 				//pull up dialog
 				FragmentTransaction transaction = FragmentManager.BeginTransaction();
-				dialog_SignUp signUpDialog = new dialog_SignUp();
-				signUpDialog.Show(transaction, "dialog fragment");
-				signUpDialog.mOnSignUpComplete += signUpDialog_mOnSignUpComplete;
+				SignUpPopUp signUpPopUp = new SignUpPopUp();
+				signUpPopUp.Show(transaction, "sign_up fragment");
+				signUpPopUp.mOnSignUpComplete += signUpPopUp_mOnSignUpComplete;
 				};
 
 
@@ -40,11 +41,12 @@ namespace TCheck.Droid
 		}
 
 
-		void signUpDialog_mOnSignUpComplete (object sender, OnSignUpEventArgs e)
+		void signUpPopUp_mOnSignUpComplete (object sender, OnSignUpEvent e)
 		{
 			Intent intent = new Intent (this, typeof(main_menu_activity));
 			this.StartActivity (intent);
-			this.FinishActivity(0);
+			Finish (); 
+
 
 
 		}
@@ -53,7 +55,7 @@ namespace TCheck.Droid
 		{	
 			Intent intent = new Intent (this, typeof(login_activity));
 			this.StartActivity (intent);
-			this.FinishActivity(0);
+			Finish ();
 		}
 
 

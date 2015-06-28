@@ -31,6 +31,14 @@
             android:background="#000"
             android:layout_weight="65" />
     </LinearLayout>
+    <TextView
+        android:text="Welcome, Eric"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtWelcome"
+        android:textColor="#000"
+        android:layout_marginTop="5dp" />
     <Button
         android:id="@+id/buttonQuery"
         android:text="Background Check"
@@ -40,19 +48,19 @@
         android:layout_marginTop="80dp"
         android:background="#7491A3" />
     <Button
-        android:id="@+id/buttonReview"
-        android:text="Reviews"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="#7491A3" />
-    <Button
         android:id="@+id/buttonMyQueries"
-        android:text="My Queries"
+        android:text="My Reports"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#7491A3"
         android:layout_marginBottom="20dp" />
+    <Button
+        android:id="@+id/buttonReview"
+        android:text="My Reviews"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#7491A3" />
     <Button
         android:id="@+id/buttonMyProfile"
         android:text="My Profile"

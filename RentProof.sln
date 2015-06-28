@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCheck.iOS", "iOS\TCheck.iOS.csproj", "{9EF20CB1-9B40-4969-8E01-6DADB7131314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCheck.Droid", "Droid\TCheck.Droid.csproj", "{6B737455-5AA3-45DE-9AFA-643C5286CDC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentProof", "Droid\RentProof.csproj", "{6B737455-5AA3-45DE-9AFA-643C5286CDC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCheck", "TCheck\TCheck.csproj", "{B5A9BB2A-F84F-4564-B42B-39864048AADD}"
 EndProject

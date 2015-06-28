@@ -13,37 +13,44 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "my_queries_activity")]			
-	public class my_queries_activity : Activity
+	[Activity (Label = "my_reviews_activity")]			
+	public class my_reviews_activity : Activity
 	{
-	//	string[] items;
 		private Button mButtonReviewPerson;
-
+		private Button mButtonNewReview;
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			//items = new string[] { "Larry Johnson","Eric Hughes","Denis Ouspenski","Michael Jordan","Barrack Obama","Stephen Harper" };
-			//ListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSelectableListItem, items);
-			SetContentView (Resource.Layout.my_queries_screen);
+			SetContentView (Resource.Layout.my_reviews_screen);
+
 			mButtonReviewPerson = FindViewById<Button>(Resource.Id.buttonList1);
 			mButtonReviewPerson.Click += mButtonReviewPerson_Click;
 
-
-
+			mButtonNewReview = FindViewById<Button>(Resource.Id.buttonNewReview);
+			mButtonNewReview.Click += mButtonNewReview_Click;
 
 		}
-
 		void mButtonReviewPerson_Click (object sender, EventArgs args)
 		{	
-			Intent intent = new Intent (this, typeof(dummy_report_activity));
+			Intent intent = new Intent (this, typeof(review_activity));
 			this.StartActivity (intent);
 			Finish ();
 		}
 
-
-
+		void mButtonNewReview_Click (object sender, EventArgs args)
+		{	
+			Intent intent = new Intent (this, typeof(review_activity));
+			this.StartActivity (intent);
+			Finish ();
+		}
 	}
-
-
 }
+
+
+
+
+
+
+
+

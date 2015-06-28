@@ -10,7 +10,7 @@ using Android.OS;
 
 namespace TCheck.Droid
 {
-	public class OnSignUpEventArgs : EventArgs{
+	public class OnSignUpEvent : EventArgs{
 		private string mFirstName;
 		private string mEmail;
 		private string mSecurityNumber;
@@ -34,7 +34,7 @@ namespace TCheck.Droid
 		}
 
 
-		public OnSignUpEventArgs(string firstName, string email, string securitynumber, string password): base() {
+		public OnSignUpEvent(string firstName, string email, string securitynumber, string password): base() {
 			mFirstName = firstName;
 			mEmail = email;
 			mSecurityNumber = securitynumber;
@@ -42,7 +42,7 @@ namespace TCheck.Droid
 				
 		}
 	}
-	class dialog_SignUp : DialogFragment
+	class SignUpPopUp : DialogFragment
 	{
 		private EditText mTxtFirstName;
 		private EditText mTxtEmail;
@@ -50,7 +50,7 @@ namespace TCheck.Droid
 		private EditText mTxtPassword;
 		private Button mPopUpButton;
 
-		public event EventHandler<OnSignUpEventArgs> mOnSignUpComplete;
+		public event EventHandler<OnSignUpEvent> mOnSignUpComplete;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -78,7 +78,7 @@ namespace TCheck.Droid
 		void mPopUpButton_Click(object sender, EventArgs e){
 		
 		//user has clicked on signup button
-			mOnSignUpComplete.Invoke(this, new OnSignUpEventArgs(mTxtFirstName.Text, mTxtEmail.Text,mTxtSecurityNumber.Text, mTxtPassword.Text ));
+			mOnSignUpComplete.Invoke(this, new OnSignUpEvent(mTxtFirstName.Text, mTxtEmail.Text,mTxtSecurityNumber.Text, mTxtPassword.Text ));
 			this.Dismiss();
 
 
