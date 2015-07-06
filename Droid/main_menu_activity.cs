@@ -19,6 +19,8 @@ namespace TCheck.Droid
 		private Button mButtonBG;
 		private Button mButtonReviewMM;
 		private Button mButtonMyQueries;
+		private Button mButtonMyProfile;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -35,6 +37,9 @@ namespace TCheck.Droid
 
 			mButtonMyQueries = FindViewById<Button>(Resource.Id.buttonMyQueries);
 			mButtonMyQueries.Click += mButtonMyQueries_Click;
+
+			mButtonMyProfile = FindViewById<Button>(Resource.Id.buttonMyProfile);
+			mButtonMyProfile.Click += mButtonMyProfile_Click;
 
 
 
@@ -56,12 +61,27 @@ namespace TCheck.Droid
 
 		void mButtonMyQueries_Click (object sender, EventArgs args)
 		{
-			Intent intent = new Intent (this, typeof(my_queries_activity));
+			Intent intent = new Intent (this, typeof(backgroundreport_activity));
 			this.StartActivity (intent);
 
 		}
+
+		void mButtonMyProfile_Click (object sender, EventArgs args)
+		{
+			Intent intent = new Intent (this, typeof(swipe_activity));
+			this.StartActivity (intent);
+
+		}
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+			MenuInflater.Inflate(Resource.Menu.action_bar, menu);
+			return base.OnCreateOptionsMenu(menu);
+		}
+
+	}
+
 	}
 
 
-}
+
 

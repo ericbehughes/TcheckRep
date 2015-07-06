@@ -60,6 +60,9 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iOS Simulator' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -118,13 +121,13 @@
     <Compile Include="RootViewController.designer.cs">
       <DependentUpon>RootViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="RootView.cs" />
-    <Compile Include="RootView.designer.cs">
-      <DependentUpon>RootView.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainScreen.cs" />
     <Compile Include="MainScreen.designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RootView.cs" />
+    <Compile Include="RootView.designer.cs">
+      <DependentUpon>RootView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

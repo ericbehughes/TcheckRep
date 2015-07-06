@@ -26,6 +26,10 @@ namespace TCheck.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::MR.Gestures.Android.Resource.String.ApplicationName = global::TCheck.Droid.Resource.String.ApplicationName;
+			global::MR.Gestures.Android.Resource.String.Hello = global::TCheck.Droid.Resource.String.Hello;
+			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::TCheck.Droid.Resource.String.ApplicationName;
+			global::Xamarin.Forms.Platform.Resource.String.Hello = global::TCheck.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Animation
@@ -50,8 +54,8 @@ namespace TCheck.Droid
 		public partial class Array
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int creditcard_array = 2131034112;
+			// aapt resource value: 0x7f0a0000
+			public const int creditcard_array = 2131361792;
 			
 			static Array()
 			{
@@ -66,12 +70,107 @@ namespace TCheck.Droid
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010000
+			public const int cardBackgroundColor = 2130771968;
+			
+			// aapt resource value: 0x7f010001
+			public const int cardCornerRadius = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int cardElevation = 2130771970;
+			
+			// aapt resource value: 0x7f010003
+			public const int cardMaxElevation = 2130771971;
+			
+			// aapt resource value: 0x7f010005
+			public const int cardPreventCornerOverlap = 2130771973;
+			
+			// aapt resource value: 0x7f010004
+			public const int cardUseCompatPadding = 2130771972;
+			
+			// aapt resource value: 0x7f010006
+			public const int contentPadding = 2130771974;
+			
+			// aapt resource value: 0x7f01000a
+			public const int contentPaddingBottom = 2130771978;
+			
+			// aapt resource value: 0x7f010007
+			public const int contentPaddingLeft = 2130771975;
+			
+			// aapt resource value: 0x7f010008
+			public const int contentPaddingRight = 2130771976;
+			
+			// aapt resource value: 0x7f010009
+			public const int contentPaddingTop = 2130771977;
+			
+			// aapt resource value: 0x7f01000b
+			public const int layoutManager = 2130771979;
+			
+			// aapt resource value: 0x7f01000d
+			public const int reverseLayout = 2130771981;
+			
+			// aapt resource value: 0x7f01000c
+			public const int spanCount = 2130771980;
+			
+			// aapt resource value: 0x7f01000e
+			public const int stackFromEnd = 2130771982;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
 			private Attribute()
+			{
+			}
+		}
+		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int cardview_dark_background = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int cardview_light_background = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int cardview_shadow_end_color = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int cardview_shadow_start_color = 2131034115;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int cardview_compat_inset_shadow = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int cardview_default_elevation = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int cardview_default_radius = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int item_touch_helper_max_drag_scroll_per_frame = 2131099651;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
 			{
 			}
 		}
@@ -98,16 +197,22 @@ namespace TCheck.Droid
 			public const int happyFace = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int Icon = 2130837510;
+			public const int ic_action_discard = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int lease190x150 = 2130837511;
+			public const int ic_action_new = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int monoandroidsplash = 2130837512;
+			public const int Icon = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int rent_proof_icon = 2130837513;
+			public const int lease190x150 = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int monoandroidsplash = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int rent_proof_icon = 2130837515;
 			
 			static Drawable()
 			{
@@ -122,98 +227,104 @@ namespace TCheck.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080040
-			public const int buttonCancel = 2131230784;
+			// aapt resource value: 0x7f08007b
+			public const int action_bar = 2131230843;
 			
-			// aapt resource value: 0x7f080016
-			public const int buttonHome = 2131230742;
-			
-			// aapt resource value: 0x7f080026
-			public const int buttonList1 = 2131230758;
-			
-			// aapt resource value: 0x7f080027
-			public const int buttonList2 = 2131230759;
-			
-			// aapt resource value: 0x7f080028
-			public const int buttonList3 = 2131230760;
-			
-			// aapt resource value: 0x7f080029
-			public const int buttonList4 = 2131230761;
-			
-			// aapt resource value: 0x7f080020
-			public const int buttonLogIn = 2131230752;
-			
-			// aapt resource value: 0x7f080011
-			public const int buttonMenuBar1 = 2131230737;
-			
-			// aapt resource value: 0x7f080012
-			public const int buttonMenuBar2 = 2131230738;
-			
-			// aapt resource value: 0x7f080025
-			public const int buttonMyProfile = 2131230757;
-			
-			// aapt resource value: 0x7f080023
-			public const int buttonMyQueries = 2131230755;
-			
-			// aapt resource value: 0x7f08002a
-			public const int buttonNewReview = 2131230762;
-			
-			// aapt resource value: 0x7f080006
-			public const int buttonNoCancel = 2131230726;
-			
-			// aapt resource value: 0x7f080041
-			public const int buttonPay = 2131230785;
+			// aapt resource value: 0x7f08007c
+			public const int add = 2131230844;
 			
 			// aapt resource value: 0x7f08003f
-			public const int buttonPaymentSubmit = 2131230783;
+			public const int buttonCancel = 2131230783;
 			
-			// aapt resource value: 0x7f080022
-			public const int buttonQuery = 2131230754;
+			// aapt resource value: 0x7f080015
+			public const int buttonHome = 2131230741;
+			
+			// aapt resource value: 0x7f080025
+			public const int buttonList1 = 2131230757;
+			
+			// aapt resource value: 0x7f080026
+			public const int buttonList2 = 2131230758;
+			
+			// aapt resource value: 0x7f080027
+			public const int buttonList3 = 2131230759;
+			
+			// aapt resource value: 0x7f080028
+			public const int buttonList4 = 2131230760;
+			
+			// aapt resource value: 0x7f08001f
+			public const int buttonLogIn = 2131230751;
 			
 			// aapt resource value: 0x7f080024
-			public const int buttonReview = 2131230756;
+			public const int buttonMyProfile = 2131230756;
 			
-			// aapt resource value: 0x7f08001a
-			public const int buttonSignIn = 2131230746;
+			// aapt resource value: 0x7f080022
+			public const int buttonMyQueries = 2131230754;
 			
-			// aapt resource value: 0x7f08001d
-			public const int buttonSignUp = 2131230749;
+			// aapt resource value: 0x7f080029
+			public const int buttonNewReview = 2131230761;
+			
+			// aapt resource value: 0x7f080007
+			public const int buttonNoCancel = 2131230727;
+			
+			// aapt resource value: 0x7f080040
+			public const int buttonPay = 2131230784;
+			
+			// aapt resource value: 0x7f08003e
+			public const int buttonPaymentSubmit = 2131230782;
+			
+			// aapt resource value: 0x7f080021
+			public const int buttonQuery = 2131230753;
+			
+			// aapt resource value: 0x7f080023
+			public const int buttonReview = 2131230755;
+			
+			// aapt resource value: 0x7f080019
+			public const int buttonSignIn = 2131230745;
+			
+			// aapt resource value: 0x7f08001c
+			public const int buttonSignUp = 2131230748;
 			
 			// aapt resource value: 0x7f080053
 			public const int buttonSurvey = 2131230803;
 			
-			// aapt resource value: 0x7f080074
-			public const int buttonSurveySubmit = 2131230836;
+			// aapt resource value: 0x7f080079
+			public const int buttonSurveySubmit = 2131230841;
 			
-			// aapt resource value: 0x7f080005
-			public const int buttonYesCancel = 2131230725;
+			// aapt resource value: 0x7f080006
+			public const int buttonYesCancel = 2131230726;
 			
-			// aapt resource value: 0x7f080000
-			public const int cancel_screen = 2131230720;
+			// aapt resource value: 0x7f080001
+			public const int cancel_screen = 2131230721;
 			
-			// aapt resource value: 0x7f08000e
-			public const int checkBox1 = 2131230734;
+			// aapt resource value: 0x7f080058
+			public const int cbxStart = 2131230808;
 			
-			// aapt resource value: 0x7f080037
-			public const int creditCardField = 2131230775;
+			// aapt resource value: 0x7f08000f
+			public const int checkBox1 = 2131230735;
 			
-			// aapt resource value: 0x7f080032
-			public const int creditCardType = 2131230770;
+			// aapt resource value: 0x7f080036
+			public const int creditCardField = 2131230774;
 			
-			// aapt resource value: 0x7f08003d
-			public const int creditDigitCodeField = 2131230781;
+			// aapt resource value: 0x7f080031
+			public const int creditCardType = 2131230769;
 			
-			// aapt resource value: 0x7f080007
-			public const int dialog_sign_up = 2131230727;
+			// aapt resource value: 0x7f08003c
+			public const int creditDigitCodeField = 2131230780;
 			
-			// aapt resource value: 0x7f080010
-			public const int dummy_report = 2131230736;
+			// aapt resource value: 0x7f080008
+			public const int dialog_sign_up = 2131230728;
 			
-			// aapt resource value: 0x7f080039
-			public const int expiryField = 2131230777;
+			// aapt resource value: 0x7f08007d
+			public const int discard = 2131230845;
 			
-			// aapt resource value: 0x7f080055
-			public const int firstRow = 2131230805;
+			// aapt resource value: 0x7f080011
+			public const int dummy_report = 2131230737;
+			
+			// aapt resource value: 0x7f080038
+			public const int expiryField = 2131230776;
+			
+			// aapt resource value: 0x7f08005a
+			public const int firstRow = 2131230810;
 			
 			// aapt resource value: 0x7f080046
 			public const int imgLease = 2131230790;
@@ -221,20 +332,23 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f080045
 			public const int imgPerson = 2131230789;
 			
-			// aapt resource value: 0x7f080001
-			public const int layoutCancelText = 2131230721;
+			// aapt resource value: 0x7f080000
+			public const int item_touch_helper_previous_elevation = 2131230720;
 			
-			// aapt resource value: 0x7f080004
-			public const int layoutCancelText2 = 2131230724;
+			// aapt resource value: 0x7f080002
+			public const int layoutCancelText = 2131230722;
 			
-			// aapt resource value: 0x7f08000c
-			public const int layoutTermsAndConditions = 2131230732;
+			// aapt resource value: 0x7f080005
+			public const int layoutCancelText2 = 2131230725;
 			
-			// aapt resource value: 0x7f080019
-			public const int linearLayout1 = 2131230745;
+			// aapt resource value: 0x7f08000d
+			public const int layoutTermsAndConditions = 2131230733;
 			
-			// aapt resource value: 0x7f08001c
-			public const int linearLayout2 = 2131230748;
+			// aapt resource value: 0x7f080018
+			public const int linearLayout1 = 2131230744;
+			
+			// aapt resource value: 0x7f08001b
+			public const int linearLayout2 = 2131230747;
 			
 			// aapt resource value: 0x7f080044
 			public const int linearLayoutImages = 2131230788;
@@ -245,32 +359,32 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f08004b
 			public const int linearLayoutYearsOfStay = 2131230795;
 			
-			// aapt resource value: 0x7f080002
-			public const int linearMenuBar = 2131230722;
+			// aapt resource value: 0x7f080003
+			public const int linearMenuBar = 2131230723;
 			
-			// aapt resource value: 0x7f080056
-			public const int linearMenubar = 2131230806;
+			// aapt resource value: 0x7f08005b
+			public const int linearMenubar = 2131230811;
 			
-			// aapt resource value: 0x7f08001e
-			public const int login_screen = 2131230750;
+			// aapt resource value: 0x7f08001d
+			public const int login_screen = 2131230749;
 			
-			// aapt resource value: 0x7f080017
-			public const int main_menu = 2131230743;
+			// aapt resource value: 0x7f080016
+			public const int main_menu = 2131230742;
 			
-			// aapt resource value: 0x7f080038
-			public const int numCreditCardNumber = 2131230776;
+			// aapt resource value: 0x7f080037
+			public const int numCreditCardNumber = 2131230775;
 			
-			// aapt resource value: 0x7f08003e
-			public const int numCreditCode = 2131230782;
+			// aapt resource value: 0x7f08003d
+			public const int numCreditCode = 2131230781;
+			
+			// aapt resource value: 0x7f080039
+			public const int numExpiryDate = 2131230777;
 			
 			// aapt resource value: 0x7f08003a
-			public const int numExpiryDate = 2131230778;
+			public const int numExpiryMonth = 2131230778;
 			
 			// aapt resource value: 0x7f08003b
-			public const int numExpiryMonth = 2131230779;
-			
-			// aapt resource value: 0x7f08003c
-			public const int numExpiryYear = 2131230780;
+			public const int numExpiryYear = 2131230779;
 			
 			// aapt resource value: 0x7f08004e
 			public const int numMonthsStayr = 2131230798;
@@ -278,86 +392,89 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f08004a
 			public const int numSinNumber = 2131230794;
 			
-			// aapt resource value: 0x7f08002f
-			public const int payeeHeader = 2131230767;
+			// aapt resource value: 0x7f08002e
+			public const int payeeHeader = 2131230766;
 			
-			// aapt resource value: 0x7f08000f
-			public const int popUpButton = 2131230735;
-			
-			// aapt resource value: 0x7f08002c
-			public const int queryTitle = 2131230764;
+			// aapt resource value: 0x7f080010
+			public const int popUpButton = 2131230736;
 			
 			// aapt resource value: 0x7f08002b
-			public const int query_screen = 2131230763;
+			public const int queryTitle = 2131230763;
 			
-			// aapt resource value: 0x7f080036
-			public const int radioAmericanExpress = 2131230774;
-			
-			// aapt resource value: 0x7f080059
-			public const int radioButton1 = 2131230809;
-			
-			// aapt resource value: 0x7f080069
-			public const int radioButton10 = 2131230825;
-			
-			// aapt resource value: 0x7f08006a
-			public const int radioButton11 = 2131230826;
-			
-			// aapt resource value: 0x7f08006b
-			public const int radioButton12 = 2131230827;
-			
-			// aapt resource value: 0x7f08006f
-			public const int radioButton13 = 2131230831;
-			
-			// aapt resource value: 0x7f080070
-			public const int radioButton14 = 2131230832;
-			
-			// aapt resource value: 0x7f080071
-			public const int radioButton15 = 2131230833;
-			
-			// aapt resource value: 0x7f080072
-			public const int radioButton16 = 2131230834;
-			
-			// aapt resource value: 0x7f08005a
-			public const int radioButton2 = 2131230810;
-			
-			// aapt resource value: 0x7f08005b
-			public const int radioButton3 = 2131230811;
-			
-			// aapt resource value: 0x7f08005c
-			public const int radioButton4 = 2131230812;
-			
-			// aapt resource value: 0x7f080060
-			public const int radioButton5 = 2131230816;
-			
-			// aapt resource value: 0x7f080061
-			public const int radioButton6 = 2131230817;
-			
-			// aapt resource value: 0x7f080062
-			public const int radioButton7 = 2131230818;
-			
-			// aapt resource value: 0x7f080063
-			public const int radioButton8 = 2131230819;
-			
-			// aapt resource value: 0x7f080068
-			public const int radioButton9 = 2131230824;
-			
-			// aapt resource value: 0x7f080033
-			public const int radioGroup1 = 2131230771;
-			
-			// aapt resource value: 0x7f08005f
-			public const int radioGroup2 = 2131230815;
-			
-			// aapt resource value: 0x7f080067
-			public const int radioGroup3 = 2131230823;
-			
-			// aapt resource value: 0x7f08006e
-			public const int radioGroup4 = 2131230830;
-			
-			// aapt resource value: 0x7f080034
-			public const int radioMasterCard = 2131230772;
+			// aapt resource value: 0x7f08002a
+			public const int query_screen = 2131230762;
 			
 			// aapt resource value: 0x7f080035
-			public const int radioVisa = 2131230773;
+			public const int radioAmericanExpress = 2131230773;
+			
+			// aapt resource value: 0x7f08005e
+			public const int radioButton1 = 2131230814;
+			
+			// aapt resource value: 0x7f08006e
+			public const int radioButton10 = 2131230830;
+			
+			// aapt resource value: 0x7f08006f
+			public const int radioButton11 = 2131230831;
+			
+			// aapt resource value: 0x7f080070
+			public const int radioButton12 = 2131230832;
+			
+			// aapt resource value: 0x7f080074
+			public const int radioButton13 = 2131230836;
+			
+			// aapt resource value: 0x7f080075
+			public const int radioButton14 = 2131230837;
+			
+			// aapt resource value: 0x7f080076
+			public const int radioButton15 = 2131230838;
+			
+			// aapt resource value: 0x7f080077
+			public const int radioButton16 = 2131230839;
+			
+			// aapt resource value: 0x7f08005f
+			public const int radioButton2 = 2131230815;
+			
+			// aapt resource value: 0x7f080060
+			public const int radioButton3 = 2131230816;
+			
+			// aapt resource value: 0x7f080061
+			public const int radioButton4 = 2131230817;
+			
+			// aapt resource value: 0x7f080065
+			public const int radioButton5 = 2131230821;
+			
+			// aapt resource value: 0x7f080066
+			public const int radioButton6 = 2131230822;
+			
+			// aapt resource value: 0x7f080067
+			public const int radioButton7 = 2131230823;
+			
+			// aapt resource value: 0x7f080068
+			public const int radioButton8 = 2131230824;
+			
+			// aapt resource value: 0x7f08006d
+			public const int radioButton9 = 2131230829;
+			
+			// aapt resource value: 0x7f080032
+			public const int radioGroup1 = 2131230770;
+			
+			// aapt resource value: 0x7f080064
+			public const int radioGroup2 = 2131230820;
+			
+			// aapt resource value: 0x7f08006c
+			public const int radioGroup3 = 2131230828;
+			
+			// aapt resource value: 0x7f080073
+			public const int radioGroup4 = 2131230835;
+			
+			// aapt resource value: 0x7f080033
+			public const int radioMasterCard = 2131230771;
+			
+			// aapt resource value: 0x7f080034
+			public const int radioVisa = 2131230772;
+			
+			// aapt resource value: 0x7f080041
+			public const int recycleReportScreen = 2131230785;
 			
 			// aapt resource value: 0x7f08004f
 			public const int relativeLayoutRecommend = 2131230799;
@@ -365,23 +482,23 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f080042
 			public const int review_screen = 2131230786;
 			
-			// aapt resource value: 0x7f080057
-			public const int row1Col1 = 2131230807;
+			// aapt resource value: 0x7f08005c
+			public const int row1Col1 = 2131230812;
 			
-			// aapt resource value: 0x7f08005d
-			public const int row1Col2 = 2131230813;
+			// aapt resource value: 0x7f080062
+			public const int row1Col2 = 2131230818;
 			
-			// aapt resource value: 0x7f080065
-			public const int row2Col1 = 2131230821;
+			// aapt resource value: 0x7f08006a
+			public const int row2Col1 = 2131230826;
 			
-			// aapt resource value: 0x7f08006c
-			public const int row2Col2 = 2131230828;
+			// aapt resource value: 0x7f080071
+			public const int row2Col2 = 2131230833;
 			
-			// aapt resource value: 0x7f080014
-			public const int scrollViewDummyReport = 2131230740;
+			// aapt resource value: 0x7f080013
+			public const int scrollViewDummyReport = 2131230739;
 			
-			// aapt resource value: 0x7f080064
-			public const int secondRow = 2131230820;
+			// aapt resource value: 0x7f080069
+			public const int secondRow = 2131230825;
 			
 			// aapt resource value: 0x7f080052
 			public const int seekBarRecommend = 2131230802;
@@ -392,41 +509,41 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f08004d
 			public const int spaceYearsOfStay = 2131230797;
 			
-			// aapt resource value: 0x7f080054
-			public const int survey_screen = 2131230804;
+			// aapt resource value: 0x7f080059
+			public const int survey_screen = 2131230809;
 			
-			// aapt resource value: 0x7f080073
-			public const int survey_submit = 2131230835;
+			// aapt resource value: 0x7f080078
+			public const int survey_submit = 2131230840;
 			
-			// aapt resource value: 0x7f080018
-			public const int textView1 = 2131230744;
+			// aapt resource value: 0x7f080017
+			public const int textView1 = 2131230743;
 			
-			// aapt resource value: 0x7f08001b
-			public const int textView2 = 2131230747;
+			// aapt resource value: 0x7f08001a
+			public const int textView2 = 2131230746;
 			
-			// aapt resource value: 0x7f08006d
-			public const int textView4 = 2131230829;
+			// aapt resource value: 0x7f080072
+			public const int textView4 = 2131230834;
 			
-			// aapt resource value: 0x7f08005e
-			public const int titleBehaviour = 2131230814;
+			// aapt resource value: 0x7f080063
+			public const int titleBehaviour = 2131230819;
 			
-			// aapt resource value: 0x7f080066
-			public const int titleClealiness = 2131230822;
+			// aapt resource value: 0x7f08006b
+			public const int titleClealiness = 2131230827;
 			
-			// aapt resource value: 0x7f080031
-			public const int titleCredits = 2131230769;
+			// aapt resource value: 0x7f080030
+			public const int titleCredits = 2131230768;
 			
-			// aapt resource value: 0x7f080013
-			public const int titleDummyReport = 2131230739;
+			// aapt resource value: 0x7f080012
+			public const int titleDummyReport = 2131230738;
 			
 			// aapt resource value: 0x7f080050
 			public const int titleNotRecommended = 2131230800;
 			
-			// aapt resource value: 0x7f080030
-			public const int titlePayment = 2131230768;
+			// aapt resource value: 0x7f08002f
+			public const int titlePayment = 2131230767;
 			
-			// aapt resource value: 0x7f080058
-			public const int titleQuietLevel = 2131230808;
+			// aapt resource value: 0x7f08005d
+			public const int titleQuietLevel = 2131230813;
 			
 			// aapt resource value: 0x7f080051
 			public const int titleRecommended = 2131230801;
@@ -434,44 +551,59 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f080043
 			public const int titleReviewerAccount = 2131230787;
 			
-			// aapt resource value: 0x7f08000d
-			public const int titleTermsAndConditions = 2131230733;
+			// aapt resource value: 0x7f08000e
+			public const int titleTermsAndConditions = 2131230734;
 			
-			// aapt resource value: 0x7f080003
-			public const int txtCancelPopUp = 2131230723;
+			// aapt resource value: 0x7f080004
+			public const int txtCancelPopUp = 2131230724;
 			
-			// aapt resource value: 0x7f080015
-			public const int txtDummyReport = 2131230741;
-			
-			// aapt resource value: 0x7f080009
-			public const int txtEmail = 2131230729;
-			
-			// aapt resource value: 0x7f080008
-			public const int txtFirstName = 2131230728;
-			
-			// aapt resource value: 0x7f08001f
-			public const int txtLoginEmail = 2131230751;
-			
-			// aapt resource value: 0x7f08000b
-			public const int txtPassword = 2131230731;
-			
-			// aapt resource value: 0x7f08002d
-			public const int txtPayee = 2131230765;
+			// aapt resource value: 0x7f080014
+			public const int txtDummyReport = 2131230740;
 			
 			// aapt resource value: 0x7f08000a
-			public const int txtSecurityNumber = 2131230730;
+			public const int txtEmail = 2131230730;
 			
-			// aapt resource value: 0x7f08002e
-			public const int txtSecurityNumberQS = 2131230766;
+			// aapt resource value: 0x7f080009
+			public const int txtFirstName = 2131230729;
+			
+			// aapt resource value: 0x7f08001e
+			public const int txtLoginEmail = 2131230750;
+			
+			// aapt resource value: 0x7f080056
+			public const int txtMessage = 2131230806;
+			
+			// aapt resource value: 0x7f080054
+			public const int txtName = 2131230804;
+			
+			// aapt resource value: 0x7f08000c
+			public const int txtPassword = 2131230732;
+			
+			// aapt resource value: 0x7f08002c
+			public const int txtPayee = 2131230764;
+			
+			// aapt resource value: 0x7f08000b
+			public const int txtSecurityNumber = 2131230731;
+			
+			// aapt resource value: 0x7f08002d
+			public const int txtSecurityNumberQS = 2131230765;
+			
+			// aapt resource value: 0x7f080055
+			public const int txtStatus = 2131230805;
 			
 			// aapt resource value: 0x7f080048
 			public const int txtTenantSinReviewScreen = 2131230792;
 			
-			// aapt resource value: 0x7f080021
-			public const int txtWelcome = 2131230753;
+			// aapt resource value: 0x7f080057
+			public const int txtTime = 2131230807;
+			
+			// aapt resource value: 0x7f080020
+			public const int txtWelcome = 2131230752;
 			
 			// aapt resource value: 0x7f08004c
 			public const int txtYearsOfStay = 2131230796;
+			
+			// aapt resource value: 0x7f08007a
+			public const int velocity_text_view = 2131230842;
 			
 			static Id()
 			{
@@ -514,10 +646,19 @@ namespace TCheck.Droid
 			public const int query_screen = 2130903048;
 			
 			// aapt resource value: 0x7f030009
-			public const int review_screen = 2130903049;
+			public const int recycler_report_screen = 2130903049;
 			
 			// aapt resource value: 0x7f03000a
-			public const int survey_screen = 2130903050;
+			public const int review_screen = 2130903050;
+			
+			// aapt resource value: 0x7f03000b
+			public const int row_report = 2130903051;
+			
+			// aapt resource value: 0x7f03000c
+			public const int survey_screen = 2130903052;
+			
+			// aapt resource value: 0x7f03000d
+			public const int tenant_search = 2130903053;
 			
 			static Layout()
 			{
@@ -529,14 +670,36 @@ namespace TCheck.Droid
 			}
 		}
 		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0b0000
+			public const int action_bar = 2131427328;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int app_name = 2131099649;
+			// aapt resource value: 0x7f090001
+			public const int ApplicationName = 2131296257;
 			
-			// aapt resource value: 0x7f060000
-			public const int hello = 2131099648;
+			// aapt resource value: 0x7f090000
+			public const int Hello = 2131296256;
+			
+			// aapt resource value: 0x7f090003
+			public const int app_name = 2131296259;
+			
+			// aapt resource value: 0x7f090002
+			public const int hello = 2131296258;
 			
 			static String()
 			{
@@ -551,11 +714,26 @@ namespace TCheck.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f070001
-			public const int Mono_Android_Theme_Splash = 2131165185;
-			
 			// aapt resource value: 0x7f070000
-			public const int popup_animation = 2131165184;
+			public const int CardView = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int CardView_Dark = 2131165185;
+			
+			// aapt resource value: 0x7f070002
+			public const int CardView_Light = 2131165186;
+			
+			// aapt resource value: 0x7f070005
+			public const int CustomActionBarTheme = 2131165189;
+			
+			// aapt resource value: 0x7f070004
+			public const int Mono_Android_Theme_Splash = 2131165188;
+			
+			// aapt resource value: 0x7f070006
+			public const int MyActionBar = 2131165190;
+			
+			// aapt resource value: 0x7f070003
+			public const int popup_animation = 2131165187;
 			
 			static Style()
 			{
@@ -563,6 +741,89 @@ namespace TCheck.Droid
 			}
 			
 			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] CardView = new int[]
+			{
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973,
+					2130771974,
+					2130771975,
+					2130771976,
+					2130771977,
+					2130771978};
+			
+			// aapt resource value: 0
+			public const int CardView_cardBackgroundColor = 0;
+			
+			// aapt resource value: 1
+			public const int CardView_cardCornerRadius = 1;
+			
+			// aapt resource value: 2
+			public const int CardView_cardElevation = 2;
+			
+			// aapt resource value: 3
+			public const int CardView_cardMaxElevation = 3;
+			
+			// aapt resource value: 5
+			public const int CardView_cardPreventCornerOverlap = 5;
+			
+			// aapt resource value: 4
+			public const int CardView_cardUseCompatPadding = 4;
+			
+			// aapt resource value: 6
+			public const int CardView_contentPadding = 6;
+			
+			// aapt resource value: 10
+			public const int CardView_contentPaddingBottom = 10;
+			
+			// aapt resource value: 7
+			public const int CardView_contentPaddingLeft = 7;
+			
+			// aapt resource value: 8
+			public const int CardView_contentPaddingRight = 8;
+			
+			// aapt resource value: 9
+			public const int CardView_contentPaddingTop = 9;
+			
+			public static int[] RecyclerView = new int[]
+			{
+					16842948,
+					2130771979,
+					2130771980,
+					2130771981,
+					2130771982};
+			
+			// aapt resource value: 0
+			public const int RecyclerView_android_orientation = 0;
+			
+			// aapt resource value: 1
+			public const int RecyclerView_layoutManager = 1;
+			
+			// aapt resource value: 3
+			public const int RecyclerView_reverseLayout = 3;
+			
+			// aapt resource value: 2
+			public const int RecyclerView_spanCount = 2;
+			
+			// aapt resource value: 4
+			public const int RecyclerView_stackFromEnd = 4;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

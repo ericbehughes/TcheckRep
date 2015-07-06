@@ -8,32 +8,6 @@
     android:minHeight="25px">
     <LinearLayout
         android:orientation="horizontal"
-        android:minWidth="15px"
-        android:minHeight="15px"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:id="@+id/linearMenuBar"
-        android:weightSum="100">
-        <Button
-            android:id="@+id/buttonMenuBar1"
-            android:text="Main Menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="35"
-            android:background="#7491A3"
-            android:layout_marginRight="0dp"
-            android:paddingLeft="5dp"
-            android:gravity="fill_vertical" />
-        <Button
-            android:id="@+id/buttonMenuBar2"
-            android:text="Rent Proof"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#000"
-            android:layout_weight="65" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"

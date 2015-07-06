@@ -29,8 +29,8 @@ namespace TCheck.Droid
 			// Create your application here
 			SetContentView (Resource.Layout.query_screen);
 
-			mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
-			mButtonMenuButton.Click += mButtonMenuButton_Click;
+			//mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
+			//mButtonMenuButton.Click += mButtonMenuButton_Click;
 
 			mButtonPay = FindViewById<Button>(Resource.Id.buttonPay);
 			mButtonPay.Click += mButtonPay_Click;

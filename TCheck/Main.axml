@@ -6,7 +6,7 @@
     android:background="#7491A3"
     android:id="@+id/main">
     <TextView
-        android:text="Tenant Check"
+        android:text="RentProof"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

@@ -26,8 +26,8 @@ namespace TCheck.Droid
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.review_screen);
 
-			mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
-			mButtonMenuButton.Click += mButtonMenuButton_Click;
+			//mButtonMenuButton = FindViewById<Button> (Resource.Id.buttonMenuBar1);
+			//mButtonMenuButton.Click += mButtonMenuButton_Click;
 
 			mButtonSurvey = FindViewById<Button>(Resource.Id.buttonSurvey);
 			mButtonSurvey.Click += mButtonSurvey_Click;
