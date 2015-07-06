@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "main_menu_activity")]			
+	[Activity (Label = "")]			
 	public class main_menu_activity : Activity
 	{
 		private Button mButtonBG;
@@ -23,9 +23,11 @@ namespace TCheck.Droid
 
 		protected override void OnCreate (Bundle bundle)
 		{
+			
 			base.OnCreate (bundle);
 
 			SetContentView (Resource.Layout.main_menu);
+
 
 
 
@@ -40,6 +42,7 @@ namespace TCheck.Droid
 
 			mButtonMyProfile = FindViewById<Button>(Resource.Id.buttonMyProfile);
 			mButtonMyProfile.Click += mButtonMyProfile_Click;
+
 
 
 

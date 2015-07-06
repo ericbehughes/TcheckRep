@@ -13,13 +13,14 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "login_activity")]			
+	[Activity (Label = "")]			
 	public class login_activity : Activity
 	{
 		private Button mButtonLogin;
 
 		protected override void OnCreate (Bundle bundle)
 		{
+			RequestWindowFeature(WindowFeatures.NoTitle);
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.login_screen);
 			mButtonLogin = FindViewById<Button>(Resource.Id.buttonLogIn);

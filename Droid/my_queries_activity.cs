@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "my_queries_activity")]			
+	[Activity (Label = "")]			
 	public class my_queries_activity : Activity
 	{
 	//	string[] items;

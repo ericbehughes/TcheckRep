@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "review_activity")]			
+	[Activity (Label = "")]			
 	public class review_activity : Activity
 	{
 		private Button mButtonSurvey; // id -> buttonSurvey

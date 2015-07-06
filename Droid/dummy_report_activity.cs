@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "dummy_report_activity")]			
+	[Activity (Label = "")]			
 	public class dummy_report_activity : Activity
 	{
 		private Button mButtonHome;

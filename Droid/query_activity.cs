@@ -16,7 +16,7 @@ namespace TCheck.Droid
 
 
 
-	[Activity (Label = "query_activity")]			
+	[Activity (Label = "")]			
 	public class query_activity : Activity
 	{
 		private Button mButtonPay;

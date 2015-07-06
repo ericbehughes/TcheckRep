@@ -15,7 +15,7 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity(Label = "swipe_activity", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity(Label = "", MainLauncher = true, Icon = "@drawable/icon")]
 	public class swipe_activity :   Activity, GestureDetector.IOnGestureListener
 	{
 		private GestureDetector _gestureDetector;

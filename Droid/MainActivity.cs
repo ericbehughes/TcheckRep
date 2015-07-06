@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "TCheck.Droid", MainLauncher = true, Icon = "@drawable/rent_proof_icon")]
+	[Activity (Label = "", MainLauncher = true, Icon = "@drawable/rent_proof_icon")]
 	public class MainActivity : Activity
 	{
 		
@@ -19,6 +19,7 @@ namespace TCheck.Droid
 	
 		protected override void OnCreate (Bundle bundle)
 		{
+			RequestWindowFeature(WindowFeatures.NoTitle);
 			base.OnCreate (bundle);
 
 

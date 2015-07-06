@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "swipe_activity_test")]			
+	[Activity (Label = "")]			
 	public class swipe_activity_test : Activity
 	{
 		protected override void OnCreate (Bundle bundle)
