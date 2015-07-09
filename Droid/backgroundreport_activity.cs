@@ -52,7 +52,7 @@ namespace TCheck.Droid
 
 		public override bool OnCreateOptionsMenu(IMenu menu)
 		{
-			MenuInflater.Inflate(Resource.Menu.action_bar, menu);
+			MenuInflater.Inflate(Resource.Menu.add_and_remove_bar, menu);
 			return base.OnCreateOptionsMenu(menu);
 		}
 

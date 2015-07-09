@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android.Support.V7.App;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V7.Widget;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -13,29 +15,31 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "")]			
-	public class main_menu_activity : Activity
+	[Activity (Label = "", Theme="@style/MyTheme")]			
+	public class main_menu_activity : ActionBarActivity
 	{
-		private Button mButtonBG;
-		private Button mButtonReviewMM;
+		private Button mButtonBackgroundCheck;
+		private Button mButtonMyReview;
 		private Button mButtonMyQueries;
 		private Button mButtonMyProfile;
+		private SupportToolbar mToolbar;
 
 		protected override void OnCreate (Bundle bundle)
 		{
-			
 			base.OnCreate (bundle);
 
-			SetContentView (Resource.Layout.main_menu);
+			SetContentView(Resource.Layout.main_menu);
+			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+			SetSupportActionBar(mToolbar);
+			SupportActionBar.SetHomeButtonEnabled(true);
+			SupportActionBar.SetDisplayShowTitleEnabled(true);
+			SupportActionBar.SetTitle(Resource.String.app_name);
 
+			mButtonBackgroundCheck = FindViewById<Button>(Resource.Id.buttonQuery);
+			mButtonBackgroundCheck.Click += mButtonBackgroundCheck_Click;
 
-
-
-			mButtonBG = FindViewById<Button>(Resource.Id.buttonQuery);
-			mButtonBG.Click += mButtonBG_Click;
-
-			mButtonReviewMM = FindViewById<Button>(Resource.Id.buttonReview);
-			mButtonReviewMM.Click += mButtonReviewMM_Click;
+			mButtonMyReview = FindViewById<Button>(Resource.Id.buttonReview);
+			mButtonMyReview.Click += mButtonMyReview_Click;
 
 			mButtonMyQueries = FindViewById<Button>(Resource.Id.buttonMyQueries);
 			mButtonMyQueries.Click += mButtonMyQueries_Click;
@@ -48,14 +52,14 @@ namespace TCheck.Droid
 
 
 		}
-		void mButtonBG_Click (object sender, EventArgs args)
+		void mButtonBackgroundCheck_Click (object sender, EventArgs args)
 		{
 			Intent intent = new Intent (this, typeof(query_activity));
 			this.StartActivity (intent);
 
 		}
 
-		void mButtonReviewMM_Click (object sender, EventArgs e)
+		void mButtonMyReview_Click (object sender, EventArgs e)
 		{
 			Intent intent = new Intent (this, typeof(my_reviews_activity));
 			this.StartActivity (intent);
@@ -77,7 +81,7 @@ namespace TCheck.Droid
 		}
 		public override bool OnCreateOptionsMenu(IMenu menu)
 		{
-			MenuInflater.Inflate(Resource.Menu.action_bar, menu);
+			MenuInflater.Inflate(Resource.Menu.main_action_bar, menu);
 			return base.OnCreateOptionsMenu(menu);
 		}
 

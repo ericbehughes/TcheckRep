@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "", MainLauncher = true, Icon = "@drawable/rent_proof_icon")]
+	[Activity (Label = "RentProof", MainLauncher = true, Icon = "@drawable/rent_proof_icon")]
 	public class MainActivity : Activity
 	{
 		

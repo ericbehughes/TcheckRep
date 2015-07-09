@@ -1,9 +1,7 @@
 ﻿<menu xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:myapp="http://schemas.android.com/apk/res-auto"
-android:id="@+id/action_bar"
+android:id="@+id/add_and_remove_bar"
 android:title="">
-
-
 
   <item
       android:id="@+id/add"
