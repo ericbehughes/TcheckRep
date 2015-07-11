@@ -8,8 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
-namespace TCheck.Droid
-{
+namespace TCheck.Droid{
 	public class OnSignUpEvent : EventArgs{
 		private string mFirstName;
 		private string mEmail;
@@ -42,8 +41,7 @@ namespace TCheck.Droid
 				
 		}
 	}
-	class SignUpPopUp : DialogFragment
-	{
+	class SignUpPopUp : DialogFragment{
 		private EditText mTxtFirstName;
 		private EditText mTxtEmail;
 		private EditText mTxtSecurityNumber;
@@ -52,8 +50,7 @@ namespace TCheck.Droid
 
 		public event EventHandler<OnSignUpEvent> mOnSignUpComplete;
 
-		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-		{
+		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
 			var view = inflater.Inflate (Resource.Layout.dialog_sign_up, container, false);
@@ -68,8 +65,7 @@ namespace TCheck.Droid
 			return view;
 		}
 
-		public override void OnActivityCreated(Bundle savedInstanceState)
-		{
+		public override void OnActivityCreated(Bundle savedInstanceState){
 			Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
 			base.OnActivityCreated (savedInstanceState);
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
@@ -77,9 +73,9 @@ namespace TCheck.Droid
 
 		void mPopUpButton_Click(object sender, EventArgs e){
 		
-		//user has clicked on signup button
+			//user has clicked on signup button
 			mOnSignUpComplete.Invoke(this, new OnSignUpEvent(mTxtFirstName.Text, mTxtEmail.Text,mTxtSecurityNumber.Text, mTxtPassword.Text ));
-			this.Dismiss();
+			this.Dismiss ();
 
 
 

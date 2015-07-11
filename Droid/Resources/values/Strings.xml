@@ -2,4 +2,6 @@
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">RentProof</string>
+	<string name="openDrawer">Main Menu</string>
+	<string name="closeDrawer">Rent Proof</string>
 </resources>

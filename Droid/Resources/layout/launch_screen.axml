@@ -4,7 +4,7 @@
     android:background="#7491A3"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/main_menu">
+    android:id="@+id/launch_screen">
     <TextView
         android:text="RentProof"
         android:textAppearance="?android:attr/textAppearanceLarge"

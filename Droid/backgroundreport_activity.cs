@@ -10,20 +10,15 @@ using Android.Support.V7;
 using Android.Support.V4.Widget;
 using System.Collections.Generic;
 
-namespace TCheck.Droid
-{
-	[Activity(Label = "", MainLauncher = true, Icon = "@drawable/icon")]
-	public class backgroundreport_activity : Activity
-	{
+namespace TCheck.Droid{
+	[Activity (Label = "backgroundreport_activity")]
+	public class backgroundreport_activity : Activity{
 		private RecyclerView mRecyclerView;
 		private RecyclerView.LayoutManager mLayoutManager;
 		private RecyclerView.Adapter mAdapter;
 		private MyList<BackgroundReport> mBackgroundReport;
 
-
-
-		protected override void OnCreate(Bundle bundle)
-		{
+		protected override void OnCreate(Bundle bundle){
 			base.OnCreate(bundle);
 			//var toolbar = FindViewById<Toolbar> (Resource.Id.reportToolbar);
 			//Toolbar will now take on default Action Bar characteristics
@@ -32,11 +27,10 @@ namespace TCheck.Droid
 			SetContentView(Resource.Layout.recycler_report_screen);
 			mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recycleReportScreen);
 			mBackgroundReport = new MyList<BackgroundReport>();
-			mBackgroundReport.Add(new BackgroundReport() { Name = "Person", Status = "Pending", Message = "Query Report" });
-			mBackgroundReport.Add(new BackgroundReport() { Name = "Person", Status = "Pending", Message = "Query Report" });
-			mBackgroundReport.Add(new BackgroundReport() { Name = "Person", Status = "Pending", Message = "Query Report" });
-			mBackgroundReport.Add(new BackgroundReport() { Name = "Person", Status = "Pending", Message = "Query Report" });
-
+			mBackgroundReport.Add(new BackgroundReport() { Name = "Person", Status = "Status Complete", Message = "Query Report" });
+			mBackgroundReport.Add(new BackgroundReport() { Name = "Person", Status = "Status Complete", Message = "Query Report" });
+			mBackgroundReport.Add(new BackgroundReport() { Name = "Person", Status = "Status Complete", Message = "Query Report" });
+			mBackgroundReport.Add(new BackgroundReport() { Name = "Person", Status = "Staus Complete", Message = "Query Report" });
 
 			//Create our layout manager
 			mLayoutManager = new LinearLayoutManager(this);
@@ -46,23 +40,18 @@ namespace TCheck.Droid
 			mRecyclerView.SetAdapter(mAdapter);
 			//SupportActionBar.SetHomeButtonEnabled(true);
 			//SupportActionBar.SetDisplayShowTitleEnabled(true);
-
-
 		}
 
-		public override bool OnCreateOptionsMenu(IMenu menu)
-		{
+		public override bool OnCreateOptionsMenu(IMenu menu){
 			MenuInflater.Inflate(Resource.Menu.add_and_remove_bar, menu);
 			return base.OnCreateOptionsMenu(menu);
 		}
 
-		public override bool OnOptionsItemSelected(IMenuItem item)
-		{
-			switch(item.ItemId)
-			{
+		public override bool OnOptionsItemSelected(IMenuItem item){
+			switch(item.ItemId){
 			case Resource.Id.add:
 				//Add button clicked
-				mBackgroundReport.Add(new BackgroundReport() { Name = "Another Person", Status = "Status", Message = "Pending" });
+				mBackgroundReport.Add(new BackgroundReport() { Name = "Another Person", Status = "Status Pending", Message = "Query Report" });
 				return true;
 
 			case Resource.Id.discard:
@@ -74,83 +63,69 @@ namespace TCheck.Droid
 		}
 	}
 
-	public class MyList<T>
-	{
+	public class MyList<T>{
 		private List<T> mItems;
 		private RecyclerView.Adapter mAdapter;
 
-		public MyList()
-		{
+		public MyList(){
 			mItems = new List<T>();
 		}
 
-		public RecyclerView.Adapter Adapter
-		{
+		public RecyclerView.Adapter Adapter{
 			get { return mAdapter; }
 			set { mAdapter = value; }
 		}
 
-		public void Add(T item)
-		{
+		public void Add(T item){
 			mItems.Add(item);
 
-			if (Adapter != null)
-			{
+			if (Adapter != null){
 				Adapter.NotifyItemInserted(0);
 			}
 
 		}
 
-		public void Remove (int position)
-		{
+		public void Remove (int position){
 			mItems.RemoveAt(position);
 
-			if (Adapter != null)
-			{
+			if (Adapter != null){
 				Adapter.NotifyItemRemoved(0);
 			}
 		}
 
-		public T this[int index]
-		{
+		public T this[int index]{
 			get { return mItems[index]; }
 			set { mItems[index] = value; }
 		}
 
-		public int Count
-		{
+		public int Count{
 			get { return mItems.Count; }
 		}
 
 	}
 
-	public class RecyclerAdapter : RecyclerView.Adapter
-	{
+	public class RecyclerAdapter : RecyclerView.Adapter{
 		private MyList<BackgroundReport> mBackgroundReport;
 		private RecyclerView mRecyclerView;
 
-		public RecyclerAdapter(MyList<BackgroundReport> emails, RecyclerView recyclerView)
-		{
+		public RecyclerAdapter(MyList<BackgroundReport> emails, RecyclerView recyclerView){
 			mBackgroundReport = emails;
 			mRecyclerView = recyclerView;
 		}
 
-		public class MyView : RecyclerView.ViewHolder
-		{
+		public class MyView : RecyclerView.ViewHolder{
 			public View mMainView { get; set; }
 			public TextView mName { get; set; }
 			public TextView mStatus { get; set; }
 			public TextView mMessage { get; set; }
 
-			public MyView (View view) : base(view)
-			{
+			public MyView (View view) : base(view){
 				mMainView = view;
 			}
 		}
 
-		public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
-		{
-			View row = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.row_report, parent, false);
+		public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType){
+			View row = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.row_contact, parent, false);
 
 			TextView txtName = row.FindViewById<TextView>(Resource.Id.txtName);
 			TextView txtStatus = row.FindViewById<TextView>(Resource.Id.txtStatus);
@@ -160,8 +135,7 @@ namespace TCheck.Droid
 			return view;
 		}
 
-		public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
-		{
+		public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position){
 			MyView myHolder = holder as MyView;
 			int indexPosition = (mBackgroundReport.Count - 1) - position;
 			myHolder.mMainView.Click += mMainView_Click;
@@ -170,15 +144,13 @@ namespace TCheck.Droid
 			myHolder.mMessage.Text = mBackgroundReport[indexPosition].Message;
 		}
 
-		void mMainView_Click(object sender, EventArgs e)
-		{
+		void mMainView_Click(object sender, EventArgs e){
 			int position = mRecyclerView.GetChildPosition((View)sender);
 			int indexPosition = (mBackgroundReport.Count - 1) - position;
 			Console.WriteLine(mBackgroundReport[indexPosition].Name);
 		}
 
-		public override int ItemCount
-		{
+		public override int ItemCount{
 			get { return mBackgroundReport.Count; }
 		}
 	}

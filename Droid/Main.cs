@@ -7,65 +7,45 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
-namespace TCheck.Droid
-{
-	[Activity (Label = "RentProof", MainLauncher = true, Icon = "@drawable/rent_proof_icon")]
-	public class MainActivity : Activity
-	{
-		
+namespace TCheck.Droid{
+	[Activity (Label = "RentProof", MainLauncher = true, Icon = "@drawable/rent_proof_icon" )]
+	public class MainActivity : Activity{
+		//Icon = "@drawable/rent_proof_icon"
 		private Button mButtonSignUp;
 		private Button mButtonSignIn;
-
 	
-		protected override void OnCreate (Bundle bundle)
-		{
+		protected override void OnCreate (Bundle bundle){
 			RequestWindowFeature(WindowFeatures.NoTitle);
 			base.OnCreate (bundle);
-
-
-
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.launch_screen);
-
-
+			mButtonSignIn = FindViewById<Button>(Resource.Id.buttonSignIn);
+			mButtonSignIn.Click += mButtonSignIn_Click;
 			mButtonSignUp = FindViewById<Button>(Resource.Id.buttonSignUp);
-			mButtonSignUp.Click += (object sender, EventArgs args) =>
-				{
+			mButtonSignUp.Click += (object sender, EventArgs args) =>{
 				//pull up dialog
 				FragmentTransaction transaction = FragmentManager.BeginTransaction();
 				SignUpPopUp signUpPopUp = new SignUpPopUp();
 				signUpPopUp.Show(transaction, "sign_up fragment");
 				signUpPopUp.mOnSignUpComplete += signUpPopUp_mOnSignUpComplete;
 				};
-
-
-			mButtonSignIn = FindViewById<Button>(Resource.Id.buttonSignIn);
-			mButtonSignIn.Click += mButtonSignIn_Click;
+				
 
 		}
 
-
-		void signUpPopUp_mOnSignUpComplete (object sender, OnSignUpEvent e)
-		{
+		void signUpPopUp_mOnSignUpComplete (object sender, OnSignUpEvent e){
 			Intent intent = new Intent (this, typeof(main_menu_activity));
 			this.StartActivity (intent);
 			Finish (); 
-
-
-
 		}
 
-		void mButtonSignIn_Click (object sender, EventArgs args)
-		{	
+		void mButtonSignIn_Click (object sender, EventArgs e){
 			Intent intent = new Intent (this, typeof(login_activity));
 			this.StartActivity (intent);
-			Finish ();
+			Finish (); 
 		}
 
 
-
-			
-		
 	}
 }
 

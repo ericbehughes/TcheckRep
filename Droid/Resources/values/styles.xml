@@ -5,10 +5,9 @@
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_right</item>
     </style>
-    <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    	<item name="drawerArrowStyle">@style/MyDrawerArrowStyle</item>
-		<item name="colorPrimary">#7491A3</item>
-
+   	<style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">#2196F3</item>
+		<item name="drawerArrowStyle">@style/MyDrawerArrowStyle</item>
 	</style>
 
 	<style name="MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">

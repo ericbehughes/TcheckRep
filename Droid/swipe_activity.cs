@@ -13,16 +13,13 @@ using Android.Widget;
 
 
 
-namespace TCheck.Droid
-{
-	[Activity(Label = "", MainLauncher = true, Icon = "@drawable/icon")]
-	public class swipe_activity :   Activity, GestureDetector.IOnGestureListener
-	{
+namespace TCheck.Droid{
+	
+	public class swipe_activity :   Activity, GestureDetector.IOnGestureListener{
 		private GestureDetector _gestureDetector;
 		private TextView _textView;
 
-		protected override void OnCreate(Bundle bundle)
-		{
+		protected override void OnCreate(Bundle bundle){
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.tenant_search);
 			_textView = FindViewById<TextView>(Resource.Id.velocity_text_view);
@@ -30,34 +27,29 @@ namespace TCheck.Droid
 			_gestureDetector = new GestureDetector(this);
 		}
 
-		public override bool OnTouchEvent(MotionEvent e)
-		{
+		public override bool OnTouchEvent(MotionEvent e){
 			_gestureDetector.OnTouchEvent(e);
 			return false;
 		}
 
-		public bool OnDown(MotionEvent e)
-		{
+		public bool OnDown(MotionEvent e){
 			return false;
 		}
 
-		public bool OnFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
-		{
+		public bool OnFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY){
 			_textView.Text = String.Format("Fling velocity: {0} x {1}", velocityX, velocityY);
 			return true;
 		}
 
 		public void OnLongPress(MotionEvent e) {}
 
-		public bool OnScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
-		{
+		public bool OnScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY){
 			return false;
 		}
 
 		public void OnShowPress(MotionEvent e) {}
 
-		public bool OnSingleTapUp(MotionEvent e)
-		{
+		public bool OnSingleTapUp(MotionEvent e){
 			return false;
 		}
 	}
