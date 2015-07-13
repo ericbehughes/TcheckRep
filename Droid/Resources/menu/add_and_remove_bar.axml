@@ -1,7 +1,8 @@
-﻿<menu xmlns:android="http://schemas.android.com/apk/res/android"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:myapp="http://schemas.android.com/apk/res-auto"
-android:id="@+id/add_and_remove_bar"
-android:title="">
+android:id="@+id/add_and_remove_bar">
 
   <item
       android:id="@+id/add"
@@ -9,11 +10,17 @@ android:title="">
       android:icon="@drawable/ic_action_new"
       android:showAsAction="always"/>
 
-  <item
+	<item
       android:id="@+id/discard"
       android:title="Discard"
       android:icon="@drawable/ic_action_discard"
       android:showAsAction="always"/>
+
+     <item android:id="@+id/action_help"
+		android:icon="@drawable/ic_action_help"
+		android:title="Help"
+		myapp:showAsAction="always"/>
+
   
 </menu>
 

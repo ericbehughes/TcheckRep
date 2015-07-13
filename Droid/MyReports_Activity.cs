@@ -7,16 +7,31 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
 using System.Collections.Generic;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V7.App;
+using Android.Support.V4.Widget;
+
 
 namespace TCheck.Droid
 {
-	[Activity(Label = "MyReports_Activity")]
-	public class MyReports_Activity: Activity
+	[Activity(Label = "MyReports_Activity",Theme="@style/MyTheme")]
+	public class MyReports_Activity: AppCompatActivity
 	{
 		private RecyclerView mRecyclerView;
 		private RecyclerView.LayoutManager mLayoutManager;
 		private RecyclerView.Adapter mAdapter;
 		private MyReports<MyReports> mMyReportsLists;
+
+		private SupportToolbar mToolbar;
+		private MyActionBarDrawerToggle mDrawerToggle;
+		private DrawerLayout mDrawerLayout;
+		private ListView mLeftDrawer;
+		private ListView mRightDrawer;
+		private ArrayAdapter mLeftAdapter;
+		private ArrayAdapter mRightAdapter;
+		private List<string> mLeftDataSet;
+		private List<string> mRightDataSet;
+
 
 
 		protected override void OnCreate(Bundle bundle)
@@ -25,13 +40,15 @@ namespace TCheck.Droid
 
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.recycler_report_screen);
-			mRecyclerView = FindViewById<RecyclerView>(Resource.Id.re);
+			mRecyclerView = FindViewById<RecyclerView> (Resource.Id.recyclerScreen);
 
 			mMyReportsLists = new MyReports<MyReports>();
-			mMyReportsLists.Add(new MyReports() { Name = "tom", Subject = "Wanna hang out?", Message = "I'll be around tomorrow!!" });
-			mMyReportsLists.Add(new MyReports() { Name = "tom", Subject = "Wanna hang out?", Message = "I'll be around tomorrow!!" });
-			mMyReportsLists.Add(new MyReports() { Name = "tom", Subject = "Wanna hang out?", Message = "I'll be around tomorrow!!" });
-			mMyReportsLists.Add(new MyReports() { Name = "tom", Subject = "Wanna hang out?", Message = "I'll be around tomorrow!!" });
+			mMyReportsLists.Add(new MyReports() { Name = "Firstname Lastname", Subject = "Report Status", Message = "Ready" });
+			mMyReportsLists.Add(new MyReports() { Name = "Firstname Lastname", Subject = "Report Status", Message = "Ready" });
+			mMyReportsLists.Add(new MyReports() { Name = "Firstname Lastname", Subject = "Report Status", Message = "Ready" });
+			mMyReportsLists.Add(new MyReports() { Name = "Firstname Lastname", Subject = "Report Status", Message = "Ready" });
+
+
 
 
 			//Create our layout manager
@@ -41,7 +58,62 @@ namespace TCheck.Droid
 			mMyReportsLists.Adapter = mAdapter;
 			mRecyclerView.SetAdapter(mAdapter);
 
+			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
+			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
 
+
+			mLeftDrawer.Tag = 0;
+			mRightDrawer.Tag = 1;
+
+			SetSupportActionBar(mToolbar);
+
+			mLeftDataSet = new List<string>();
+			mLeftDataSet.Add(GetString(Resource.String.my_profile));
+			mLeftDataSet.Add(GetString(Resource.String.log_out));
+			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
+			mLeftDrawer.Adapter = mLeftAdapter;
+
+			//this.mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
+			//this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
+
+			mRightDataSet = new List<string>();
+			mRightDataSet.Add(GetString(Resource.String.drawer_faq));
+			mRightDataSet.Add(GetString (Resource.String.support));
+			mRightDataSet.Add(GetString(Resource.String.rentproof_summary));
+			mRightAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mRightDataSet);
+			mRightDrawer.Adapter = mRightAdapter;
+
+			mDrawerToggle = new MyActionBarDrawerToggle(
+				this,							//Host Activity
+				mDrawerLayout,					//DrawerLayout
+				Resource.String.openDrawer,		//Opened Message
+				Resource.String.closeDrawer		//Closed Message
+			);
+
+			mDrawerLayout.SetDrawerListener(mDrawerToggle);
+			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
+			SupportActionBar.SetDisplayShowTitleEnabled(true);
+			mDrawerToggle.SyncState();
+
+
+
+			if (bundle != null){
+				if (bundle.GetString("DrawerState") == "Opened"){
+					SupportActionBar.SetTitle(Resource.String.openDrawer);
+				}
+
+				else{
+					SupportActionBar.SetTitle(Resource.String.closeDrawer);
+				}
+			}
+
+			else{
+				//This is the first the time the activity is ran
+				SupportActionBar.SetTitle(Resource.String.closeDrawer);
+			}
+		
 		}
 
 		public override bool OnCreateOptionsMenu(IMenu menu)
@@ -56,17 +128,56 @@ namespace TCheck.Droid
 			{
 			case Resource.Id.add:
 				//Add button clicked
-				mMyReportsLists.Add(new MyReports() { Name = "New Name", Subject = "New Subject", Message = "New Message" });
+				mMyReportsLists.Add(new MyReports() { Name = "Firstname Lastname", Subject = "Report Status", Message = "Pending" });
 				return true;
 
 			case Resource.Id.discard:
 				//Discard button clicked
 				mMyReportsLists.Remove(mMyReportsLists.Count - 1);
 				return true;
+
+			case Android.Resource.Id.Home:
+				mDrawerLayout.CloseDrawer (mRightDrawer);
+				mDrawerToggle.OnOptionsItemSelected(item);
+				return true;
+			
+			case Resource.Id.action_help:
+				if (mDrawerLayout.IsDrawerOpen (mRightDrawer)) {
+					//Right Drawer is already open, close it
+					mDrawerLayout.CloseDrawer (mRightDrawer);
+				} else {
+					//Right Drawer is closed, open it and just in case close left drawer
+					mDrawerLayout.OpenDrawer (mRightDrawer);
+					mDrawerLayout.CloseDrawer (mLeftDrawer);
+				}
+				return true;
+
 			}
 			return base.OnOptionsItemSelected(item);
 		}
+		protected override void OnSaveInstanceState (Bundle outState){
+			if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left)){
+				outState.PutString("DrawerState", "Opened");
+			}
+
+			else{
+				outState.PutString("DrawerState", "Closed");
+			}
+
+			base.OnSaveInstanceState (outState);
+		}
+
+		protected override void OnPostCreate (Bundle savedInstanceState){
+			base.OnPostCreate (savedInstanceState);
+			mDrawerToggle.SyncState();
+		}
+
+		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig){
+			base.OnConfigurationChanged (newConfig);
+			mDrawerToggle.OnConfigurationChanged(newConfig);
+		}
 	}
+
 
 	public class MyReports<T>
 	{
@@ -144,7 +255,7 @@ namespace TCheck.Droid
 
 		public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
 		{
-			View row = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.row_report, parent, false);
+			View row = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.report_row, parent, false);
 
 			TextView txtName = row.FindViewById<TextView>(Resource.Id.txtName);
 			TextView txtSubject = row.FindViewById<TextView>(Resource.Id.txtSubject);
@@ -159,6 +270,7 @@ namespace TCheck.Droid
 			MyView myHolder = holder as MyView;
 			int indexPosition = (mMyReportsLists.Count - 1) - position;
 			myHolder.mMainView.Click += mMainView_Click;
+
 			myHolder.mName.Text = mMyReportsLists[indexPosition].Name;
 			myHolder.mSubject.Text = mMyReportsLists[indexPosition].Subject;
 			myHolder.mMessage.Text = mMyReportsLists[indexPosition].Message;
@@ -166,10 +278,20 @@ namespace TCheck.Droid
 
 		void mMainView_Click(object sender, EventArgs e)
 		{
-			int position = mRecyclerView.GetChildPosition((View)sender);
-			int indexPosition = (mMyReportsLists.Count - 1) - position;
-			Console.WriteLine(mMyReportsLists[indexPosition].Name);
+			//int position = mRecyclerView.GetChildPosition((View)sender);
+			int position = mRecyclerView.GetChildAdapterPosition((View)sender);
+			//int indexPosition = (mMyReportsLists.Count - 1) - position;
+			//Console.WriteLine(mMyReportsLists[indexPosition].Name);
+
+
+	
+
 		}
+
+	
+
+
+
 
 		public override int ItemCount
 		{

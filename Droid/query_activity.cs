@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace TCheck.Droid{
 	[Activity (Label = "query_activity",Theme="@style/MyTheme")]			
-	public class query_activity : ActionBarActivity{
+	public class query_activity : AppCompatActivity{
 		private Button mButtonPay;
 		private Button mButtonCancelQuery;
 

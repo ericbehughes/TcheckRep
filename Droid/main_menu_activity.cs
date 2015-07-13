@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace TCheck.Droid{
 	[Activity (Label = "main_menu_activity",Theme="@style/MyTheme")]
-	public class main_menu_activity : ActionBarActivity{
+	public class main_menu_activity : AppCompatActivity{
 
 		private Button mButtonBackgroundCheck; 
 		private Button mButtonMyReview;
@@ -52,23 +52,26 @@ namespace TCheck.Droid{
 			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
 			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
 
+
 			mLeftDrawer.Tag = 0;
 			mRightDrawer.Tag = 1;
 
 			SetSupportActionBar(mToolbar);
-			//SupportActionBar.SetHomeButtonEnabled(true);
-			//SupportActionBar.SetDisplayShowHomeEnabled(true);
-			//SupportActionBar.SetDisplayShowTitleEnabled(true);
+
 
 			mLeftDataSet = new List<string>();
-			mLeftDataSet.Add ("My Profile");
-			mLeftDataSet.Add ("Logout");
+			mLeftDataSet.Add(GetString(Resource.String.my_profile));
+			mLeftDataSet.Add(GetString(Resource.String.log_out));
 			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
 			mLeftDrawer.Adapter = mLeftAdapter;
 
+			this.mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
+			this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
+
 			mRightDataSet = new List<string>();
-			mRightDataSet.Add ("FAQ");
-			mRightDataSet.Add ("Support");
+			mRightDataSet.Add(GetString(Resource.String.drawer_faq));
+			mRightDataSet.Add(GetString (Resource.String.support));
+			mRightDataSet.Add(GetString(Resource.String.rentproof_summary));
 			mRightAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mRightDataSet);
 			mRightDrawer.Adapter = mRightAdapter;
 
@@ -83,6 +86,8 @@ namespace TCheck.Droid{
 			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
 			SupportActionBar.SetDisplayShowTitleEnabled(true);
 			mDrawerToggle.SyncState();
+
+
 
 			if (bundle != null){
 				if (bundle.GetString("DrawerState") == "Opened"){
@@ -100,6 +105,45 @@ namespace TCheck.Droid{
 			}
 		}
 
+
+		void mLeftDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
+		{
+			
+			switch (e.Position) {
+
+			case 0:
+				Intent mDrawerButtonMainMenu = new Intent (this, typeof(main_menu_activity));
+				this.StartActivity (mDrawerButtonMainMenu);
+				break;
+		
+			case 1:
+				Intent mDrawerMyProfile = new Intent (this, typeof(main_menu_activity));
+				this.StartActivity (mDrawerMyProfile);
+			break;
+			}
+		}
+
+		void mRightDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
+		{
+
+			switch (e.Position) {
+
+			case 0:
+				Intent mDrawerButtonMainMenu = new Intent (this, typeof(main_menu_activity));
+				this.StartActivity (mDrawerButtonMainMenu);
+				break;
+
+			case 1:
+				Intent mDrawerMyProfile = new Intent (this, typeof(main_menu_activity));
+				this.StartActivity (mDrawerMyProfile);
+				break;
+			}
+		}
+
+
+
+
+
 		public override bool OnOptionsItemSelected (IMenuItem item){		
 			switch (item.ItemId){
 
@@ -108,6 +152,8 @@ namespace TCheck.Droid{
 				//all we need to do is ensure the right drawer is closed so the don't overlap
 				mDrawerLayout.CloseDrawer (mRightDrawer);
 				mDrawerToggle.OnOptionsItemSelected(item);
+
+
 				return true;
 
 			case Resource.Id.toolbar:
@@ -169,7 +215,7 @@ namespace TCheck.Droid{
 		}
 
 		void mButtonMyQueries_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(my_reports_activity));
+			Intent intent = new Intent (this, typeof(MyReports_Activity));
 			this.StartActivity (intent);
 		}
 

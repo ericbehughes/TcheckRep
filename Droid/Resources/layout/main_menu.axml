@@ -64,7 +64,7 @@
                 android:background="#000"
                 android:textColor="#fff" />
         </LinearLayout>
-    <!-- The Left Navigation Drawer -->
+    <!-- Navigation Drawers -->
         <ListView
             android:id="@+id/left_drawer"
             android:layout_width="240dp"

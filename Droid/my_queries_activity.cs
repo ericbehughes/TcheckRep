@@ -13,13 +13,13 @@ using System.Collections.Generic;
 
 namespace TCheck.Droid{
 	[Activity (Label = "my_queries_activity",Theme="@style/MyTheme")]			
-	public class my_queries_activity : ActionBarActivity{
+	public class my_queries_activity : AppCompatActivity{
 	//	string[] items;
-		private Button mButtonReviewPerson;
-		private Button mButtonBackgroundCheck; 
-		private Button mButtonMyReview;
-		private Button mButtonMyQueries;
-		private Button mButtonMyProfile;
+
+
+
+
+
 		private SupportToolbar mToolbar;
 		private MyActionBarDrawerToggle mDrawerToggle;
 		private DrawerLayout mDrawerLayout;
@@ -36,7 +36,7 @@ namespace TCheck.Droid{
 			//items = new string[] { "Larry Johnson","Eric Hughes","Denis Ouspenski","Michael Jordan","Barrack Obama","Stephen Harper" };
 			//ListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSelectableListItem, items);
 			SetContentView (Resource.Layout.my_queries_screen);
-			mButtonReviewPerson = FindViewById<Button>(Resource.Id.buttonList1);
+			//mButtonReviewPerson = FindViewById<Button>(Resource.Id.buttonList1);
 			//mButtonReviewPerson.Click += mButtonReviewPerson_Click;
 
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);

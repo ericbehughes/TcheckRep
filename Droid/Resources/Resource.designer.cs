@@ -1457,8 +1457,8 @@ namespace TCheck.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b007b
-			public const int action0 = 2131427451;
+			// aapt resource value: 0x7f0b007a
+			public const int action0 = 2131427450;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int action_bar = 2131427393;
@@ -1484,11 +1484,11 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0042
 			public const int action_context_bar = 2131427394;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int action_divider = 2131427455;
+			// aapt resource value: 0x7f0b007e
+			public const int action_divider = 2131427454;
 			
-			// aapt resource value: 0x7f0b00e1
-			public const int action_help = 2131427553;
+			// aapt resource value: 0x7f0b00df
+			public const int action_help = 2131427551;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1508,11 +1508,11 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0027
 			public const int activity_chooser_view_content = 2131427367;
 			
-			// aapt resource value: 0x7f0b00df
-			public const int add = 2131427551;
+			// aapt resource value: 0x7f0b00dd
+			public const int add = 2131427549;
 			
-			// aapt resource value: 0x7f0b00de
-			public const int add_and_remove_bar = 2131427550;
+			// aapt resource value: 0x7f0b00dc
+			public const int add_and_remove_bar = 2131427548;
 			
 			// aapt resource value: 0x7f0b0031
 			public const int alertTitle = 2131427377;
@@ -1523,14 +1523,14 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0014
 			public const int beginning = 2131427348;
 			
-			// aapt resource value: 0x7f0b00b9
-			public const int btnStar = 2131427513;
+			// aapt resource value: 0x7f0b00b8
+			public const int btnStar = 2131427512;
 			
-			// aapt resource value: 0x7f0b009c
-			public const int buttonCancel = 2131427484;
+			// aapt resource value: 0x7f0b009b
+			public const int buttonCancel = 2131427483;
 			
-			// aapt resource value: 0x7f0b00b6
-			public const int buttonHome = 2131427510;
+			// aapt resource value: 0x7f0b00b5
+			public const int buttonHome = 2131427509;
 			
 			// aapt resource value: 0x7f0b0076
 			public const int buttonList1 = 2131427446;
@@ -1553,20 +1553,17 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0071
 			public const int buttonMyQueries = 2131427441;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int buttonNewReview = 2131427450;
-			
 			// aapt resource value: 0x7f0b0056
 			public const int buttonNoCancel = 2131427414;
 			
 			// aapt resource value: 0x7f0b0037
 			public const int buttonPanel = 2131427383;
 			
-			// aapt resource value: 0x7f0b009d
-			public const int buttonPay = 2131427485;
+			// aapt resource value: 0x7f0b009c
+			public const int buttonPay = 2131427484;
 			
-			// aapt resource value: 0x7f0b009b
-			public const int buttonPaymentSubmit = 2131427483;
+			// aapt resource value: 0x7f0b009a
+			public const int buttonPaymentSubmit = 2131427482;
 			
 			// aapt resource value: 0x7f0b0070
 			public const int buttonQuery = 2131427440;
@@ -1580,23 +1577,23 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0066
 			public const int buttonSignUp = 2131427430;
 			
-			// aapt resource value: 0x7f0b00b5
-			public const int buttonSurvey = 2131427509;
+			// aapt resource value: 0x7f0b00b4
+			public const int buttonSurvey = 2131427508;
 			
-			// aapt resource value: 0x7f0b00dc
-			public const int buttonSurveySubmit = 2131427548;
+			// aapt resource value: 0x7f0b00db
+			public const int buttonSurveySubmit = 2131427547;
 			
 			// aapt resource value: 0x7f0b0055
 			public const int buttonYesCancel = 2131427413;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int cancel_action = 2131427452;
+			// aapt resource value: 0x7f0b007b
+			public const int cancel_action = 2131427451;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int cancel_screen = 2131427408;
 			
-			// aapt resource value: 0x7f0b00a3
-			public const int cbxStart = 2131427491;
+			// aapt resource value: 0x7f0b00a2
+			public const int cbxStart = 2131427490;
 			
 			// aapt resource value: 0x7f0b005e
 			public const int checkBox1 = 2131427422;
@@ -1604,8 +1601,8 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0039
 			public const int checkbox = 2131427385;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int chronometer = 2131427458;
+			// aapt resource value: 0x7f0b0081
+			public const int chronometer = 2131427457;
 			
 			// aapt resource value: 0x7f0b0018
 			public const int collapseActionView = 2131427352;
@@ -1613,17 +1610,17 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0032
 			public const int contentPanel = 2131427378;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int creditCardField = 2131427475;
+			// aapt resource value: 0x7f0b0092
+			public const int creditCardField = 2131427474;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int creditCardType = 2131427470;
+			// aapt resource value: 0x7f0b008d
+			public const int creditCardType = 2131427469;
 			
-			// aapt resource value: 0x7f0b0099
-			public const int creditDigitCodeField = 2131427481;
+			// aapt resource value: 0x7f0b0098
+			public const int creditDigitCodeField = 2131427480;
 			
-			// aapt resource value: 0x7f0b00bb
-			public const int ctlExListBox = 2131427515;
+			// aapt resource value: 0x7f0b00ba
+			public const int ctlExListBox = 2131427514;
 			
 			// aapt resource value: 0x7f0b0036
 			public const int custom = 2131427382;
@@ -1646,8 +1643,8 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b000d
 			public const int disableHome = 2131427341;
 			
-			// aapt resource value: 0x7f0b00e0
-			public const int discard = 2131427552;
+			// aapt resource value: 0x7f0b00de
+			public const int discard = 2131427550;
 			
 			// aapt resource value: 0x7f0b006d
 			public const int drawer_layout = 2131427437;
@@ -1661,8 +1658,8 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0015
 			public const int end = 2131427349;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int end_padder = 2131427463;
+			// aapt resource value: 0x7f0b0086
+			public const int end_padder = 2131427462;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int expand_activities_button = 2131427368;
@@ -1670,11 +1667,11 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0038
 			public const int expanded_menu = 2131427384;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int expiryField = 2131427477;
+			// aapt resource value: 0x7f0b0094
+			public const int expiryField = 2131427476;
 			
-			// aapt resource value: 0x7f0b00bd
-			public const int firstRow = 2131427517;
+			// aapt resource value: 0x7f0b00bc
+			public const int firstRow = 2131427516;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int home = 2131427332;
@@ -1691,17 +1688,17 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0029
 			public const int image = 2131427369;
 			
-			// aapt resource value: 0x7f0b00a8
-			public const int imgLease = 2131427496;
-			
 			// aapt resource value: 0x7f0b00a7
-			public const int imgPerson = 2131427495;
+			public const int imgLease = 2131427495;
 			
-			// aapt resource value: 0x7f0b00b7
-			public const int imgPic = 2131427511;
+			// aapt resource value: 0x7f0b00a6
+			public const int imgPerson = 2131427494;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int info = 2131427462;
+			// aapt resource value: 0x7f0b00b6
+			public const int imgPic = 2131427510;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int info = 2131427461;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int item_touch_helper_previous_elevation = 2131427337;
@@ -1721,11 +1718,11 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0074
 			public const int left_drawer = 2131427444;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int line1 = 2131427456;
+			// aapt resource value: 0x7f0b007f
+			public const int line1 = 2131427455;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int line3 = 2131427460;
+			// aapt resource value: 0x7f0b0083
+			public const int line3 = 2131427459;
 			
 			// aapt resource value: 0x7f0b0062
 			public const int linearLayout1 = 2131427426;
@@ -1733,20 +1730,20 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0065
 			public const int linearLayout2 = 2131427429;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int linearLayoutImages = 2131427494;
+			// aapt resource value: 0x7f0b00a5
+			public const int linearLayoutImages = 2131427493;
 			
-			// aapt resource value: 0x7f0b00a9
-			public const int linearLayoutTenantsSin = 2131427497;
+			// aapt resource value: 0x7f0b00a8
+			public const int linearLayoutTenantsSin = 2131427496;
 			
-			// aapt resource value: 0x7f0b00ad
-			public const int linearLayoutYearsOfStay = 2131427501;
+			// aapt resource value: 0x7f0b00ac
+			public const int linearLayoutYearsOfStay = 2131427500;
 			
 			// aapt resource value: 0x7f0b0052
 			public const int linearMenuBar = 2131427410;
 			
-			// aapt resource value: 0x7f0b00be
-			public const int linearMenubar = 2131427518;
+			// aapt resource value: 0x7f0b00bd
+			public const int linearMenubar = 2131427517;
 			
 			// aapt resource value: 0x7f0b000a
 			public const int listMode = 2131427338;
@@ -1760,8 +1757,8 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b006e
 			public const int main_menu = 2131427438;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int media_actions = 2131427454;
+			// aapt resource value: 0x7f0b007d
+			public const int media_actions = 2131427453;
 			
 			// aapt resource value: 0x7f0b0016
 			public const int middle = 2131427350;
@@ -1778,32 +1775,32 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b000b
 			public const int normal = 2131427339;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int numCreditCardNumber = 2131427476;
+			// aapt resource value: 0x7f0b0093
+			public const int numCreditCardNumber = 2131427475;
 			
-			// aapt resource value: 0x7f0b009a
-			public const int numCreditCode = 2131427482;
+			// aapt resource value: 0x7f0b0099
+			public const int numCreditCode = 2131427481;
+			
+			// aapt resource value: 0x7f0b0095
+			public const int numExpiryDate = 2131427477;
 			
 			// aapt resource value: 0x7f0b0096
-			public const int numExpiryDate = 2131427478;
+			public const int numExpiryMonth = 2131427478;
 			
 			// aapt resource value: 0x7f0b0097
-			public const int numExpiryMonth = 2131427479;
+			public const int numExpiryYear = 2131427479;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int numExpiryYear = 2131427480;
+			// aapt resource value: 0x7f0b00af
+			public const int numMonthsStayr = 2131427503;
 			
-			// aapt resource value: 0x7f0b00b0
-			public const int numMonthsStayr = 2131427504;
-			
-			// aapt resource value: 0x7f0b00ac
-			public const int numSinNumber = 2131427500;
+			// aapt resource value: 0x7f0b00ab
+			public const int numSinNumber = 2131427499;
 			
 			// aapt resource value: 0x7f0b002e
 			public const int parentPanel = 2131427374;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int payeeHeader = 2131427468;
+			// aapt resource value: 0x7f0b008b
+			public const int payeeHeader = 2131427467;
 			
 			// aapt resource value: 0x7f0b005f
 			public const int popUpButton = 2131427423;
@@ -1814,107 +1811,107 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0006
 			public const int progress_horizontal = 2131427334;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int queryTitle = 2131427465;
-			
 			// aapt resource value: 0x7f0b0088
-			public const int query_screen = 2131427464;
+			public const int queryTitle = 2131427464;
+			
+			// aapt resource value: 0x7f0b0087
+			public const int query_screen = 2131427463;
 			
 			// aapt resource value: 0x7f0b003b
 			public const int radio = 2131427387;
 			
-			// aapt resource value: 0x7f0b0092
-			public const int radioAmericanExpress = 2131427474;
+			// aapt resource value: 0x7f0b0091
+			public const int radioAmericanExpress = 2131427473;
 			
-			// aapt resource value: 0x7f0b00c1
-			public const int radioButton1 = 2131427521;
-			
-			// aapt resource value: 0x7f0b00d1
-			public const int radioButton10 = 2131427537;
-			
-			// aapt resource value: 0x7f0b00d2
-			public const int radioButton11 = 2131427538;
-			
-			// aapt resource value: 0x7f0b00d3
-			public const int radioButton12 = 2131427539;
-			
-			// aapt resource value: 0x7f0b00d7
-			public const int radioButton13 = 2131427543;
-			
-			// aapt resource value: 0x7f0b00d8
-			public const int radioButton14 = 2131427544;
-			
-			// aapt resource value: 0x7f0b00d9
-			public const int radioButton15 = 2131427545;
-			
-			// aapt resource value: 0x7f0b00da
-			public const int radioButton16 = 2131427546;
-			
-			// aapt resource value: 0x7f0b00c2
-			public const int radioButton2 = 2131427522;
-			
-			// aapt resource value: 0x7f0b00c3
-			public const int radioButton3 = 2131427523;
-			
-			// aapt resource value: 0x7f0b00c4
-			public const int radioButton4 = 2131427524;
-			
-			// aapt resource value: 0x7f0b00c8
-			public const int radioButton5 = 2131427528;
-			
-			// aapt resource value: 0x7f0b00c9
-			public const int radioButton6 = 2131427529;
-			
-			// aapt resource value: 0x7f0b00ca
-			public const int radioButton7 = 2131427530;
-			
-			// aapt resource value: 0x7f0b00cb
-			public const int radioButton8 = 2131427531;
+			// aapt resource value: 0x7f0b00c0
+			public const int radioButton1 = 2131427520;
 			
 			// aapt resource value: 0x7f0b00d0
-			public const int radioButton9 = 2131427536;
+			public const int radioButton10 = 2131427536;
 			
-			// aapt resource value: 0x7f0b008f
-			public const int radioGroup1 = 2131427471;
+			// aapt resource value: 0x7f0b00d1
+			public const int radioButton11 = 2131427537;
 			
-			// aapt resource value: 0x7f0b00c7
-			public const int radioGroup2 = 2131427527;
-			
-			// aapt resource value: 0x7f0b00cf
-			public const int radioGroup3 = 2131427535;
+			// aapt resource value: 0x7f0b00d2
+			public const int radioButton12 = 2131427538;
 			
 			// aapt resource value: 0x7f0b00d6
-			public const int radioGroup4 = 2131427542;
+			public const int radioButton13 = 2131427542;
+			
+			// aapt resource value: 0x7f0b00d7
+			public const int radioButton14 = 2131427543;
+			
+			// aapt resource value: 0x7f0b00d8
+			public const int radioButton15 = 2131427544;
+			
+			// aapt resource value: 0x7f0b00d9
+			public const int radioButton16 = 2131427545;
+			
+			// aapt resource value: 0x7f0b00c1
+			public const int radioButton2 = 2131427521;
+			
+			// aapt resource value: 0x7f0b00c2
+			public const int radioButton3 = 2131427522;
+			
+			// aapt resource value: 0x7f0b00c3
+			public const int radioButton4 = 2131427523;
+			
+			// aapt resource value: 0x7f0b00c7
+			public const int radioButton5 = 2131427527;
+			
+			// aapt resource value: 0x7f0b00c8
+			public const int radioButton6 = 2131427528;
+			
+			// aapt resource value: 0x7f0b00c9
+			public const int radioButton7 = 2131427529;
+			
+			// aapt resource value: 0x7f0b00ca
+			public const int radioButton8 = 2131427530;
+			
+			// aapt resource value: 0x7f0b00cf
+			public const int radioButton9 = 2131427535;
+			
+			// aapt resource value: 0x7f0b008e
+			public const int radioGroup1 = 2131427470;
+			
+			// aapt resource value: 0x7f0b00c6
+			public const int radioGroup2 = 2131427526;
+			
+			// aapt resource value: 0x7f0b00ce
+			public const int radioGroup3 = 2131427534;
+			
+			// aapt resource value: 0x7f0b00d5
+			public const int radioGroup4 = 2131427541;
+			
+			// aapt resource value: 0x7f0b008f
+			public const int radioMasterCard = 2131427471;
 			
 			// aapt resource value: 0x7f0b0090
-			public const int radioMasterCard = 2131427472;
+			public const int radioVisa = 2131427472;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int radioVisa = 2131427473;
+			// aapt resource value: 0x7f0b009d
+			public const int recyclerScreen = 2131427485;
 			
-			// aapt resource value: 0x7f0b009e
-			public const int recyclerScreen = 2131427486;
+			// aapt resource value: 0x7f0b00b0
+			public const int relativeLayoutRecommend = 2131427504;
 			
-			// aapt resource value: 0x7f0b00b1
-			public const int relativeLayoutRecommend = 2131427505;
-			
-			// aapt resource value: 0x7f0b00a4
-			public const int review_screen = 2131427492;
+			// aapt resource value: 0x7f0b00a3
+			public const int review_screen = 2131427491;
 			
 			// aapt resource value: 0x7f0b0075
 			public const int right_drawer = 2131427445;
 			
-			// aapt resource value: 0x7f0b00bf
-			public const int row1Col1 = 2131427519;
+			// aapt resource value: 0x7f0b00be
+			public const int row1Col1 = 2131427518;
 			
-			// aapt resource value: 0x7f0b00c5
-			public const int row1Col2 = 2131427525;
+			// aapt resource value: 0x7f0b00c4
+			public const int row1Col2 = 2131427524;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int row2Col1 = 2131427533;
+			// aapt resource value: 0x7f0b00cc
+			public const int row2Col1 = 2131427532;
 			
-			// aapt resource value: 0x7f0b00d4
-			public const int row2Col2 = 2131427540;
+			// aapt resource value: 0x7f0b00d3
+			public const int row2Col2 = 2131427539;
 			
 			// aapt resource value: 0x7f0b0020
 			public const int screen = 2131427360;
@@ -1952,11 +1949,11 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b004e
 			public const int search_voice_btn = 2131427406;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int secondRow = 2131427532;
+			// aapt resource value: 0x7f0b00cb
+			public const int secondRow = 2131427531;
 			
-			// aapt resource value: 0x7f0b00b4
-			public const int seekBarRecommend = 2131427508;
+			// aapt resource value: 0x7f0b00b3
+			public const int seekBarRecommend = 2131427507;
 			
 			// aapt resource value: 0x7f0b004f
 			public const int select_dialog_listview = 2131427407;
@@ -1973,11 +1970,11 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0012
 			public const int showTitle = 2131427346;
 			
-			// aapt resource value: 0x7f0b00ab
-			public const int spaceReviewScreen = 2131427499;
+			// aapt resource value: 0x7f0b00aa
+			public const int spaceReviewScreen = 2131427498;
 			
-			// aapt resource value: 0x7f0b00af
-			public const int spaceYearsOfStay = 2131427503;
+			// aapt resource value: 0x7f0b00ae
+			public const int spaceYearsOfStay = 2131427502;
 			
 			// aapt resource value: 0x7f0b0007
 			public const int split_action_bar = 2131427335;
@@ -1991,26 +1988,26 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0023
 			public const int src_over = 2131427363;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int status_bar_latest_event_content = 2131427453;
+			// aapt resource value: 0x7f0b007c
+			public const int status_bar_latest_event_content = 2131427452;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int submit_area = 2131427404;
 			
-			// aapt resource value: 0x7f0b00bc
-			public const int survey_screen = 2131427516;
+			// aapt resource value: 0x7f0b00bb
+			public const int survey_screen = 2131427515;
 			
-			// aapt resource value: 0x7f0b00db
-			public const int survey_submit = 2131427547;
+			// aapt resource value: 0x7f0b00da
+			public const int survey_submit = 2131427546;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int tabMode = 2131427340;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int text = 2131427461;
+			// aapt resource value: 0x7f0b0084
+			public const int text = 2131427460;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int text2 = 2131427459;
+			// aapt resource value: 0x7f0b0082
+			public const int text2 = 2131427458;
 			
 			// aapt resource value: 0x7f0b0034
 			public const int textSpacerNoButtons = 2131427380;
@@ -2021,35 +2018,35 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b0064
 			public const int textView2 = 2131427428;
 			
-			// aapt resource value: 0x7f0b00d5
-			public const int textView4 = 2131427541;
+			// aapt resource value: 0x7f0b00d4
+			public const int textView4 = 2131427540;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int time = 2131427457;
+			// aapt resource value: 0x7f0b0080
+			public const int time = 2131427456;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int title = 2131427373;
 			
-			// aapt resource value: 0x7f0b00c6
-			public const int titleBehaviour = 2131427526;
+			// aapt resource value: 0x7f0b00c5
+			public const int titleBehaviour = 2131427525;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int titleClealiness = 2131427534;
+			// aapt resource value: 0x7f0b00cd
+			public const int titleClealiness = 2131427533;
+			
+			// aapt resource value: 0x7f0b00b1
+			public const int titleNotRecommended = 2131427505;
+			
+			// aapt resource value: 0x7f0b008c
+			public const int titlePayment = 2131427468;
+			
+			// aapt resource value: 0x7f0b00bf
+			public const int titleQuietLevel = 2131427519;
 			
 			// aapt resource value: 0x7f0b00b2
-			public const int titleNotRecommended = 2131427506;
+			public const int titleRecommended = 2131427506;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int titlePayment = 2131427469;
-			
-			// aapt resource value: 0x7f0b00c0
-			public const int titleQuietLevel = 2131427520;
-			
-			// aapt resource value: 0x7f0b00b3
-			public const int titleRecommended = 2131427507;
-			
-			// aapt resource value: 0x7f0b00a5
-			public const int titleReviewerAccount = 2131427493;
+			// aapt resource value: 0x7f0b00a4
+			public const int titleReviewerAccount = 2131427492;
 			
 			// aapt resource value: 0x7f0b005d
 			public const int titleTermsAndConditions = 2131427421;
@@ -2078,56 +2075,53 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f0b006a
 			public const int txtLoginEmail = 2131427434;
 			
-			// aapt resource value: 0x7f0b00a1
-			public const int txtMessage = 2131427489;
+			// aapt resource value: 0x7f0b00a0
+			public const int txtMessage = 2131427488;
 			
-			// aapt resource value: 0x7f0b009f
-			public const int txtName = 2131427487;
+			// aapt resource value: 0x7f0b009e
+			public const int txtName = 2131427486;
 			
-			// aapt resource value: 0x7f0b00b8
-			public const int txtNumber = 2131427512;
+			// aapt resource value: 0x7f0b00b7
+			public const int txtNumber = 2131427511;
 			
 			// aapt resource value: 0x7f0b005b
 			public const int txtPassword = 2131427419;
 			
-			// aapt resource value: 0x7f0b008a
-			public const int txtPayee = 2131427466;
+			// aapt resource value: 0x7f0b0089
+			public const int txtPayee = 2131427465;
 			
 			// aapt resource value: 0x7f0b005a
 			public const int txtSecurityNumber = 2131427418;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int txtSecurityNumberQS = 2131427467;
+			// aapt resource value: 0x7f0b008a
+			public const int txtSecurityNumberQS = 2131427466;
 			
 			// aapt resource value: 0x7f0b0067
 			public const int txtSmall = 2131427431;
 			
-			// aapt resource value: 0x7f0b00ba
-			public const int txtStatus = 2131427514;
+			// aapt resource value: 0x7f0b00b9
+			public const int txtStatus = 2131427513;
 			
-			// aapt resource value: 0x7f0b00a0
-			public const int txtSubject = 2131427488;
+			// aapt resource value: 0x7f0b009f
+			public const int txtSubject = 2131427487;
 			
-			// aapt resource value: 0x7f0b00aa
-			public const int txtTenantSinReviewScreen = 2131427498;
+			// aapt resource value: 0x7f0b00a9
+			public const int txtTenantSinReviewScreen = 2131427497;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int txtTime = 2131427490;
+			// aapt resource value: 0x7f0b00a1
+			public const int txtTime = 2131427489;
 			
 			// aapt resource value: 0x7f0b006f
 			public const int txtWelcome = 2131427439;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int txtYearsOfStay = 2131427502;
+			// aapt resource value: 0x7f0b00ad
+			public const int txtYearsOfStay = 2131427501;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;
 			
 			// aapt resource value: 0x7f0b0013
 			public const int useLogo = 2131427347;
-			
-			// aapt resource value: 0x7f0b00dd
-			public const int velocity_text_view = 2131427549;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int withText = 2131427355;
@@ -2436,14 +2430,50 @@ namespace TCheck.Droid
 			// aapt resource value: 0x7f050017
 			public const int closeDrawer = 2131034135;
 			
+			// aapt resource value: 0x7f05001b
+			public const int drawer_faq = 2131034139;
+			
+			// aapt resource value: 0x7f05001c
+			public const int f_a_q_1 = 2131034140;
+			
+			// aapt resource value: 0x7f05001d
+			public const int f_a_q_2 = 2131034141;
+			
+			// aapt resource value: 0x7f05001e
+			public const int f_a_q_3 = 2131034142;
+			
+			// aapt resource value: 0x7f05001f
+			public const int f_a_q_4 = 2131034143;
+			
 			// aapt resource value: 0x7f050014
 			public const int hello = 2131034132;
+			
+			// aapt resource value: 0x7f050023
+			public const int listings_summary = 2131034147;
+			
+			// aapt resource value: 0x7f05001a
+			public const int log_out = 2131034138;
+			
+			// aapt resource value: 0x7f050019
+			public const int main_menu = 2131034137;
+			
+			// aapt resource value: 0x7f050018
+			public const int my_profile = 2131034136;
 			
 			// aapt resource value: 0x7f050016
 			public const int openDrawer = 2131034134;
 			
+			// aapt resource value: 0x7f050021
+			public const int rentproof_summary = 2131034145;
+			
 			// aapt resource value: 0x7f050011
 			public const int status_bar_notification_info_overflow = 2131034129;
+			
+			// aapt resource value: 0x7f050020
+			public const int support = 2131034144;
+			
+			// aapt resource value: 0x7f050022
+			public const int tenant_search_summary = 2131034146;
 			
 			static String()
 			{

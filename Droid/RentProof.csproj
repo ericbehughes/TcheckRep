@@ -122,11 +122,11 @@
     <Compile Include="swipe_activity.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="login_activity.cs" />
-    <Compile Include="my_reports_activity.cs" />
     <Compile Include="ExpendListAdapter.cs" />
     <Compile Include="sample_report.cs" />
     <Compile Include="MyReports.cs" />
     <Compile Include="MyReports_Activity.cs" />
+    <Compile Include="tenant_serach.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
