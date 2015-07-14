@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -111,16 +111,16 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="cancel_activity.cs" />
-    <Compile Include="main_menu_activity.cs" />
-    <Compile Include="my_queries_activity.cs" />
-    <Compile Include="my_reviews_activity.cs" />
+    <Compile Include="Activities\main_menu_activity.cs" />
+    <Compile Include="Activities\my_queries_activity.cs" />
+    <Compile Include="Activities\my_reviews_activity.cs" />
     <Compile Include="MyActionBarDrawerToggle.cs" />
     <Compile Include="query_activity.cs" />
     <Compile Include="review_activity.cs" />
     <Compile Include="sign_up_popup.cs" />
     <Compile Include="survey_activity.cs" />
     <Compile Include="swipe_activity.cs" />
-    <Compile Include="Main.cs" />
+    <Compile Include="Activities\Main.cs" />
     <Compile Include="login_activity.cs" />
     <Compile Include="ExpendListAdapter.cs" />
     <Compile Include="sample_report.cs" />
@@ -186,9 +186,6 @@
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\New Folder\" />
-    <Folder Include="Resources\drawable\" />
-    <Folder Include="Resources\anim\" />
-    <Folder Include="Resources\menu\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv7appcompat">
