@@ -26,11 +26,11 @@
             android:padding="2dp"
             android:textSize="18sp" />
         <TextView
-            android:text="Status"
+            android:text="Subject"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtStatus"
+            android:id="@+id/txtSubject"
             android:textColor="#000"
             android:gravity="center_vertical"
             android:padding="2dp"

@@ -10,15 +10,15 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
 using Android.Support.V4.Widget;
 using System.Collections.Generic;
-
+/*
 namespace TCheck.Droid{
-	[Activity (Label = "main_menu_activity",Theme="@style/MyTheme")]
-	public class Main_Menu_Activity : AppCompatActivity{
+	[Activity (Label = "my_queries_activity",Theme="@style/MyTheme")]			
+	public class Queries_Activity : AppCompatActivity{
+	//	string[] items;
 
-		private Button mButtonBackgroundCheck; 
-		private Button mButtonMyReview;
-		private Button mButtonMyQueries;
-		private Button mButtonMyProfile;
+
+
+
 
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
@@ -30,48 +30,37 @@ namespace TCheck.Droid{
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
 
-
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
-			SetContentView(Resource.Layout.Main_Menu);
 
-			mButtonBackgroundCheck = FindViewById<Button>(Resource.Id.buttonQuery);
-			mButtonBackgroundCheck.Click += mButtonBackgroundCheck_Click;
-
-			mButtonMyReview = FindViewById<Button>(Resource.Id.buttonReview);
-			mButtonMyReview.Click += mButtonMyReview_Click;
-
-			mButtonMyQueries = FindViewById<Button>(Resource.Id.buttonMyQueries);
-			mButtonMyQueries.Click += mButtonMyQueries_Click;
-
-			mButtonMyProfile = FindViewById<Button>(Resource.Id.buttonMyProfile);
-			mButtonMyProfile.Click += mButtonMyProfile_Click;
+			//items = new string[] { "Larry Johnson","Eric Hughes","Denis Ouspenski","Michael Jordan","Barrack Obama","Stephen Harper" };
+			//ListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSelectableListItem, items);
+			SetContentView (Resource.Layout.my_queries_screen);
+			//mButtonReviewPerson = FindViewById<Button>(Resource.Id.buttonList1);
+			//mButtonReviewPerson.Click += mButtonReviewPerson_Click;
 
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
 			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
 
-
 			mLeftDrawer.Tag = 0;
 			mRightDrawer.Tag = 1;
 
 			SetSupportActionBar(mToolbar);
-
+			//SupportActionBar.SetHomeButtonEnabled(true);
+			//SupportActionBar.SetDisplayShowHomeEnabled(true);
+			//SupportActionBar.SetDisplayShowTitleEnabled(true);
 
 			mLeftDataSet = new List<string>();
-			mLeftDataSet.Add(GetString(Resource.String.my_profile));
-			mLeftDataSet.Add(GetString(Resource.String.log_out));
+			mLeftDataSet.Add ("My Profile");
+			mLeftDataSet.Add ("Logout");
 			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
 			mLeftDrawer.Adapter = mLeftAdapter;
 
-			this.mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
-			this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
-
 			mRightDataSet = new List<string>();
-			mRightDataSet.Add(GetString(Resource.String.drawer_faq));
-			mRightDataSet.Add(GetString (Resource.String.support));
-			mRightDataSet.Add(GetString(Resource.String.rentproof_summary));
+			mRightDataSet.Add ("FAQ");
+			mRightDataSet.Add ("Support");
 			mRightAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mRightDataSet);
 			mRightDrawer.Adapter = mRightAdapter;
 
@@ -86,8 +75,6 @@ namespace TCheck.Droid{
 			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
 			SupportActionBar.SetDisplayShowTitleEnabled(true);
 			mDrawerToggle.SyncState();
-
-
 
 			if (bundle != null){
 				if (bundle.GetString("DrawerState") == "Opened"){
@@ -105,45 +92,6 @@ namespace TCheck.Droid{
 			}
 		}
 
-
-		void mLeftDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
-		{
-			
-			switch (e.Position) {
-
-			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonMyProfile);
-				break;
-		
-			case 1:
-				Intent mLogout = new Intent (this, typeof(MainActivity));
-				this.StartActivity (mLogout);
-			break;
-			}
-		}
-
-		void mRightDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
-		{
-
-			switch (e.Position) {
-
-			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonFAQ);
-				break;
-
-			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonSupport);
-				break;
-			}
-		}
-
-
-
-
-
 		public override bool OnOptionsItemSelected (IMenuItem item){		
 			switch (item.ItemId){
 
@@ -152,8 +100,6 @@ namespace TCheck.Droid{
 				//all we need to do is ensure the right drawer is closed so the don't overlap
 				mDrawerLayout.CloseDrawer (mRightDrawer);
 				mDrawerToggle.OnOptionsItemSelected(item);
-
-
 				return true;
 
 			case Resource.Id.toolbar:
@@ -204,33 +150,14 @@ namespace TCheck.Droid{
 		}
 
 
-		void mButtonBackgroundCheck_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Query_Payment_Activity));
+		/*void mButtonReviewPerson_Click (object sender, EventArgs args){	
+			Intent intent = new Intent (this, typeof());
 			this.StartActivity (intent);
-		}
-
-		void mButtonMyQueries_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Background_Report));
-			this.StartActivity (intent);
-		}
-
-		void mButtonMyReview_Click (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(Main_Menu_Activity));
-			this.StartActivity (intent);
+			Finish ();
 		}
 
 
 
-		void mButtonMyProfile_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Tenant_Search));
-			this.StartActivity (intent);
-		}
-	
 	}
 }
-
-
-
-
-
-
+*/

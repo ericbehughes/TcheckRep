@@ -21,7 +21,7 @@ namespace TCheck.Droid{
 
 		protected override void OnCreate(Bundle bundle){
 			base.OnCreate(bundle);
-			SetContentView(Resource.Layout.tenant_search);
+			SetContentView(Resource.Layout.Tenant_Search);
 			//_textView = FindViewById<TextView>(Resource.Id.velocity_text_view);
 			//_textView.Text = "Fling Velocity: ";
 			//_gestureDetector = new GestureDetector(this);

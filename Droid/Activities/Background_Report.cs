@@ -1,24 +1,29 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Android.App;
+using Android.OS;
+using Android.Support.V7.Widget;
 using Android.Content;
+
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.OS;
+
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
 using Android.Support.V4.Widget;
-using System.Collections.Generic;
 
-namespace TCheck.Droid{
-	[Activity (Label = "main_menu_activity",Theme="@style/MyTheme")]
-	public class Main_Menu_Activity : AppCompatActivity{
 
-		private Button mButtonBackgroundCheck; 
-		private Button mButtonMyReview;
-		private Button mButtonMyQueries;
-		private Button mButtonMyProfile;
+namespace TCheck.Droid
+{
+	[Activity(Label = "",Theme="@style/MyTheme")]
+	public class Background_Report : AppCompatActivity
+	{
+		private RecyclerView _recyclerView;
+		private RecyclerView.LayoutManager _layoutManager;
+		private BackgroundCheckRecyclerViewAdapter  _adapter;
+
+		private ProgressDialog _progressDialog;
 
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
@@ -31,21 +36,43 @@ namespace TCheck.Droid{
 		private List<string> mRightDataSet;
 
 
-		protected override void OnCreate (Bundle bundle){
-			base.OnCreate (bundle);
-			SetContentView(Resource.Layout.Main_Menu);
 
-			mButtonBackgroundCheck = FindViewById<Button>(Resource.Id.buttonQuery);
-			mButtonBackgroundCheck.Click += mButtonBackgroundCheck_Click;
+		protected override async void OnCreate(Bundle bundle)
+		{
+			base.OnCreate(bundle);
 
-			mButtonMyReview = FindViewById<Button>(Resource.Id.buttonReview);
-			mButtonMyReview.Click += mButtonMyReview_Click;
+			SetContentView(Resource.Layout.My_BackgroundReports);
 
-			mButtonMyQueries = FindViewById<Button>(Resource.Id.buttonMyQueries);
-			mButtonMyQueries.Click += mButtonMyQueries_Click;
+			_progressDialog = new ProgressDialog(this);
+			_progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+			_progressDialog.SetMessage("Loading Team . . .");
+			_progressDialog.Show();
 
-			mButtonMyProfile = FindViewById<Button>(Resource.Id.buttonMyProfile);
-			mButtonMyProfile.Click += mButtonMyProfile_Click;
+			//If the device is portrait, then show the RecyclerView in a vertical list,
+			//else show it in horizontal list.
+			_layoutManager = Resources.Configuration.Orientation == Android.Content.Res.Orientation.Portrait 
+				? new LinearLayoutManager(this, LinearLayoutManager.Vertical, false) 
+				: new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
+
+			//Experiement with a GridLayoutManger! You can create some cool looking UI!
+			//This create a gridview with 2 rows that scrolls horizontally.
+			//            _layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.Horizontal, false);
+
+			//Create a reference to our RecyclerView and set the layout manager;
+			_recyclerView = FindViewById<RecyclerView>(Resource.Id.mainActivity_recyclerView);
+			_recyclerView.SetLayoutManager(_layoutManager);
+
+			//Get our crew member data. This could be a web service.
+			SharedData.CrewManifest = await BackgroundCheck_List_Data.GetAllCrewAsync();
+
+			//Create the adapter for the RecyclerView with our crew data, and set
+			//the adapter. Also, wire an event handler for when the user taps on each
+			//individual item.
+			_adapter = new BackgroundCheckRecyclerViewAdapter(SharedData.CrewManifest, this.Resources);
+			_adapter.ItemClick += OnItemClick;
+			_recyclerView.SetAdapter(_adapter);
+
+			_progressDialog.Dismiss();
 
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -65,8 +92,8 @@ namespace TCheck.Droid{
 			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
 			mLeftDrawer.Adapter = mLeftAdapter;
 
-			this.mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
-			this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
+			//this.mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
+			//this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
 
 			mRightDataSet = new List<string>();
 			mRightDataSet.Add(GetString(Resource.String.drawer_faq));
@@ -106,39 +133,7 @@ namespace TCheck.Droid{
 		}
 
 
-		void mLeftDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
-		{
-			
-			switch (e.Position) {
 
-			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonMyProfile);
-				break;
-		
-			case 1:
-				Intent mLogout = new Intent (this, typeof(MainActivity));
-				this.StartActivity (mLogout);
-			break;
-			}
-		}
-
-		void mRightDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
-		{
-
-			switch (e.Position) {
-
-			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonFAQ);
-				break;
-
-			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonSupport);
-				break;
-			}
-		}
 
 
 
@@ -192,45 +187,33 @@ namespace TCheck.Droid{
 
 			base.OnSaveInstanceState (outState);
 		}
-
-		protected override void OnPostCreate (Bundle savedInstanceState){
+		//This method doesnt work for some reason
+		/*protected override void OnPostCreate (Bundle savedInstanceState){
 			base.OnPostCreate (savedInstanceState);
 			mDrawerToggle.SyncState();
 		}
-
+		*/
 		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig){
 			base.OnConfigurationChanged (newConfig);
 			mDrawerToggle.OnConfigurationChanged(newConfig);
 		}
 
 
-		void mButtonBackgroundCheck_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Query_Payment_Activity));
-			this.StartActivity (intent);
+
+		private void OnItemClick (object sender, int position)
+		{
+			var crewProfileIntent = new Intent(this, typeof(BackgroundCheckProfileActivity));
+			crewProfileIntent.PutExtra("index", position);
+			crewProfileIntent.PutExtra("imageResourceId", SharedData.CrewManifest[position].PhotoResourceId);
+
+			StartActivity(crewProfileIntent);
 		}
+	}
 
-		void mButtonMyQueries_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Background_Report));
-			this.StartActivity (intent);
-		}
-
-		void mButtonMyReview_Click (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(Main_Menu_Activity));
-			this.StartActivity (intent);
-		}
-
-
-
-		void mButtonMyProfile_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Tenant_Search));
-			this.StartActivity (intent);
-		}
-	
+	internal static class SharedData
+	{
+		public static List<BackgroundCheck> CrewManifest { get; set;}
 	}
 }
-
-
-
-
 
 

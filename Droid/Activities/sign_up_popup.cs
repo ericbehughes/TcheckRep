@@ -38,7 +38,7 @@ namespace TCheck.Droid{
 			mEmail = email;
 			mSecurityNumber = securitynumber;
 			mPassword = password;
-				
+
 		}
 	}
 	class SignUpPopUp : DialogFragment{
@@ -53,7 +53,7 @@ namespace TCheck.Droid{
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
-			var view = inflater.Inflate (Resource.Layout.dialog_sign_up, container, false);
+			var view = inflater.Inflate (Resource.Layout.SignUp_Pop_Up, container, false);
 			mTxtFirstName = view.FindViewById<EditText> (Resource.Id.txtFirstName);
 			mTxtEmail = view.FindViewById<EditText> (Resource.Id.txtEmail);
 			mTxtSecurityNumber = view.FindViewById<EditText> (Resource.Id.txtSecurityNumber);
@@ -72,7 +72,7 @@ namespace TCheck.Droid{
 		}
 
 		void mPopUpButton_Click(object sender, EventArgs e){
-		
+
 			//user has clicked on signup button
 			mOnSignUpComplete.Invoke(this, new OnSignUpEvent(mTxtFirstName.Text, mTxtEmail.Text,mTxtSecurityNumber.Text, mTxtPassword.Text ));
 			this.Dismiss ();

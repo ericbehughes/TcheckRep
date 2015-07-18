@@ -12,25 +12,28 @@ using Android.Views;
 using Android.Widget;
 
 namespace TCheck.Droid{
-	[Activity (Label = "login_activity")]
-	public class Login_Activity : Activity{
-		private Button mButtonLogin;
+	[Activity (Label = "survey_activity")]			
+	public class survey_activity : Activity{
+		private Button mButtonSurveySubmit;
+		//private Button mButtonMenuButton;
 
 		protected override void OnCreate (Bundle bundle){
-			RequestWindowFeature(WindowFeatures.NoTitle);
 			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.Login);
-			mButtonLogin = FindViewById<Button>(Resource.Id.buttonLogIn);
-			mButtonLogin.Click += mButtonLogin_Click;
-
+			SetContentView (Resource.Layout.Submit_Survey);
+		
+			mButtonSurveySubmit = FindViewById<Button>(Resource.Id.buttonSurveySubmit);
+			mButtonSurveySubmit.Click += mButtonSurveySubmit_Click;
 		}
 
-		void mButtonLogin_Click (object sender, EventArgs args){
+		void mButtonSurveySubmit_Click (object sender, EventArgs e){
 			Intent intent = new Intent (this, typeof(Main_Menu_Activity));
 			this.StartActivity (intent);
 			Finish ();
 
 		}
+
 	}
 }
+
+
 

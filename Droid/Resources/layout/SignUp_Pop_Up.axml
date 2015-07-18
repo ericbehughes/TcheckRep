@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#DEDEDC"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/dialog_sign_up">
+<!-- The Main Content View -->
     <EditText
         android:id="@+id/txtFirstName"
         android:layout_width="match_parent"
@@ -110,4 +112,5 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="30dp" />
     </RelativeLayout>
+<!-- Navigation Drawers -->
 </RelativeLayout>

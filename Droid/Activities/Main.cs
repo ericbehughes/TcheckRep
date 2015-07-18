@@ -18,7 +18,7 @@ namespace TCheck.Droid{
 			RequestWindowFeature(WindowFeatures.NoTitle);
 			base.OnCreate (bundle);
 			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.launch_screen);
+			SetContentView (Resource.Layout.Launch);
 			mButtonSignIn = FindViewById<Button>(Resource.Id.buttonSignIn);
 			mButtonSignIn.Click += mButtonSignIn_Click;
 			mButtonSignUp = FindViewById<Button>(Resource.Id.buttonSignUp);
@@ -34,13 +34,13 @@ namespace TCheck.Droid{
 		}
 
 		void signUpPopUp_mOnSignUpComplete (object sender, OnSignUpEvent e){
-			Intent intent = new Intent (this, typeof(main_menu_activity));
+			Intent intent = new Intent (this, typeof(Main_Menu_Activity));
 			this.StartActivity (intent);
 			Finish (); 
 		}
 
 		void mButtonSignIn_Click (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(login_activity));
+			Intent intent = new Intent (this, typeof(Login_Activity));
 			this.StartActivity (intent);
 			Finish (); 
 		}

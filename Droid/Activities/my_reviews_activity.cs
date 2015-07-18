@@ -14,13 +14,13 @@ using System.Collections.Generic;
 
 namespace TCheck.Droid{
 	[Activity (Label = "my_reviews_activity",Theme="@style/MyTheme")]			
-	public class my_reviews_activity : AppCompatActivity{
+	public class My_Reviews_Activity : AppCompatActivity{
 		//private Button mButtonReviewPerson;
 		//private Button mButtonNewReview;
 		//private  string[] items;
 
 		private SupportToolbar mToolbar;
-		private MyActionBarDrawerToggle mDrawerToggle;
+		private NavigationBar mDrawerToggle;
 		private DrawerLayout mDrawerLayout;
 		private ListView mLeftDrawer;
 		private ListView mRightDrawer;
@@ -32,7 +32,7 @@ namespace TCheck.Droid{
 
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.my_reviews_screen);
+			SetContentView (Resource.Layout.My_BackgroundReports);
 
 			//items = new string[] { "Vegetables","Fruits","Flower Buds","Legumes","Bulbs","Tubers" };
 			//mListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, items);
@@ -67,7 +67,7 @@ namespace TCheck.Droid{
 			mRightAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mRightDataSet);
 			mRightDrawer.Adapter = mRightAdapter;
 
-			mDrawerToggle = new MyActionBarDrawerToggle(
+			mDrawerToggle = new NavigationBar(
 				this,							//Host Activity
 				mDrawerLayout,					//DrawerLayout
 				Resource.String.openDrawer,		//Opened Message
@@ -156,13 +156,13 @@ namespace TCheck.Droid{
 		}
 
 		void mButtonReviewPerson_Click (object sender, EventArgs args){	
-			Intent intent = new Intent (this, typeof(review_activity));
+			Intent intent = new Intent (this, typeof(My_Reviews_Activity));
 			this.StartActivity (intent);
 			Finish ();
 		}
 
 		void mButtonNewReview_Click (object sender, EventArgs args){	
-			Intent intent = new Intent (this, typeof(review_activity));
+			Intent intent = new Intent (this, typeof(Submit_Review_Activity));
 			this.StartActivity (intent);
 			Finish ();
 		}

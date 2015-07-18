@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace TCheck.Droid{
 	[Activity (Label = "sample_report",Theme="@style/MyTheme")]		
-	public class sample_report : Activity{
+	public class Sample_Report : Activity{
 
 
 
@@ -23,10 +23,7 @@ namespace TCheck.Droid{
 
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.sample_report);
-
-
-
+			SetContentView (Resource.Layout.Accordion_SampleReportNOTUSING);
 
 
 
@@ -40,7 +37,8 @@ namespace TCheck.Droid{
 				var itmChild = dictGroup [itmGroup] [e.ChildPosition];
 
 				Toast.MakeText (this, string.Format ("You Click on Group {0} with child {1}", itmGroup, itmChild), 
-					ToastLength.Long).Show ();			
+					ToastLength.Long).Show ();	
+				
 			};
 
 

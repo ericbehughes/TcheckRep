@@ -10,20 +10,20 @@ using Android.OS;
 
 namespace TCheck.Droid{
 	[Activity (Label = "cancel_activity")]
-	public class OnCancelFragmentEvent : EventArgs{
-		public OnCancelFragmentEvent(){}
+	public class OnCancelEvent : EventArgs{
+		public OnCancelEvent(){}
 	}
 	
-	class cancel_activity : DialogFragment{
+	class Cancel_Activity : DialogFragment{
 		private Button mYesCancelButton;
 		private Button mNoCancelButton;
 
-		public event EventHandler<OnCancelFragmentEvent> mOnCancel ;
+		public event EventHandler<OnCancelEvent> mOnCancel ;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			
 			base.OnCreateView (inflater, container, savedInstanceState);
-			var view = inflater.Inflate (Resource.Layout.cancel_screen, container, false);
+			var view = inflater.Inflate (Resource.Layout.Cancel_PopUp, container, false);
 
 			mYesCancelButton = view.FindViewById<Button> (Resource.Id.buttonYesCancel);
 			mYesCancelButton.Click += mYesCancelButton_Click; 
@@ -41,7 +41,7 @@ namespace TCheck.Droid{
 
 		void mYesCancelButton_Click(object sender, EventArgs e){
 			//user has clicked on signup button
-			mOnCancel.Invoke(this, new OnCancelFragmentEvent());
+			mOnCancel.Invoke(this, new OnCancelEvent());
 			this.Dismiss();
 		}
 		void mNoCancelButton_Click(object sender, EventArgs e){
