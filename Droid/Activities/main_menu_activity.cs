@@ -12,13 +12,13 @@ using Android.Support.V4.Widget;
 using System.Collections.Generic;
 
 namespace TCheck.Droid{
-	[Activity (Label = "main_menu_activity",Theme="@style/MyTheme")]
+	[Activity (Label = "Main_Menu_activity",Theme="@style/MyTheme")]
 	public class Main_Menu_Activity : AppCompatActivity{
 
 		private Button mButtonBackgroundCheck; 
 		private Button mButtonMyReview;
-		private Button mButtonMyQueries;
-		private Button mButtonMyProfile;
+		private Button mButtonMyReports;
+		private Button mButtonTenantSearch;
 
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
@@ -33,47 +33,58 @@ namespace TCheck.Droid{
 
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
+			//set main_menu xml file in layout directory
 			SetContentView(Resource.Layout.Main_Menu);
 
+			//backgroundcheck button
 			mButtonBackgroundCheck = FindViewById<Button>(Resource.Id.buttonQuery);
 			mButtonBackgroundCheck.Click += mButtonBackgroundCheck_Click;
 
-			mButtonMyReview = FindViewById<Button>(Resource.Id.buttonReview);
+			mButtonMyReview = FindViewById<Button>(Resource.Id.buttonMyReviews);
 			mButtonMyReview.Click += mButtonMyReview_Click;
 
-			mButtonMyQueries = FindViewById<Button>(Resource.Id.buttonMyQueries);
-			mButtonMyQueries.Click += mButtonMyQueries_Click;
+			mButtonMyReports = FindViewById<Button>(Resource.Id.buttonMyReports);
+			mButtonMyReports.Click += mButtonMyReports_Click;
 
-			mButtonMyProfile = FindViewById<Button>(Resource.Id.buttonMyProfile);
-			mButtonMyProfile.Click += mButtonMyProfile_Click;
-
+			mButtonTenantSearch = FindViewById<Button>(Resource.Id.buttonTenantSearch);
+			mButtonTenantSearch.Click += mButtonTenantSearch_Click;
+			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
 			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
 
-
+			//tag left and right drawer for case statment when clicked 
 			mLeftDrawer.Tag = 0;
 			mRightDrawer.Tag = 1;
-
+			//Set action support toolbar with private class variable
 			SetSupportActionBar(mToolbar);
 
 
+			//***********LEFT DATA SET******************************/
+			//Left data set, these are the buttons you see when you click on the drawers 
 			mLeftDataSet = new List<string>();
-			mLeftDataSet.Add(GetString(Resource.String.my_profile));
+			//my_profile has a string in the string xml file in values directory
+			mLeftDataSet.Add(GetString(Resource.String.main_menu));
+			//log_out has a string in the string xml file in values directory
 			mLeftDataSet.Add(GetString(Resource.String.log_out));
 			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
 			mLeftDrawer.Adapter = mLeftAdapter;
-
+			//click event for the left drawer 
 			this.mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
-			this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
 
+			//***********RIGHT DATA SET******************************/
 			mRightDataSet = new List<string>();
-			mRightDataSet.Add(GetString(Resource.String.drawer_faq));
-			mRightDataSet.Add(GetString (Resource.String.support));
-			mRightDataSet.Add(GetString(Resource.String.rentproof_summary));
+			//drawer_faq has a string in the string xml file in values directory
+
+
+			//support has a string in the string xml file in values directory
+			mRightDataSet.Add(GetString (Resource.String.help_popup));
+			//rentproof has a string in the string xml file in values directory
+			mRightDataSet.Add(GetString(Resource.String.support));
 			mRightAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mRightDataSet);
 			mRightDrawer.Adapter = mRightAdapter;
+			this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
 
 			mDrawerToggle = new NavigationBar(
 				this,							//Host Activity
@@ -112,8 +123,8 @@ namespace TCheck.Droid{
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonMyProfile);
+				Intent mDrawerButtonMainMenu = new Intent (this, typeof(Main_Menu_Activity));
+				this.StartActivity (mDrawerButtonMainMenu);
 				break;
 		
 			case 1:
@@ -129,13 +140,17 @@ namespace TCheck.Droid{
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonFAQ);
+				FragmentTransaction transaction1 = FragmentManager.BeginTransaction();
+				Help_Popup helpPopUp = new Help_Popup();
+				helpPopUp.Show(transaction1, "help fragment");
+				helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonSupport);
+				FragmentTransaction transaction2 = FragmentManager.BeginTransaction();
+				Support_PopUp supportPopUp = new Support_PopUp();
+				supportPopUp.Show(transaction2, "support fragment");
+				supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
 				break;
 			}
 		}
@@ -209,7 +224,7 @@ namespace TCheck.Droid{
 			this.StartActivity (intent);
 		}
 
-		void mButtonMyQueries_Click (object sender, EventArgs args){
+		void mButtonMyReports_Click (object sender, EventArgs args){
 			Intent intent = new Intent (this, typeof(Background_Report));
 			this.StartActivity (intent);
 		}
@@ -219,9 +234,19 @@ namespace TCheck.Droid{
 			this.StartActivity (intent);
 		}
 
+		void mHelpPopUpButton_Click (object sender, OnHelpEvent e){
+			Intent intent = new Intent (this, typeof(Help_Popup));
+			this.StartActivity (intent);
+			Finish (); 
+		}
 
+		void mSupportPopUpButton_Click (object sender, OnSupportEvent e){
+			Intent intent = new Intent (this, typeof(Support_PopUp));
+			this.StartActivity (intent);
+			Finish (); 
+		}
 
-		void mButtonMyProfile_Click (object sender, EventArgs args){
+		void mButtonTenantSearch_Click (object sender, EventArgs args){
 			Intent intent = new Intent (this, typeof(Tenant_Search));
 			this.StartActivity (intent);
 		}

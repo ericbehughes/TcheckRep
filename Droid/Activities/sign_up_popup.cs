@@ -53,7 +53,7 @@ namespace TCheck.Droid{
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
-			var view = inflater.Inflate (Resource.Layout.SignUp_Pop_Up, container, false);
+			var view = inflater.Inflate (Resource.Layout.SignUp_PopUp, container, false);
 			mTxtFirstName = view.FindViewById<EditText> (Resource.Id.txtFirstName);
 			mTxtEmail = view.FindViewById<EditText> (Resource.Id.txtEmail);
 			mTxtSecurityNumber = view.FindViewById<EditText> (Resource.Id.txtSecurityNumber);

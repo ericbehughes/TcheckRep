@@ -46,51 +46,57 @@ namespace TCheck.Droid
 			mButtonDislike.Click += (object sender, EventArgs args) =>{
 				//pull up dialog
 				FragmentTransaction transaction = FragmentManager.BeginTransaction();
-				Support_PopUp supportPopUp = new Support_PopUp();
-				supportPopUp.Show(transaction, "do you like fragment");
-				supportPopUp.mFeatureSurveyComplete += mSupportPopUpButton_Click;
+				Feature_PopUp featurePopUp = new Feature_PopUp();
+				featurePopUp.Show(transaction, "do you like fragment");
+				featurePopUp.mFeatureSurveyComplete += mFeaturePopUpButton_Click;
 			};
 
 			mButtonLike = FindViewById<Button>(Resource.Id.buttonLike);
 			mButtonLike.Click += (object sender, EventArgs args) =>{
 				//pull up dialog
 				FragmentTransaction transaction = FragmentManager.BeginTransaction();
-				Support_PopUp supportPopUp = new Support_PopUp();
-				supportPopUp.Show(transaction, "do you like fragment");
-				supportPopUp.mFeatureSurveyComplete += mSupportPopUpButton_Click;
+				Feature_PopUp featurePopUp = new Feature_PopUp();
+				featurePopUp.Show(transaction, "do you like fragment");
+				featurePopUp.mFeatureSurveyComplete += mFeaturePopUpButton_Click;
 			};
 
+			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
 			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
 
-
-
-
-
-			//**************TOOLBAR***************************/
+			//tag left and right drawer for case statment when clicked 
 			mLeftDrawer.Tag = 0;
 			mRightDrawer.Tag = 1;
-
+			//Set action support toolbar with private class variable
 			SetSupportActionBar(mToolbar);
 
 
+			//***********LEFT DATA SET******************************/
+			//Left data set, these are the buttons you see when you click on the drawers 
 			mLeftDataSet = new List<string>();
-			mLeftDataSet.Add(GetString(Resource.String.my_profile));
+			//my_profile has a string in the string xml file in values directory
+			mLeftDataSet.Add(GetString(Resource.String.main_menu));
+			//log_out has a string in the string xml file in values directory
 			mLeftDataSet.Add(GetString(Resource.String.log_out));
 			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
 			mLeftDrawer.Adapter = mLeftAdapter;
-
+			//click event for the left drawer 
 			this.mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
-			this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
 
+			//***********RIGHT DATA SET******************************/
 			mRightDataSet = new List<string>();
-			mRightDataSet.Add(GetString(Resource.String.drawer_faq));
-			mRightDataSet.Add(GetString (Resource.String.support));
-			mRightDataSet.Add(GetString(Resource.String.rentproof_summary));
+			//drawer_faq has a string in the string xml file in values directory
+
+
+			//support has a string in the string xml file in values directory
+			mRightDataSet.Add(GetString (Resource.String.help_popup));
+			//rentproof has a string in the string xml file in values directory
+			mRightDataSet.Add(GetString(Resource.String.support));
 			mRightAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mRightDataSet);
 			mRightDrawer.Adapter = mRightAdapter;
+			this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
 
 			mDrawerToggle = new NavigationBar(
 				this,							//Host Activity
@@ -103,7 +109,6 @@ namespace TCheck.Droid
 			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
 			SupportActionBar.SetDisplayShowTitleEnabled(true);
 			mDrawerToggle.SyncState();
-
 
 
 			if (bundle != null){
@@ -120,10 +125,7 @@ namespace TCheck.Droid
 				//This is the first the time the activity is ran
 				SupportActionBar.SetTitle(Resource.String.closeDrawer);
 			}
-
-			// Create your application here
 		}
-
 
 		void mLeftDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
 		{
@@ -153,13 +155,11 @@ namespace TCheck.Droid
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(Support_PopUp));
+				Intent mDrawerButtonSupport = new Intent (this, typeof(Main_Menu_Activity));
 				this.StartActivity (mDrawerButtonSupport);
 				break;
 			}
 		}
-
-
 
 
 
@@ -223,19 +223,7 @@ namespace TCheck.Droid
 		}
 
 
-		void mDislikeButton_CLick (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Tenant_Search));
-			this.StartActivity (intent);
-			Finish ();
-		}
-
-		void mLikeButton_CLick (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(Tenant_Search));
-			this.StartActivity (intent);
-			Finish ();
-		}
-
-		void mSupportPopUpButton_Click (object sender, OnSupportEvent e){
+		void mFeaturePopUpButton_Click (object sender, OnIncludeFeaturePopUp e){
 			Intent intent = new Intent (this, typeof(Tenant_Search));
 			this.StartActivity (intent);
 			Finish (); 

@@ -13,28 +13,28 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	public class OnSupportEvent : EventArgs{
+	public class OnPurchaseEvent : EventArgs{
 		
-		public OnSupportEvent(): base() {
+		public OnPurchaseEvent(): base() {
 			
 
 
 		}
 	}
 	[Activity (Label = "Support_PopUp")]			
-	public class Support_PopUp : DialogFragment
+	public class Purchase_Confirmation : DialogFragment
 	{
 		private Button mPopUpButton;
-		public event EventHandler<OnSupportEvent> mFeatureSurveyComplete;
+		public event EventHandler<OnPurchaseEvent> mPurchaseComplete;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
-			var view = inflater.Inflate (Resource.Layout.Support_PopUp, container, false);
+			var view = inflater.Inflate (Resource.Layout.Purchase_Confirmation, container, false);
 
 			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
 
-			mPopUpButton.Click += mFeatureSurveyPopUp_Click; 
+			mPopUpButton.Click += mPurchaseCompletePopUp_Click; 
 
 			return view;
 		}
@@ -45,10 +45,10 @@ namespace TCheck.Droid
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mFeatureSurveyPopUp_Click(object sender, EventArgs e){
+		void mPurchaseCompletePopUp_Click(object sender, EventArgs e){
 
 			//user has clicked on signup button
-			mFeatureSurveyComplete.Invoke(this, new OnSupportEvent());
+			mPurchaseComplete.Invoke(this, new OnPurchaseEvent());
 			this.Dismiss ();
 
 

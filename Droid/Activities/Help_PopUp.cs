@@ -13,28 +13,28 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	public class OnIncludeFeaturePopUp : EventArgs{
-
-		public OnIncludeFeaturePopUp(): base() {
-
+	public class OnHelpEvent : EventArgs{
+		
+		public OnHelpEvent(): base() {
+			
 
 
 		}
 	}
-	[Activity (Label = "Support_PopUp")]			
-	public class Feature_PopUp : DialogFragment
+	[Activity (Label = "Help_PopUp")]			
+	public class Help_Popup : DialogFragment
 	{
 		private Button mPopUpButton;
-		public event EventHandler<OnIncludeFeaturePopUp> mFeatureSurveyComplete;
+		public event EventHandler<OnHelpEvent> mHelpPopUpEvent;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
-			var view = inflater.Inflate (Resource.Layout.IncludeFeature_PopUp, container, false);
+			var view = inflater.Inflate (Resource.Layout.Support_PopUp, container, false);
 
 			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
 
-			mPopUpButton.Click += mFeatureSurveyPopUp_Click; 
+			mPopUpButton.Click += mHelpPopUpEvent_Click; 
 
 			return view;
 		}
@@ -45,14 +45,10 @@ namespace TCheck.Droid
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mFeatureSurveyPopUp_Click(object sender, EventArgs e){
+		void mHelpPopUpEvent_Click(object sender, EventArgs e){
 
 			//user has clicked on signup button
-			mFeatureSurveyComplete.Invoke(this, new OnIncludeFeaturePopUp());
 			this.Dismiss ();
-
-
-
 		}
 	}
 }

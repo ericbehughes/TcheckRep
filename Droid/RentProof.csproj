@@ -106,6 +106,12 @@
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.5.6.2.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.5.207081303-alpha\lib\MonoAndroid10\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.5.207081303-alpha\lib\MonoAndroid10\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TCheck\TCheck.csproj">
@@ -133,12 +139,10 @@
     <Compile Include="Activities\ImageManager.cs" />
     <Compile Include="Activities\NavigationBar.cs" />
     <Compile Include="Activities\PhotoAlbum.cs" />
-    <Compile Include="Activities\Purchase_Confirmation.cs" />
     <Compile Include="Activities\Queries_Activity.cs" />
     <Compile Include="Activities\Query_Payment_Activity.cs" />
     <Compile Include="Activities\Submit_Review_Activity.cs" />
     <Compile Include="Activities\Submit_Survey_Activity.cs" />
-    <Compile Include="Activities\Support_PopUp.cs" />
     <Compile Include="Activities\Tenant_Search.cs" />
     <Compile Include="Activities\Tenant_Search2.cs" />
     <Compile Include="Activities\Tenant_Search3.cs" />
@@ -149,6 +153,9 @@
     <Compile Include="Activities\My_Reviews_Activity.cs" />
     <Compile Include="Activities\Sample_Report.cs" />
     <Compile Include="Activities\swipe_activity.cs" />
+    <Compile Include="Activities\Purchase_Confirmation.cs" />
+    <Compile Include="Activities\Support_PopUp.cs" />
+    <Compile Include="Activities\Help_PopUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -204,13 +211,15 @@
     <AndroidResource Include="Resources\layout\Query_Payment.axml" />
     <AndroidResource Include="Resources\layout\report_row.NOTUSINGaxml" />
     <AndroidResource Include="Resources\layout\Review_withPicandLease.xml" />
-    <AndroidResource Include="Resources\layout\SignUp_Pop_Up.axml" />
     <AndroidResource Include="Resources\layout\Submit_Survey.axml" />
-    <AndroidResource Include="Resources\layout\Support_PopUp.axml" />
     <AndroidResource Include="Resources\layout\Tenant_Search2.axml" />
     <AndroidResource Include="Resources\layout\Tenant_Search3.axml" />
     <AndroidResource Include="Resources\layout\Main_Menu.axml" />
     <AndroidResource Include="Resources\layout\Tenant_Search.axml" />
+    <AndroidResource Include="Resources\layout\IncludeFeature_PopUp.axml" />
+    <AndroidResource Include="Resources\layout\Support_PopUp.axml" />
+    <AndroidResource Include="Resources\layout\SignUp_PopUp.axml" />
+    <AndroidResource Include="Resources\layout\Help_PopUp.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
