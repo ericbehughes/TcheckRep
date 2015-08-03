@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace TCheck.iOS
+namespace RentProof.IOS
 {
 	[Register ("MainScreen")]
 	partial class MainScreen

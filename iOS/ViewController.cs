@@ -2,7 +2,7 @@
 		
 using UIKit;
 
-namespace TCheck.iOS
+namespace RentProof.IOS
 {
 	public partial class ViewController : UIViewController
 	{

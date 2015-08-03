@@ -9,7 +9,7 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace TCheck.iOS
+namespace RentProof.IOS
 {
 	[Register ("RootViewController")]
 	partial class RootViewController

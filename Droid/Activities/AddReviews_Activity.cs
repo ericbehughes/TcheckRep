@@ -1,18 +1,7 @@
-﻿using System;
-using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-using Android.Support.V7.Widget;
-using System.Collections.Generic;
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using Android.Support.V7.App;
-using Android.Support.V4.Widget;
+﻿using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 /*
-namespace TCheck.Droid
+namespace RentProof.Droid
 {
 	[Activity(Label = "MyReports_Activity",Theme="@style/MyTheme")]
 	public class My_Reports_Activity: AppCompatActivity

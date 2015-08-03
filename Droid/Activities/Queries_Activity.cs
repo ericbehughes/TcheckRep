@@ -1,17 +1,7 @@
-﻿using System;
+﻿using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
-using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using Android.Support.V7.App;
-using Android.Support.V4.Widget;
-using System.Collections.Generic;
 /*
-namespace TCheck.Droid{
+namespace RentProof.Droid{
 	[Activity (Label = "my_queries_activity",Theme="@style/MyTheme")]			
 	public class Queries_Activity : AppCompatActivity{
 	//	string[] items;

@@ -5,12 +5,12 @@ using System;
 using Foundation;
 using UIKit;
 
-namespace TCheck.iOS
+namespace RentProof.IOS
 {
 	public partial class RootView : UINavigationController
 	{
 		public RootView (IntPtr handle) : base (handle)
 		{
-		}
+        }
 	}
 }

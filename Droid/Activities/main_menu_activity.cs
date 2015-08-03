@@ -1,261 +1,264 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
-using Android.Runtime;
+using Android.Content.Res;
+using Android.OS;
+using Android.Support.V4.Widget;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
-using Android.OS;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using Android.Support.V7.App;
-using Android.Support.V4.Widget;
-using System.Collections.Generic;
 
-namespace TCheck.Droid{
-	[Activity (Label = "Main_Menu_activity",Theme="@style/MyTheme")]
-	public class Main_Menu_Activity : AppCompatActivity{
+namespace RentProof.Droid
+{
+    [Activity(Label = "Main_Menu_activity", Theme = "@style/MyTheme")]
+    public class Main_Menu_Activity : AppCompatActivity
+    {
+        private Button mButtonBackgroundCheck;
+        private Button mButtonMyReports;
+        private Button mButtonMyReview;
+        private Button mButtonTenantSearch;
+        private DrawerLayout mDrawerLayout;
+        private NavigationBar mDrawerToggle;
+        private ArrayAdapter mLeftAdapter;
+        private List<string> mLeftDataSet;
+        private ListView mLeftDrawer;
+        private ArrayAdapter mRightAdapter;
+        private List<string> mRightDataSet;
+        private ListView mRightDrawer;
+        private SupportToolbar mToolbar;
 
-		private Button mButtonBackgroundCheck; 
-		private Button mButtonMyReview;
-		private Button mButtonMyReports;
-		private Button mButtonTenantSearch;
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+            //set main_menu xml file in layout directory
+            SetContentView(Resource.Layout.Main_Menu);
 
-		private SupportToolbar mToolbar;
-		private NavigationBar mDrawerToggle;
-		private DrawerLayout mDrawerLayout;
-		private ListView mLeftDrawer;
-		private ListView mRightDrawer;
-		private ArrayAdapter mLeftAdapter;
-		private ArrayAdapter mRightAdapter;
-		private List<string> mLeftDataSet;
-		private List<string> mRightDataSet;
+            //backgroundcheck button
+            mButtonBackgroundCheck = FindViewById<Button>(Resource.Id.buttonQuery);
+            mButtonBackgroundCheck.Click += mButtonBackgroundCheck_Click;
 
+            mButtonMyReview = FindViewById<Button>(Resource.Id.buttonMyReviews);
+            mButtonMyReview.Click += mButtonMyReview_Click;
 
-		protected override void OnCreate (Bundle bundle){
-			base.OnCreate (bundle);
-			//set main_menu xml file in layout directory
-			SetContentView(Resource.Layout.Main_Menu);
+            mButtonMyReports = FindViewById<Button>(Resource.Id.buttonMyReports);
+            mButtonMyReports.Click += mButtonMyReports_Click;
 
-			//backgroundcheck button
-			mButtonBackgroundCheck = FindViewById<Button>(Resource.Id.buttonQuery);
-			mButtonBackgroundCheck.Click += mButtonBackgroundCheck_Click;
+            mButtonTenantSearch = FindViewById<Button>(Resource.Id.buttonTenantSearch);
+            mButtonTenantSearch.Click += mButtonTenantSearch_Click;
+            /************TOOLBAR******************************************************/
+            mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+            mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
+            mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
 
-			mButtonMyReview = FindViewById<Button>(Resource.Id.buttonMyReviews);
-			mButtonMyReview.Click += mButtonMyReview_Click;
-
-			mButtonMyReports = FindViewById<Button>(Resource.Id.buttonMyReports);
-			mButtonMyReports.Click += mButtonMyReports_Click;
-
-			mButtonTenantSearch = FindViewById<Button>(Resource.Id.buttonTenantSearch);
-			mButtonTenantSearch.Click += mButtonTenantSearch_Click;
-			/************TOOLBAR******************************************************/
-			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
-			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
-
-			//tag left and right drawer for case statment when clicked 
-			mLeftDrawer.Tag = 0;
-			mRightDrawer.Tag = 1;
-			//Set action support toolbar with private class variable
-			SetSupportActionBar(mToolbar);
+            //tag left and right drawer for case statment when clicked 
+            mLeftDrawer.Tag = 0;
+            mRightDrawer.Tag = 1;
+            //Set action support toolbar with private class variable
+            SetSupportActionBar(mToolbar);
 
 
-			//***********LEFT DATA SET******************************/
-			//Left data set, these are the buttons you see when you click on the drawers 
-			mLeftDataSet = new List<string>();
-			//my_profile has a string in the string xml file in values directory
-			mLeftDataSet.Add(GetString(Resource.String.main_menu));
-			//log_out has a string in the string xml file in values directory
-			mLeftDataSet.Add(GetString(Resource.String.log_out));
-			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
-			mLeftDrawer.Adapter = mLeftAdapter;
-			//click event for the left drawer 
-			this.mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
+            //***********LEFT DATA SET******************************/
+            //Left data set, these are the buttons you see when you click on the drawers 
+            mLeftDataSet = new List<string>();
+            //my_profile has a string in the string xml file in values directory
+            mLeftDataSet.Add(GetString(Resource.String.main_menu));
+            //log_out has a string in the string xml file in values directory
+            mLeftDataSet.Add(GetString(Resource.String.log_out));
+            mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
+            mLeftDrawer.Adapter = mLeftAdapter;
+            //click event for the left drawer 
+            mLeftDrawer.ItemClick += mLeftDrawer_ItemClick;
 
-			//***********RIGHT DATA SET******************************/
-			mRightDataSet = new List<string>();
-			//drawer_faq has a string in the string xml file in values directory
-
-
-			//support has a string in the string xml file in values directory
-			mRightDataSet.Add(GetString (Resource.String.help_popup));
-			//rentproof has a string in the string xml file in values directory
-			mRightDataSet.Add(GetString(Resource.String.support));
-			mRightAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mRightDataSet);
-			mRightDrawer.Adapter = mRightAdapter;
-			this.mRightDrawer.ItemClick += mRightDrawer_ItemClick;
-
-			mDrawerToggle = new NavigationBar(
-				this,							//Host Activity
-				mDrawerLayout,					//DrawerLayout
-				Resource.String.openDrawer,		//Opened Message
-				Resource.String.closeDrawer		//Closed Message
-			);
-
-			mDrawerLayout.SetDrawerListener(mDrawerToggle);
-			SupportActionBar.SetDisplayHomeAsUpEnabled (true);
-			SupportActionBar.SetDisplayShowTitleEnabled(true);
-			mDrawerToggle.SyncState();
+            //***********RIGHT DATA SET******************************/
+            mRightDataSet = new List<string>();
+            //drawer_faq has a string in the string xml file in values directory
 
 
+            //support has a string in the string xml file in values directory
+            mRightDataSet.Add(GetString(Resource.String.help_popup));
+            //rentproof has a string in the string xml file in values directory
+            mRightDataSet.Add(GetString(Resource.String.support));
+            mRightAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mRightDataSet);
+            mRightDrawer.Adapter = mRightAdapter;
+            mRightDrawer.ItemClick += mRightDrawer_ItemClick;
 
-			if (bundle != null){
-				if (bundle.GetString("DrawerState") == "Opened"){
-					SupportActionBar.SetTitle(Resource.String.openDrawer);
-				}
+            mDrawerToggle = new NavigationBar(
+                this, //Host Activity
+                mDrawerLayout, //DrawerLayout
+                Resource.String.openDrawer, //Opened Message
+                Resource.String.closeDrawer //Closed Message
+                );
 
-				else{
-					SupportActionBar.SetTitle(Resource.String.closeDrawer);
-				}
-			}
-
-			else{
-				//This is the first the time the activity is ran
-				SupportActionBar.SetTitle(Resource.String.closeDrawer);
-			}
-		}
-
-
-		void mLeftDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
-		{
-			
-			switch (e.Position) {
-
-			case 0:
-				Intent mDrawerButtonMainMenu = new Intent (this, typeof(Main_Menu_Activity));
-				this.StartActivity (mDrawerButtonMainMenu);
-				break;
-		
-			case 1:
-				Intent mLogout = new Intent (this, typeof(MainActivity));
-				this.StartActivity (mLogout);
-			break;
-			}
-		}
-
-		void mRightDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
-		{
-
-			switch (e.Position) {
-
-			case 0:
-				FragmentTransaction transaction1 = FragmentManager.BeginTransaction();
-				Help_Popup helpPopUp = new Help_Popup();
-				helpPopUp.Show(transaction1, "help fragment");
-				helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
-				break;
-
-			case 1:
-				FragmentTransaction transaction2 = FragmentManager.BeginTransaction();
-				Support_PopUp supportPopUp = new Support_PopUp();
-				supportPopUp.Show(transaction2, "support fragment");
-				supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
-				break;
-			}
-		}
+            mDrawerLayout.SetDrawerListener(mDrawerToggle);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetDisplayShowTitleEnabled(true);
+            mDrawerToggle.SyncState();
 
 
+            if (bundle != null)
+            {
+                if (bundle.GetString("DrawerState") == "Opened")
+                {
+                    SupportActionBar.SetTitle(Resource.String.openDrawer);
+                }
+
+                else
+                {
+                    SupportActionBar.SetTitle(Resource.String.closeDrawer);
+                }
+            }
+
+            else
+            {
+                //This is the first the time the activity is ran
+                SupportActionBar.SetTitle(Resource.String.closeDrawer);
+            }
+        }
+
+        private void mLeftDrawer_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            switch (e.Position)
+            {
+                case 0:
+                    var mDrawerButtonMainMenu = new Intent(this, typeof (Main_Menu_Activity));
+                    StartActivity(mDrawerButtonMainMenu);
+                    break;
+
+                case 1:
+                    var mLogout = new Intent(this, typeof (MainActivity));
+                    StartActivity(mLogout);
+                    break;
+            }
+        }
+
+        private void mRightDrawer_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            switch (e.Position)
+            {
+                case 0:
+                    var transaction1 = FragmentManager.BeginTransaction();
+                    var helpPopUp = new Help_Popup();
+                    helpPopUp.Show(transaction1, "help fragment");
+                    helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
+                    break;
+
+                case 1:
+                    var transaction2 = FragmentManager.BeginTransaction();
+                    var supportPopUp = new Support_PopUp();
+                    supportPopUp.Show(transaction2, "support fragment");
+                    supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
+                    break;
+            }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    //The hamburger icon was clicked which means the drawer toggle will handle the event
+                    //all we need to do is ensure the right drawer is closed so the don't overlap
+                    mDrawerLayout.CloseDrawer(mRightDrawer);
+                    mDrawerToggle.OnOptionsItemSelected(item);
 
 
+                    return true;
 
-		public override bool OnOptionsItemSelected (IMenuItem item){		
-			switch (item.ItemId){
+                case Resource.Id.toolbar:
+                    //Refresh
+                    return true;
 
-			case Android.Resource.Id.Home:
-				//The hamburger icon was clicked which means the drawer toggle will handle the event
-				//all we need to do is ensure the right drawer is closed so the don't overlap
-				mDrawerLayout.CloseDrawer (mRightDrawer);
-				mDrawerToggle.OnOptionsItemSelected(item);
+                case Resource.Id.action_help:
+                    if (mDrawerLayout.IsDrawerOpen(mRightDrawer))
+                    {
+                        //Right Drawer is already open, close it
+                        mDrawerLayout.CloseDrawer(mRightDrawer);
+                    }
+                    else
+                    {
+                        //Right Drawer is closed, open it and just in case close left drawer
+                        mDrawerLayout.OpenDrawer(mRightDrawer);
+                        mDrawerLayout.CloseDrawer(mLeftDrawer);
+                    }
+                    return true;
 
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
 
-				return true;
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.main_action_bar, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
 
-			case Resource.Id.toolbar:
-				//Refresh
-				return true;
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            if (mDrawerLayout.IsDrawerOpen((int) GravityFlags.Left))
+            {
+                outState.PutString("DrawerState", "Opened");
+            }
 
-			case Resource.Id.action_help:
-				if (mDrawerLayout.IsDrawerOpen (mRightDrawer)) {
-					//Right Drawer is already open, close it
-					mDrawerLayout.CloseDrawer (mRightDrawer);
-				} else {
-					//Right Drawer is closed, open it and just in case close left drawer
-					mDrawerLayout.OpenDrawer (mRightDrawer);
-					mDrawerLayout.CloseDrawer (mLeftDrawer);
-				}
-				return true;
+            else
+            {
+                outState.PutString("DrawerState", "Closed");
+            }
 
-			default:
-				return base.OnOptionsItemSelected (item);
-			}
-		}
+            base.OnSaveInstanceState(outState);
+        }
 
-		public override bool OnCreateOptionsMenu (IMenu menu){
-			MenuInflater.Inflate (Resource.Menu.main_action_bar, menu);
-			return base.OnCreateOptionsMenu (menu);
-		}
+        protected override void OnPostCreate(Bundle savedInstanceState)
+        {
+            base.OnPostCreate(savedInstanceState);
+            mDrawerToggle.SyncState();
+        }
 
-		protected override void OnSaveInstanceState (Bundle outState){
-			if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left)){
-				outState.PutString("DrawerState", "Opened");
-			}
+        public override void OnConfigurationChanged(Configuration newConfig)
+        {
+            base.OnConfigurationChanged(newConfig);
+            mDrawerToggle.OnConfigurationChanged(newConfig);
+        }
 
-			else{
-				outState.PutString("DrawerState", "Closed");
-			}
+        private void mButtonBackgroundCheck_Click(object sender, EventArgs args)
+        {
+            var intent = new Intent(this, typeof (Query_Payment_Activity));
+            StartActivity(intent);
+        }
 
-			base.OnSaveInstanceState (outState);
-		}
+        private void mButtonMyReports_Click(object sender, EventArgs args)
+        {
+            var intent = new Intent(this, typeof (Background_Report));
+            StartActivity(intent);
+        }
 
-		protected override void OnPostCreate (Bundle savedInstanceState){
-			base.OnPostCreate (savedInstanceState);
-			mDrawerToggle.SyncState();
-		}
+        private void mButtonMyReview_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof (Main_Menu_Activity));
+            StartActivity(intent);
+        }
 
-		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig){
-			base.OnConfigurationChanged (newConfig);
-			mDrawerToggle.OnConfigurationChanged(newConfig);
-		}
+        private void mHelpPopUpButton_Click(object sender, OnHelpEvent e)
+        {
+            var intent = new Intent(this, typeof (Help_Popup));
+            StartActivity(intent);
+            Finish();
+        }
 
+        private void mSupportPopUpButton_Click(object sender, OnSupportEvent e)
+        {
+            var intent = new Intent(this, typeof (Support_PopUp));
+            StartActivity(intent);
+            Finish();
+        }
 
-		void mButtonBackgroundCheck_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Query_Payment_Activity));
-			this.StartActivity (intent);
-		}
-
-		void mButtonMyReports_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Background_Report));
-			this.StartActivity (intent);
-		}
-
-		void mButtonMyReview_Click (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(Main_Menu_Activity));
-			this.StartActivity (intent);
-		}
-
-		void mHelpPopUpButton_Click (object sender, OnHelpEvent e){
-			Intent intent = new Intent (this, typeof(Help_Popup));
-			this.StartActivity (intent);
-			Finish (); 
-		}
-
-		void mSupportPopUpButton_Click (object sender, OnSupportEvent e){
-			Intent intent = new Intent (this, typeof(Support_PopUp));
-			this.StartActivity (intent);
-			Finish (); 
-		}
-
-		void mButtonTenantSearch_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Tenant_Search));
-			this.StartActivity (intent);
-		}
-	
-	}
+        private void mButtonTenantSearch_Click(object sender, EventArgs args)
+        {
+            var intent = new Intent(this, typeof (Tenant_Search));
+            StartActivity(intent);
+        }
+    }
 }
-
-
-
-
-
-

@@ -1,54 +1,44 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace TCheck.Droid
+namespace RentProof.Droid
 {
-	public class OnSupportEvent : EventArgs{
-		
-		public OnSupportEvent(): base() {
-			
+    public class OnSupportEvent : EventArgs
+    {
+    }
 
+    [Activity(Label = "Support_PopUp")]
+    public class Support_PopUp : DialogFragment
+    {
+        private Button mPopUpButton;
+        public event EventHandler<OnSupportEvent> mSupportPopUpEvent;
 
-		}
-	}
-	[Activity (Label = "Support_PopUp")]			
-	public class Support_PopUp : DialogFragment
-	{
-		private Button mPopUpButton;
-		public event EventHandler<OnSupportEvent> mSupportPopUpEvent;
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            base.OnCreateView(inflater, container, savedInstanceState);
 
-		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-			base.OnCreateView (inflater, container, savedInstanceState);
+            var view = inflater.Inflate(Resource.Layout.Support_PopUp, container, false);
 
-			var view = inflater.Inflate (Resource.Layout.Support_PopUp, container, false);
+            mPopUpButton = view.FindViewById<Button>(Resource.Id.popUpButton);
 
-			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
+            mPopUpButton.Click += mSupportPopUp_Click;
 
-			mPopUpButton.Click += mSupportPopUp_Click; 
+            return view;
+        }
 
-			return view;
-		}
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
+            base.OnActivityCreated(savedInstanceState);
+            Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
+        }
 
-		public override void OnActivityCreated(Bundle savedInstanceState){
-			Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
-			base.OnActivityCreated (savedInstanceState);
-			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
-		}
-
-		void mSupportPopUp_Click(object sender, EventArgs e){
-			this.Dismiss ();
-		}
-	}
+        private void mSupportPopUp_Click(object sender, EventArgs e)
+        {
+            Dismiss();
+        }
+    }
 }
-
-

@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace TCheck.iOS
+namespace RentProof.IOS
 {
 	public class Application
 	{

@@ -1,46 +1,54 @@
-﻿using System;
-using SupportActionBarDrawerToggle = Android.Support.V7.App.ActionBarDrawerToggle;
+﻿using Android.Support.V4.Widget;
 using Android.Support.V7.App;
-using Android.Support.V4.Widget;
+using Android.Views;
+using SupportActionBarDrawerToggle = Android.Support.V7.App.ActionBarDrawerToggle;
 
-namespace TCheck.Droid{
-	public class NavigationBar : SupportActionBarDrawerToggle{
-		private AppCompatActivity mHostActivity;
-		private int mOpenedResource;
-		private int mClosedResource;
+namespace RentProof.Droid
+{
+    public class NavigationBar : SupportActionBarDrawerToggle
+    {
+        private readonly int mClosedResource;
+        private readonly AppCompatActivity mHostActivity;
+        private readonly int mOpenedResource;
 
-		public NavigationBar (AppCompatActivity host, DrawerLayout drawerLayout, int openedResource, int closedResource) 
-			: base(host, drawerLayout, openedResource, closedResource){
-			mHostActivity = host;
-			mOpenedResource = openedResource;
-			mClosedResource = closedResource;
-		}
+        public NavigationBar(AppCompatActivity host, DrawerLayout drawerLayout, int openedResource, int closedResource)
+            : base(host, drawerLayout, openedResource, closedResource)
+        {
+            mHostActivity = host;
+            mOpenedResource = openedResource;
+            mClosedResource = closedResource;
+        }
 
-		public override void OnDrawerOpened (Android.Views.View drawerView){	
-			int drawerType = (int)drawerView.Tag;
+        public override void OnDrawerOpened(View drawerView)
+        {
+            var drawerType = (int) drawerView.Tag;
 
-			if (drawerType == 0){
-				base.OnDrawerOpened (drawerView);
-				mHostActivity.SupportActionBar.SetTitle(mOpenedResource);
-			}
-		}
+            if (drawerType == 0)
+            {
+                base.OnDrawerOpened(drawerView);
+                mHostActivity.SupportActionBar.SetTitle(mOpenedResource);
+            }
+        }
 
-		public override void OnDrawerClosed (Android.Views.View drawerView){
-			int drawerType = (int)drawerView.Tag;
+        public override void OnDrawerClosed(View drawerView)
+        {
+            var drawerType = (int) drawerView.Tag;
 
-			if (drawerType == 0){
-				base.OnDrawerClosed (drawerView);
-				mHostActivity.SupportActionBar.SetTitle(mClosedResource);
-			}				
-		}
+            if (drawerType == 0)
+            {
+                base.OnDrawerClosed(drawerView);
+                mHostActivity.SupportActionBar.SetTitle(mClosedResource);
+            }
+        }
 
-		public override void OnDrawerSlide (Android.Views.View drawerView, float slideOffset){
-			int drawerType = (int)drawerView.Tag;
+        public override void OnDrawerSlide(View drawerView, float slideOffset)
+        {
+            var drawerType = (int) drawerView.Tag;
 
-			if (drawerType == 0){
-				base.OnDrawerSlide (drawerView, slideOffset);
-			}
-		}
-	}
+            if (drawerType == 0)
+            {
+                base.OnDrawerSlide(drawerView, slideOffset);
+            }
+        }
+    }
 }
-

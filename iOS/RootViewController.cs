@@ -5,7 +5,7 @@ using System;
 using Foundation;
 using UIKit;
 
-namespace TCheck.iOS
+namespace RentProof.IOS
 {
 	public partial class RootViewController : UITableViewController
 	{

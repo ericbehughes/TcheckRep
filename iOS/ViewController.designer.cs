@@ -5,7 +5,7 @@
 //		
 using Foundation;
 
-namespace TCheck.iOS
+namespace RentProof.IOS
 {
 	[Register ("ViewController")]		
 	partial class ViewController

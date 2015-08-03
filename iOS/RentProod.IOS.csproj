@@ -75,12 +75,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TCheck\TCheck.csproj">
-      <Project>{B5A9BB2A-F84F-4564-B42B-39864048AADD}</Project>
-      <Name>TCheck</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
@@ -142,6 +136,7 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />

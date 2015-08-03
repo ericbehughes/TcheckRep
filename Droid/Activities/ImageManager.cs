@@ -4,113 +4,112 @@ using System.Threading.Tasks;
 using Android.Content.Res;
 using Android.Graphics;
 
-namespace TCheck.Droid
+namespace RentProof.Droid
 {
-	public class ImageManager : IDisposable
-	{
-		private readonly Dictionary<int, Bitmap> _imageCache = new Dictionary<int, Bitmap>();
-		private Resources _resources;
+    public class ImageManager : IDisposable
+    {
+        private readonly Dictionary<int, Bitmap> _imageCache = new Dictionary<int, Bitmap>();
+        private readonly Resources _resources;
 
-		public ImageManager(Resources resources)
-		{
-			_resources = resources;
-		}
+        public ImageManager(Resources resources)
+        {
+            _resources = resources;
+        }
 
-		private Task<BitmapFactory.Options> GetBitmapOptionsOfImageAsync(int resourceId)
-		{
-			return Task.Run(() => GetBitmapOptionsOfImage(resourceId));
-		}
+        #region IDisposable implementation
 
-		private BitmapFactory.Options GetBitmapOptionsOfImage(int resourceId)
-		{
-			var options = new BitmapFactory.Options
-			{
-				InJustDecodeBounds = true
-			};
+        public void Dispose()
+        {
+            if (_imageCache == null)
+                return;
 
-			var result = BitmapFactory.DecodeResource(_resources, resourceId, options);
+            foreach (var key in _imageCache.Keys)
+            {
+                Bitmap bitmap;
+                if (_imageCache.TryGetValue(key, out bitmap))
+                {
+                    Console.WriteLine("Recycling bitmap {0} . . .", key);
+                    bitmap.Recycle();
+                }
+            }
+            _imageCache.Clear();
+        }
 
-			return options;
-		}
+        #endregion
 
-		private int CalculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight)
-		{
-			float height = options.OutHeight;
-			float width = options.OutWidth;
-			double inSampleSize = 1D;
+        private Task<BitmapFactory.Options> GetBitmapOptionsOfImageAsync(int resourceId)
+        {
+            return Task.Run(() => GetBitmapOptionsOfImage(resourceId));
+        }
 
-			if (height > reqHeight || width > reqWidth)
-			{
-				int halfHeight = (int)(height / 2);
-				int halfWidth = (int)(width / 2);
+        private BitmapFactory.Options GetBitmapOptionsOfImage(int resourceId)
+        {
+            var options = new BitmapFactory.Options
+            {
+                InJustDecodeBounds = true
+            };
 
-				while ((halfHeight / inSampleSize) > reqHeight && (halfWidth / inSampleSize) > reqWidth)
-				{
-					inSampleSize *= 2;
-				}
+            var result = BitmapFactory.DecodeResource(_resources, resourceId, options);
 
-			}
+            return options;
+        }
 
-			return (int)inSampleSize;
-		}
+        private int CalculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight)
+        {
+            float height = options.OutHeight;
+            float width = options.OutWidth;
+            var inSampleSize = 1D;
 
-		private Task<Bitmap> LoadScaledDownBitmapForDisplayAsync(BitmapFactory.Options options, int resourceId, int reqWidth, int reqHeight)
-		{
-			return Task.Run(() => LoadScaledDownBitmapForDisplay(options, resourceId, reqWidth, reqHeight));
-		}
+            if (height > reqHeight || width > reqWidth)
+            {
+                var halfHeight = (int) (height/2);
+                var halfWidth = (int) (width/2);
 
-		private Bitmap LoadScaledDownBitmapForDisplay(BitmapFactory.Options options, int resourceId, int reqWidth, int reqHeight)
-		{
-			options.InSampleSize = CalculateInSampleSize(options, reqWidth, reqHeight);
-			options.InJustDecodeBounds = false;
+                while ((halfHeight/inSampleSize) > reqHeight && (halfWidth/inSampleSize) > reqWidth)
+                {
+                    inSampleSize *= 2;
+                }
+            }
 
-			var bitmap = BitmapFactory.DecodeResource(_resources, resourceId, options);
+            return (int) inSampleSize;
+        }
 
-			return bitmap;
-		}
+        private Task<Bitmap> LoadScaledDownBitmapForDisplayAsync(BitmapFactory.Options options, int resourceId,
+            int reqWidth, int reqHeight)
+        {
+            return Task.Run(() => LoadScaledDownBitmapForDisplay(options, resourceId, reqWidth, reqHeight));
+        }
 
-		public Task<Bitmap> GetScaledDownBitmapFromResourceAsync(int resourceId, int requiredWidth, int requiredHeight)
-		{
-			return Task.Run(() => GetScaledDownBitmapFromResource(resourceId, requiredWidth, requiredHeight));
+        private Bitmap LoadScaledDownBitmapForDisplay(BitmapFactory.Options options, int resourceId, int reqWidth,
+            int reqHeight)
+        {
+            options.InSampleSize = CalculateInSampleSize(options, reqWidth, reqHeight);
+            options.InJustDecodeBounds = false;
 
-		}
+            var bitmap = BitmapFactory.DecodeResource(_resources, resourceId, options);
 
-		public Bitmap GetScaledDownBitmapFromResource(int resourceId, int requiredWidth, int requiredHeight)
-		{
-			Bitmap bitmap;
-			if(_imageCache.TryGetValue(resourceId, out bitmap))
-			{
-				return bitmap;
-			}
+            return bitmap;
+        }
 
-			var options = GetBitmapOptionsOfImage(resourceId);
-			bitmap = LoadScaledDownBitmapForDisplay(options, resourceId, requiredWidth, requiredHeight);
+        public Task<Bitmap> GetScaledDownBitmapFromResourceAsync(int resourceId, int requiredWidth, int requiredHeight)
+        {
+            return Task.Run(() => GetScaledDownBitmapFromResource(resourceId, requiredWidth, requiredHeight));
+        }
 
-			_imageCache.Add(resourceId, bitmap);
+        public Bitmap GetScaledDownBitmapFromResource(int resourceId, int requiredWidth, int requiredHeight)
+        {
+            Bitmap bitmap;
+            if (_imageCache.TryGetValue(resourceId, out bitmap))
+            {
+                return bitmap;
+            }
 
-			return bitmap;
-		}
+            var options = GetBitmapOptionsOfImage(resourceId);
+            bitmap = LoadScaledDownBitmapForDisplay(options, resourceId, requiredWidth, requiredHeight);
 
-		#region IDisposable implementation
+            _imageCache.Add(resourceId, bitmap);
 
-		public void Dispose()
-		{
-			if(_imageCache == null)
-				return;
-
-			foreach(var key in _imageCache.Keys)
-			{
-				Bitmap bitmap;
-				if(_imageCache.TryGetValue(key, out bitmap))
-				{
-					Console.WriteLine(String.Format("Recycling bitmap {0} . . .", key));
-					bitmap.Recycle();
-				}
-			}
-			_imageCache.Clear();
-		}
-
-		#endregion
-	}
+            return bitmap;
+        }
+    }
 }
-
