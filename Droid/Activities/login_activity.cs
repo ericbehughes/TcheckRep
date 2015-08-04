@@ -4,7 +4,7 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using RentProof.API;
+using RentProof.API.Models;
 
 namespace RentProof.Droid
 {
@@ -30,10 +30,17 @@ namespace RentProof.Droid
             var email = FindViewById<EditText>(Resource.Id.txtLoginEmail).Text;
             var password = FindViewById<EditText>(Resource.Id.txtPassword).Text;
 
+            // build model
+            var model = new LoginBindingModel
+            {
+                Email = email,
+                Password = password
+            };
+
             try
             {
                 // authenticate
-                var token = await Wrapper.GetAuthenticationToken(email, password);
+                await API.Service.Login(model);
 
                 // proceed to main menu
                 var intent = new Intent(this, typeof (Main_Menu_Activity));

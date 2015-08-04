@@ -3,45 +3,21 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using RentProof.API.Models;
 
 namespace RentProof.Droid
 {
-    public class OnSignUpEvent : EventArgs
-    {
-        public OnSignUpEvent(string firstName, string email, string securitynumber, string password)
-        {
-            FirstName = firstName;
-            Email = email;
-            SecurityNumber = securitynumber;
-            Password = password;
-        }
-
-        public string FirstName { get; set; }
-        public string Email { get; set; }
-        public string SecurityNumber { get; set; }
-        public string Password { get; set; }
-    }
-
     internal class SignUpPopUp : DialogFragment
     {
-        private Button mPopUpButton;
-        private EditText mTxtEmail;
-        private EditText mTxtFirstName;
-        private EditText mTxtPassword;
-        private EditText mTxtSecurityNumber;
-        public event EventHandler<OnSignUpEvent> mOnSignUpComplete;
+        public event EventHandler<EventArgs> mOnSignUpComplete;
+        private View view;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
 
-            var view = inflater.Inflate(Resource.Layout.SignUp_PopUp, container, false);
-            mTxtFirstName = view.FindViewById<EditText>(Resource.Id.txtFirstName);
-            mTxtEmail = view.FindViewById<EditText>(Resource.Id.txtEmail);
-            mTxtSecurityNumber = view.FindViewById<EditText>(Resource.Id.txtSecurityNumber);
-            mTxtPassword = view.FindViewById<EditText>(Resource.Id.txtPassword);
-            mPopUpButton = view.FindViewById<Button>(Resource.Id.popUpButton);
-
+            view = inflater.Inflate(Resource.Layout.SignUp_PopUp, container, false);
+            var mPopUpButton = view.FindViewById<Button>(Resource.Id.popUpButton);
             mPopUpButton.Click += mPopUpButton_Click;
 
             return view;
@@ -54,11 +30,39 @@ namespace RentProof.Droid
             Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
         }
 
-        private void mPopUpButton_Click(object sender, EventArgs e)
+        private async void mPopUpButton_Click(object sender, EventArgs e)
         {
-            //user has clicked on signup button
-            mOnSignUpComplete.Invoke(this,
-                new OnSignUpEvent(mTxtFirstName.Text, mTxtEmail.Text, mTxtSecurityNumber.Text, mTxtPassword.Text));
+            // grab user info
+            var name = view.FindViewById<EditText>(Resource.Id.txtFirstName).Text;
+            var email = view.FindViewById<EditText>(Resource.Id.txtEmail).Text;
+            var sin = view.FindViewById<EditText>(Resource.Id.txtSecurityNumber).Text;
+            var password = view.FindViewById<EditText>(Resource.Id.txtPassword).Text;
+
+            // build models
+            var registerModel = new RegisterBindingModel
+            {
+                Name = name,
+                Email = email,
+                SIN = Int32.Parse(sin),
+                Password = password
+            };
+
+            var loginModel = new LoginBindingModel
+            {
+                Email = email,
+                Password = password
+            };
+
+            // register user
+            await API.Service.Register(registerModel);
+
+            // auto-authenticate
+            await API.Service.Login(loginModel);
+
+            // user has clicked on signup button
+            mOnSignUpComplete.Invoke(this, new EventArgs());
+
+            // close popup
             Dismiss();
         }
     }

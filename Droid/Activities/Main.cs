@@ -38,7 +38,7 @@ namespace RentProof.Droid
             };
         }
 
-        private void mSignUpPopUp_mOnSignUpComplete(object sender, OnSignUpEvent e)
+        private void mSignUpPopUp_mOnSignUpComplete(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof (Main_Menu_Activity));
             StartActivity(intent);
