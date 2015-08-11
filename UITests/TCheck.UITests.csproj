@@ -43,9 +43,9 @@
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Droid\RentProof.csproj">
+    <ProjectReference Include="..\Droid\RentProof.Droid.csproj">
       <Project>{6B737455-5AA3-45DE-9AFA-643C5286CDC4}</Project>
-      <Name>RentProof</Name>
+      <Name>RentProof.Droid</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>

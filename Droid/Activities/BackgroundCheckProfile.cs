@@ -17,13 +17,14 @@ namespace TCheck.Droid
 	[Activity(Label = "Profile",Theme="@style/MyTheme")]			
 	public class BackgroundCheckProfileActivity : Activity
 	{
-		private TextView _rank;
-		private TextView _name;
-		private TextView _position;
-		private TextView _posting;
-		private TextView _tenantScore;
-		private TextView _biogaphy;
-		private ImageView _photo;
+		private TextView _ID;
+		private TextView _FirstName;
+		private TextView _LastName;
+		private TextView _TenantScore;
+		private ImageView _Photo;
+
+
+
 
 
 		RecyclerView mRecyclerView;
@@ -43,15 +44,11 @@ namespace TCheck.Droid
 
 			SetContentView(Resource.Layout.BackgroundCheck_Profile);
 
-			_rank = FindViewById<TextView>(Resource.Id.crewMemberRankTextView);
-			_name = FindViewById<TextView>(Resource.Id.crewMemberNameTextView);
-			_position = FindViewById<TextView>(Resource.Id.crewMemberPositionTextView);
-			_posting = FindViewById<TextView>(Resource.Id.crewMemberPostingTextView);
-			_tenantScore = FindViewById<TextView>(Resource.Id.crewMemberTenantScoreTextView);
-			_biogaphy = FindViewById<TextView>(Resource.Id.crewMemberBioTextView);
-			_photo = FindViewById<ImageView>(Resource.Id.crewMemberImageView);
-
-
+			_ID = FindViewById<TextView>(Resource.Id.backgroundCheckID);
+			_FirstName = FindViewById<TextView>(Resource.Id.backgroundCheckFirstName);
+			_LastName = FindViewById<TextView>(Resource.Id.backgroundCheckLastName);
+			_TenantScore = FindViewById<TextView> (Resource.Id.backgroundCheckTenantScore);
+			_Photo = FindViewById<ImageView> (Resource.Id.backgroundCheckProfileImageView);
 
 			var index = Intent.GetIntExtra("index", -1);
 			if(index < 0)
@@ -61,19 +58,19 @@ namespace TCheck.Droid
 
 			var imageResourceId = Intent.GetIntExtra("imageResourceId", -1);
 
-			var crewMember = SharedData.CrewManifest[index];
+			var crewMember = SharedData.BackgroundCheckManifest[index];
 
-			_rank.Text = crewMember.Rank;
-			_name.Text = crewMember.Name;
-			_position.Text = crewMember.Position;
-			_posting.Text = crewMember.Posting;
-			_tenantScore.Text = String.Format("Species: {0}", crewMember.TenantScore);
-			_biogaphy.Text = crewMember.Biography;
 
-			var imageManager = new ImageManager(this.Resources);
+			//_FirstName.Text = .;
+			//_position.Text = crewMember.Position;
+			//_posting.Text = crewMember.Posting;
+			//_tenantScore.Text = String.Format("Species: {0}", crewMember.TenantScore);
+			//_biogaphy.Text = crewMember.Biography;
+
+			var imageManager = new BackgroundCheckImageManager(this.Resources);
 			var bitmap = await imageManager.GetScaledDownBitmapFromResourceAsync(imageResourceId, 150, 150);
 
-			_photo.SetImageBitmap(bitmap);
+	//		_photo.SetImageBitmap(bitmap);
 
 			mPhotoAlbum = new PhotoAlbum();
 

@@ -225,7 +225,7 @@ namespace TCheck.Droid{
 		}
 
 		void mButtonMyReports_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Background_Report));
+			Intent intent = new Intent (this, typeof(BackgroundReportController));
 			this.StartActivity (intent);
 		}
 

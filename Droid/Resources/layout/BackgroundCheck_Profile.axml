@@ -14,52 +14,52 @@
         android:minHeight="25px"
         android:paddingBottom="4dp">
         <ImageView
-            android:id="@+id/crewMemberImageView"
+            android:id="@+id/backgroundCheckProfileImageView"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="false"
             android:padding="5dp"
-            android:src="@drawable/picard" />
+            android:src="@drawable/denisAngelList" />
         <TextView
-            android:id="@+id/crewMemberRankTextView"
-            android:layout_toRightOf="@id/crewMemberImageView"
-            android:text="Rank"
+            android:id="@+id/backgroundCheckID"
+            android:layout_toRightOf="@id/backgroundCheckProfileImageView"
+            android:text="ID"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp" />
         <TextView
-            android:id="@+id/crewMemberNameTextView"
-            android:layout_toRightOf="@id/crewMemberImageView"
-            android:layout_below="@id/crewMemberRankTextView"
-            android:text="Crew Member Name"
+            android:id="@+id/backgroundCheckFirstName"
+            android:layout_toRightOf="@+id/backgroundCheckProfileImageView"
+            android:layout_below="@+id/backgroundCheckID"
+            android:text="FirstName"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp" />
         <TextView
-            android:id="@+id/crewMemberPositionTextView"
-            android:layout_toRightOf="@id/crewMemberImageView"
-            android:layout_below="@id/crewMemberNameTextView"
-            android:text="Position"
+            android:id="@+id/backgroundCheckLastName"
+            android:layout_toRightOf="@id/backgroundCheckProfileImageView"
+            android:layout_below="@+id/backgroundCheckFirstName"
+            android:text="LastName"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp" />
         <TextView
-            android:id="@+id/crewMemberPostingTextView"
-            android:layout_toRightOf="@id/crewMemberImageView"
-            android:layout_below="@id/crewMemberPositionTextView"
-            android:text="Posting"
+            android:id="@+id/backgroundCheckDOB"
+            android:layout_toRightOf="@+id/backgroundCheckProfileImageView"
+            android:layout_below="@+id/backgroundCheckLastName"
+            android:text="Date Of Birth"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp" />
         <TextView
-            android:id="@+id/crewMemberTenantScoreTextView"
-            android:layout_toRightOf="@id/crewMemberImageView"
-            android:layout_below="@id/crewMemberPostingTextView"
+            android:id="@+id/backgroundCheckTenantScore"
+            android:layout_toRightOf="@+id/backgroundCheckProfileImageView"
+            android:layout_below="@+id/backgroundCheckDOB"
             android:text="TenantScore"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
@@ -74,9 +74,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutBiography">
         <TextView
-            android:id="@+id/crewMemberBioTextView"
-            android:layout_toRightOf="@id/crewMemberImageView"
-            android:layout_below="@id/crewMemberTenantScoreTextView"
+            android:id="@+id/backgroundCheckBiography"
+            android:layout_toRightOf="@id/backgroundCheckProfileImageView"
+            android:layout_below="@id/backgroundCheckTenantScore"
             android:text="Biography"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"

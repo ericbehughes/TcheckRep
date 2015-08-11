@@ -13,17 +13,17 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
     <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <!-- The Main Content View -->
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/mainActivity_recyclerView"
+            android:id="@+id/backgroundReportsListView"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <ListView
-            android:id="@+id/left_drawer"
+            android:id="@+id/leftDrawer"
             android:layout_width="240dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
@@ -32,7 +32,7 @@
             android:dividerHeight="1dp"
             android:background="#9E9E9E" />
         <ListView
-            android:id="@+id/right_drawer"
+            android:id="@+id/rightDrawer"
             android:layout_width="240dp"
             android:layout_height="match_parent"
             android:layout_gravity="right"

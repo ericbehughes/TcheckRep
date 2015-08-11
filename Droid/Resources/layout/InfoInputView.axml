@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#DEDEDC"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1">
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:stretchColumns="1">
+            <EditText
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtFirstName"
+                android:background="@drawable/edit_text_style"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:hint="First Name"
+                android:textColorHint="#000"
+                android:textColor="#000" />
+            <TextView
+                android:text="Text"
+                android:id="@+id/textView1"
+                android:layout_marginLeft="50dp" />
+            <EditText
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtLastName"
+                android:background="@drawable/edit_text_style"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:hint="Last Name"
+                android:textColorHint="#000"
+                android:textColor="#000" />
+            <TextView
+                android:text="Text"
+                android:id="@+id/textView2"
+                android:layout_marginLeft="50dp" />
+            <EditText
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtGender"
+                android:background="@drawable/edit_text_style"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:hint="Gender"
+                android:textColorHint="#000"
+                android:textColor="#000" />
+            <TextView
+                android:text="Text"
+                android:id="@+id/textView3"
+                android:layout_marginLeft="50dp" />
+            <EditText
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDateOfBirth"
+                android:background="@drawable/edit_text_style"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:hint="Date of Birth"
+                android:textColorHint="#000"
+                android:textColor="#000" />
+            <TextView
+                android:text="Text"
+                android:id="@+id/textView4"
+                android:layout_marginLeft="50dp" />
+            <Button
+                android:id="@+id/btnSubmit"
+                android:text="Submit"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" />
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

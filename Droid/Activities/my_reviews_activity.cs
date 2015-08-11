@@ -32,7 +32,7 @@ namespace TCheck.Droid{
 
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.My_BackgroundReports);
+			SetContentView (Resource.Layout.BackgroundReportsListView);
 
 			//items = new string[] { "Vegetables","Fruits","Flower Buds","Legumes","Bulbs","Tubers" };
 			//mListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, items);

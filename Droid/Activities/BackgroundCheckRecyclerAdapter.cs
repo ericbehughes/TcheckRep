@@ -1,47 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using Android.Graphics;
+using Android.Content.Res;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Content.Res;
-
 
 namespace TCheck.Droid
 {
 	public class BackgroundCheckRecyclerViewAdapter : RecyclerView.Adapter
 	{
-		//Create an Event so that our our clients can act when a user clicks
-		//on each individual item.
-		public event EventHandler<int> ItemClick;
+		private readonly List<BackgroundCheckBindingModel> _backgroundCheckProfiles;
+		private readonly BackgroundCheckImageManager _imageManager;
 
-		private List<BackgroundCheck> _crewMembers;
-		private readonly ImageManager _imageManager;
-
-		public BackgroundCheckRecyclerViewAdapter (List<BackgroundCheck> crewMembers, Resources resources)
+		public BackgroundCheckRecyclerViewAdapter(List<BackgroundCheckBindingModel> backgroundCheckProfiles, Resources resources)
 		{
-			_crewMembers = crewMembers;
-			_imageManager = new ImageManager(resources);
+			_backgroundCheckProfiles = backgroundCheckProfiles;
+			_imageManager = new BackgroundCheckImageManager(resources);
 		}
 
 		//Must override, just like regular Adapters
 		public override int ItemCount
 		{
-			get
-			{
-				return _crewMembers.Count;
-			}
+			get { return _backgroundCheckProfiles.Count; }
 		}
 
+		//Create an Event so that our our clients can act when a user clicks
+		//on each individual item.
+		public event EventHandler<int> ItemClick;
 		//Must override, this inflates our Layout and instantiates and assigns
 		//it to the ViewHolder.
 		public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
 		{
 			//Inflate our CrewMemberItem Layout
-			View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.BackgroundCheck_Row, parent, false);
+			var itemView = LayoutInflater.From(parent.Context)
+				.Inflate(Resource.Layout.BackgroundCheckRowView, parent, false);
 
 			//Create our ViewHolder to cache the layout view references and register
 			//the OnClick event.
-			var viewHolder = new CrewMemberItemViewHolder(itemView, OnClick);
+			var viewHolder = new BackgroundCheckRowHolder(itemView, OnClick);
 
 			return viewHolder;
 		}
@@ -51,23 +46,26 @@ namespace TCheck.Droid
 		//of GetView for regular Adapters.
 		public override async void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
 		{
-			var viewHolder = holder as CrewMemberItemViewHolder;
+			var viewHolder = holder as BackgroundCheckRowHolder;
 
-			var currentCrewMember = _crewMembers[position];
+			var currentBackgroundCheck = _backgroundCheckProfiles[position];
 
 			//Bind our data from our data source to our View References
-			viewHolder.CrewMemberName.Text = currentCrewMember.Name;
-			viewHolder.RankAndPosting.Text = String.Format("{0}\n{1}", currentCrewMember.Rank, currentCrewMember.Posting);
-
-			var photoBitmap = await _imageManager.GetScaledDownBitmapFromResourceAsync(currentCrewMember.PhotoResourceId, 120, 120);
-			viewHolder.CrewMemberPhoto.SetImageBitmap(photoBitmap);
+			viewHolder.ProfileRowName.Text = currentBackgroundCheck.FirstName;
+			viewHolder.ProfileRowBiography.Text = String.Format("{0}", currentBackgroundCheck.Biography);
+			viewHolder.ProfileRowtextfield2.Text = currentBackgroundCheck.LastName;
+			viewHolder.ProfileRowtextfield3.Text = currentBackgroundCheck.dob;
+			viewHolder.ProfileRowtextfield4.Text = currentBackgroundCheck.id;
+			var photoBitmap =
+				await _imageManager.GetScaledDownBitmapFromResourceAsync(currentBackgroundCheck.PhotoResourceId, 120, 120);
+			viewHolder.ProfileRowPhotoView.SetImageBitmap(photoBitmap);
 		}
 
 		//This will fire any event handlers that are registered with our ItemClick
 		//event.
 		private void OnClick(int position)
 		{
-			if(ItemClick != null)
+			if (ItemClick != null)
 			{
 				ItemClick(this, position);
 			}
@@ -79,12 +77,10 @@ namespace TCheck.Droid
 		{
 			base.Dispose(disposing);
 
-			if(_imageManager != null)
+			if (_imageManager != null)
 			{
 				_imageManager.Dispose();
 			}
-
 		}
 	}
 }
-

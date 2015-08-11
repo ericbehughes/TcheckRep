@@ -118,6 +118,10 @@
       <Project>{B5A9BB2A-F84F-4564-B42B-39864048AADD}</Project>
       <Name>TCheck</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\OnFido.API\OnFido.API\OnFido.API.csproj">
+      <Project>{08728E72-9262-470C-97D4-6300D9106C84}</Project>
+      <Name>OnFido.API</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ToDoItem.cs" />
@@ -129,14 +133,9 @@
     <Compile Include="Activities\ExpendListAdapter.cs" />
     <Compile Include="Activities\MyReports.cs" />
     <Compile Include="Activities\AddReviews_Activity.cs" />
-    <Compile Include="Activities\Background_Report.cs" />
-    <Compile Include="Activities\BackgroundCheck.cs" />
-    <Compile Include="Activities\BackgroundCheck_List_Data.cs" />
     <Compile Include="Activities\BackgroundCheckProfile.cs" />
     <Compile Include="Activities\BackgroundCheckRecyclerAdapter.cs" />
-    <Compile Include="Activities\CrewMemberItemViewHolder.cs" />
     <Compile Include="Activities\Feature_PopUp.cs" />
-    <Compile Include="Activities\ImageManager.cs" />
     <Compile Include="Activities\NavigationBar.cs" />
     <Compile Include="Activities\PhotoAlbum.cs" />
     <Compile Include="Activities\Queries_Activity.cs" />
@@ -156,6 +155,12 @@
     <Compile Include="Activities\Purchase_Confirmation.cs" />
     <Compile Include="Activities\Support_PopUp.cs" />
     <Compile Include="Activities\Help_PopUp.cs" />
+    <Compile Include="Activities\BackgroundCheckListDataController.cs" />
+    <Compile Include="Activities\BackgroundCheckBindingModel.cs" />
+    <Compile Include="Activities\BackgroundReportController.cs" />
+    <Compile Include="Activities\BackgroundCheckImageManager.cs" />
+    <Compile Include="Activities\BackgroundCheckRowHolder.cs" />
+    <Compile Include="Activities\JsonInputController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -202,11 +207,9 @@
     <AndroidResource Include="Resources\layout\Accordion_SampleReportNOTUSING.axml" />
     <AndroidResource Include="Resources\layout\BackgroundCheck_Profile.axml" />
     <AndroidResource Include="Resources\layout\BackgroundCheck_ProfileCard.axml" />
-    <AndroidResource Include="Resources\layout\BackgroundCheck_Row.axml" />
     <AndroidResource Include="Resources\layout\Cancel_PopUp.axml" />
     <AndroidResource Include="Resources\layout\Launch.axml" />
     <AndroidResource Include="Resources\layout\Login.axml" />
-    <AndroidResource Include="Resources\layout\My_BackgroundReports.axml" />
     <AndroidResource Include="Resources\layout\Purchase_Confirmation.axml" />
     <AndroidResource Include="Resources\layout\Query_Payment.axml" />
     <AndroidResource Include="Resources\layout\report_row.NOTUSINGaxml" />
@@ -220,6 +223,9 @@
     <AndroidResource Include="Resources\layout\Support_PopUp.axml" />
     <AndroidResource Include="Resources\layout\SignUp_PopUp.axml" />
     <AndroidResource Include="Resources\layout\Help_PopUp.axml" />
+    <AndroidResource Include="Resources\layout\BackgroundCheckRowView.axml" />
+    <AndroidResource Include="Resources\layout\BackgroundReportsListView.axml" />
+    <AndroidResource Include="Resources\layout\InfoInputView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
