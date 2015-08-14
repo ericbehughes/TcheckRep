@@ -13,28 +13,24 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	public class OnHelpEvent : EventArgs{
+	public class OnPurchaseEvent : EventArgs{
 		
-		public OnHelpEvent(): base() {
-			
-
-
-		}
-	}
-	[Activity (Label = "Help_PopUp")]			
-	public class Help_Popup : DialogFragment
+		public OnPurchaseEvent(): base() {} }
+	
+	[Activity (Label = "Support_PopUp")]			
+	public class PurchaseConfirmationController : DialogFragment
 	{
 		private Button mPopUpButton;
-		public event EventHandler<OnHelpEvent> mHelpPopUpEvent;
+		public event EventHandler<OnPurchaseEvent> mPurchaseComplete;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
-			var view = inflater.Inflate (Resource.Layout.Support_PopUp, container, false);
+			var view = inflater.Inflate (Resource.Layout.PurchaseConfirmationView, container, false);
 
 			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
 
-			mPopUpButton.Click += mHelpPopUpEvent_Click; 
+			mPopUpButton.Click += mPurchaseCompletePopUp_Click; 
 
 			return view;
 		}
@@ -45,10 +41,14 @@ namespace TCheck.Droid
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mHelpPopUpEvent_Click(object sender, EventArgs e){
+		void mPurchaseCompletePopUp_Click(object sender, EventArgs e){
 
 			//user has clicked on signup button
+			mPurchaseComplete.Invoke(this, new OnPurchaseEvent());
 			this.Dismiss ();
+
+
+
 		}
 	}
 }

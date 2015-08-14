@@ -1,28 +1,21 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 
 using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using Android.OS;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
 using Android.Support.V4.Widget;
+using System.Collections.Generic;
 
-namespace TCheck.Droid
-{
-	[Activity (Label = "Tenant_Search2",Theme="@style/MyTheme")]			
-	public class Tenant_Search2 : AppCompatActivity
-
-	{
-		private Button mButtonDislike;
-		private Button mButtonLike;
+namespace TCheck.Droid{
+	[Activity (Label = "query_activity",Theme="@style/MyTheme")]			
+	public class PaymentController : AppCompatActivity{
+		private Button mButtonPay;
+		private Button mButtonCancelQuery;
 
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
@@ -33,28 +26,29 @@ namespace TCheck.Droid
 		private ArrayAdapter mRightAdapter;
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
-
-		protected override void OnCreate (Bundle bundle)
-		{
+		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
 
-			SetContentView(Resource.Layout.Tenant_Search2);
+			// Create your application here
+			SetContentView (Resource.Layout.PaymentView);
 
+			mButtonPay = FindViewById<Button> (Resource.Id.buttonPay);
+			mButtonPay.Click += (object sender, EventArgs args) =>{
+				//pull up dialog
+				FragmentTransaction transaction = FragmentManager.BeginTransaction();
+				PurchaseConfirmationController paymentConfirmationPopUp = new PurchaseConfirmationController();
+				paymentConfirmationPopUp.Show(transaction, "purchase confirmation fragment");
+				paymentConfirmationPopUp.mPurchaseComplete += mButtonPay_Click;
+			};
 
-			mButtonDislike = FindViewById<Button>(Resource.Id.buttonDislike);
-			mButtonDislike.Click += mDislikeButton_CLick;
-
-			mButtonLike = FindViewById<Button>(Resource.Id.buttonLike);
-			mButtonLike.Click += mLikeButton_CLick;
-
-			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
-			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
-
-
-			mLeftDrawer.Tag = 0;
-			mRightDrawer.Tag = 1;
+			mButtonCancelQuery = FindViewById<Button> (Resource.Id.buttonCancel);
+			mButtonCancelQuery.Click += (object sender, EventArgs args) => {
+				//pull up dialog
+				FragmentTransaction transaction = FragmentManager.BeginTransaction ();
+				CancelController cancelScreen = new CancelController ();
+				cancelScreen.Show (transaction, "cancel fragment");
+				cancelScreen.mOnCancel += cancelScreen_mOnCancel;
+			};
 
 			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
@@ -129,7 +123,7 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonMyProfile = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonMyProfile);
 				break;
 
@@ -146,18 +140,16 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonFAQ = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonFAQ);
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonSupport = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonSupport);
 				break;
 			}
 		}
-
-
 
 
 		public override bool OnOptionsItemSelected (IMenuItem item){		
@@ -168,8 +160,6 @@ namespace TCheck.Droid
 				//all we need to do is ensure the right drawer is closed so the don't overlap
 				mDrawerLayout.CloseDrawer (mRightDrawer);
 				mDrawerToggle.OnOptionsItemSelected(item);
-
-
 				return true;
 
 			case Resource.Id.toolbar:
@@ -209,6 +199,7 @@ namespace TCheck.Droid
 			base.OnSaveInstanceState (outState);
 		}
 
+
 		protected override void OnPostCreate (Bundle savedInstanceState){
 			base.OnPostCreate (savedInstanceState);
 			mDrawerToggle.SyncState();
@@ -218,21 +209,26 @@ namespace TCheck.Droid
 			base.OnConfigurationChanged (newConfig);
 			mDrawerToggle.OnConfigurationChanged(newConfig);
 		}
-
-
-		void mDislikeButton_CLick (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Tenant_Search3));
+			
+		void mButtonMenuButton_Click (object sender, EventArgs args){
+			Intent intent = new Intent (this, typeof(MainMenuController));
 			this.StartActivity (intent);
 			Finish ();
 		}
 
-		void mLikeButton_CLick (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(Tenant_Search3));
+		void mButtonPay_Click (object sender, OnPurchaseEvent args){
+			Intent intent = new Intent (this, typeof(MainMenuController));
 			this.StartActivity (intent);
 			Finish ();
 		}
+
+
+		void cancelScreen_mOnCancel (object sender, EventArgs e){
+			Intent intent = new Intent (this, typeof(MainMenuController));
+			this.StartActivity (intent);
+		}
+
+
 	}
-
-
 }
 

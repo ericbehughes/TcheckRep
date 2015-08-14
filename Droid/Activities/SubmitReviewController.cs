@@ -13,39 +13,35 @@ using Android.Widget;
 
 namespace TCheck.Droid{
 	[Activity (Label = "review_activity")]			
-	public class Submit_Review_Activity : Activity{
+	public class SubmitReviewController : Activity{
 		private Button mButtonSurvey; // id -> buttonSurvey
 		private Button mButtonHome; //id-> buttonHome
 
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.Submit_Survey);
+			SetContentView (Resource.Layout.SubmitSurveyView);
 
 			mButtonSurvey = FindViewById<Button>(Resource.Id.buttonSurvey);
 			mButtonSurvey.Click += mButtonSurvey_Click;
 
 			mButtonHome = FindViewById<Button>(Resource.Id.buttonHome);
-			mButtonHome.Click += mButtonHome_Click;
+
 
 		}
 
 		void mButtonMenuButton_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Main_Menu_Activity));
+			Intent intent = new Intent (this, typeof(MainMenuController));
 			this.StartActivity (intent);
 			Finish ();
 
 		}
 
 		void mButtonSurvey_Click (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(survey_activity));
+			Intent intent = new Intent (this, typeof(SubmitSurveyController));
 			this.StartActivity (intent);
 		}
 
-		void mButtonHome_Click (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(Main_Menu_Activity));
-			this.StartActivity (intent);
-			Finish ();
-		}
+
 	}
 }
 

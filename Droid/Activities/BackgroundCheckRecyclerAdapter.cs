@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using Android.Content.Res;
 using Android.Support.V7.Widget;
+using OnFido.API.Models;
 using Android.Views;
 
 namespace TCheck.Droid
 {
 	public class BackgroundCheckRecyclerViewAdapter : RecyclerView.Adapter
 	{
-		private readonly List<BackgroundCheckBindingModel> _backgroundCheckProfiles;
+		private readonly List<Applicant> _backgroundCheckProfiles;
 		private readonly BackgroundCheckImageManager _imageManager;
 
-		public BackgroundCheckRecyclerViewAdapter(List<BackgroundCheckBindingModel> backgroundCheckProfiles, Resources resources)
+		public BackgroundCheckRecyclerViewAdapter(List<Applicant> backgroundCheckProfiles, Resources resources)
 		{
 			_backgroundCheckProfiles = backgroundCheckProfiles;
 			_imageManager = new BackgroundCheckImageManager(resources);
@@ -52,13 +53,13 @@ namespace TCheck.Droid
 
 			//Bind our data from our data source to our View References
 			viewHolder.ProfileRowName.Text = currentBackgroundCheck.FirstName;
-			viewHolder.ProfileRowBiography.Text = String.Format("{0}", currentBackgroundCheck.Biography);
+
 			viewHolder.ProfileRowtextfield2.Text = currentBackgroundCheck.LastName;
-			viewHolder.ProfileRowtextfield3.Text = currentBackgroundCheck.dob;
-			viewHolder.ProfileRowtextfield4.Text = currentBackgroundCheck.id;
-			var photoBitmap =
-				await _imageManager.GetScaledDownBitmapFromResourceAsync(currentBackgroundCheck.PhotoResourceId, 120, 120);
-			viewHolder.ProfileRowPhotoView.SetImageBitmap(photoBitmap);
+			viewHolder.ProfileRowtextfield3.Text = currentBackgroundCheck.Gender;
+			viewHolder.ProfileRowtextfield4.Text = currentBackgroundCheck.DateOfBirth;
+			//var photoBitmap =
+			//	await _imageManager.GetScaledDownBitmapFromResourceAsync(currentBackgroundCheck.PhotoResourceId, 120, 120);
+			//viewHolder.ProfileRowPhotoView.SetImageBitmap(photoBitmap);
 		}
 
 		//This will fire any event handlers that are registered with our ItemClick

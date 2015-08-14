@@ -15,14 +15,9 @@ namespace TCheck.Droid
 {
 	public class OnSupportEvent : EventArgs{
 		
-		public OnSupportEvent(): base() {
-			
-
-
-		}
-	}
+		public OnSupportEvent(): base() {} }
 	[Activity (Label = "Support_PopUp")]			
-	public class Support_PopUp : DialogFragment
+	public class SupportPopUpController : DialogFragment
 	{
 		private Button mPopUpButton;
 		public event EventHandler<OnSupportEvent> mSupportPopUpEvent;
@@ -30,7 +25,7 @@ namespace TCheck.Droid
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
-			var view = inflater.Inflate (Resource.Layout.Support_PopUp, container, false);
+			var view = inflater.Inflate (Resource.Layout.SupportPopUpView, container, false);
 
 			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
 

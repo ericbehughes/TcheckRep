@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace TCheck.Droid{
 	[Activity (Label = "Main_Menu_activity",Theme="@style/MyTheme")]
-	public class Main_Menu_Activity : AppCompatActivity{
+	public class MainMenuController : AppCompatActivity{
 
 		private Button mButtonBackgroundCheck; 
 		private Button mButtonMyReview;
@@ -34,7 +34,7 @@ namespace TCheck.Droid{
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
 			//set main_menu xml file in layout directory
-			SetContentView(Resource.Layout.Main_Menu);
+			SetContentView(Resource.Layout.MainMenuView);
 
 			//backgroundcheck button
 			mButtonBackgroundCheck = FindViewById<Button>(Resource.Id.buttonQuery);
@@ -123,7 +123,7 @@ namespace TCheck.Droid{
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonMainMenu = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonMainMenu = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonMainMenu);
 				break;
 		
@@ -141,24 +141,20 @@ namespace TCheck.Droid{
 
 			case 0:
 				FragmentTransaction transaction1 = FragmentManager.BeginTransaction();
-				Help_Popup helpPopUp = new Help_Popup();
+				HelpPopUpController helpPopUp = new HelpPopUpController();
 				helpPopUp.Show(transaction1, "help fragment");
 				helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
 				break;
 
 			case 1:
 				FragmentTransaction transaction2 = FragmentManager.BeginTransaction();
-				Support_PopUp supportPopUp = new Support_PopUp();
+				SupportPopUpController supportPopUp = new SupportPopUpController();
 				supportPopUp.Show(transaction2, "support fragment");
 				supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
 				break;
 			}
 		}
-
-
-
-
-
+			
 		public override bool OnOptionsItemSelected (IMenuItem item){		
 			switch (item.ItemId){
 
@@ -220,7 +216,7 @@ namespace TCheck.Droid{
 
 
 		void mButtonBackgroundCheck_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Query_Payment_Activity));
+			Intent intent = new Intent (this, typeof(JsonInputController));
 			this.StartActivity (intent);
 		}
 
@@ -230,24 +226,24 @@ namespace TCheck.Droid{
 		}
 
 		void mButtonMyReview_Click (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(Main_Menu_Activity));
+			Intent intent = new Intent (this, typeof(MainMenuController));
 			this.StartActivity (intent);
 		}
 
 		void mHelpPopUpButton_Click (object sender, OnHelpEvent e){
-			Intent intent = new Intent (this, typeof(Help_Popup));
+			Intent intent = new Intent (this, typeof(HelpPopUpController));
 			this.StartActivity (intent);
 			Finish (); 
 		}
 
 		void mSupportPopUpButton_Click (object sender, OnSupportEvent e){
-			Intent intent = new Intent (this, typeof(Support_PopUp));
+			Intent intent = new Intent (this, typeof(SupportPopUpController));
 			this.StartActivity (intent);
 			Finish (); 
 		}
 
 		void mButtonTenantSearch_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Tenant_Search));
+			Intent intent = new Intent (this, typeof(TenantSearchController1));
 			this.StartActivity (intent);
 		}
 	

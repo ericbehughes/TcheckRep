@@ -1,48 +1,35 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
+using OnFido.API.Models;
+
 
 
 namespace TCheck.Droid
 {
 	public static class BackgroundCheckListDataController
 	{
-		public static async Task<List<BackgroundCheckBindingModel>> GetAllChecksAsync()
+		public static async Task<List<Applicant>> GetAllChecksAsync()
 		{
 			return await Task.Factory.StartNew(() => GetAllChecks());
 		}
 
-		public static List<BackgroundCheckBindingModel> GetAllChecks()
+		public static List<Applicant> GetAllChecks()
 		{
-			var backgroundCheckList = new List<BackgroundCheckBindingModel>();
+			var backgroundCheckList = new List<Applicant>();
 
 			const int numberOfPermutations = 1;
 			for(int i = 0; i < numberOfPermutations; i++)
 
 			{
-				backgroundCheckList.Add(new BackgroundCheckBindingModel()
+				backgroundCheckList.Add(new Applicant()
 					{
-						id = "87654321",
-						PhotoResourceId = Resource.Drawable.ericAngelList,
-						FirstName = "eric",
-						LastName = "Hughes",
-						dob = "21 august 1992",
-						TenantScore = "tenantScore",
-						Biography = "My name is eric"
+						
+
+
 
 					});
 
-				backgroundCheckList.Add(new BackgroundCheckBindingModel()
-					{
-						id = "87654321",
-						PhotoResourceId = Resource.Drawable.ericAngelList,
-						FirstName = "eric",
-						LastName = "Hughes",
-						dob = "Human",
-						href = "gafsdfgqeadfs",
-						Biography = "gafsdfgqeadfs"
-
-					});
-
+			
 
 
 			}

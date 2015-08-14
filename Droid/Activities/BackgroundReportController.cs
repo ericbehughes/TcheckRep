@@ -10,6 +10,7 @@ using Android.Views;
 using Android.Widget;
 using Orientation = Android.Content.Res.Orientation;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using OnFido.API.Models;
 
 
 
@@ -36,7 +37,7 @@ namespace TCheck.Droid
 		{
 			base.OnCreate(bundle);
 
-			SetContentView(Resource.Layout.BackgroundCheckRowView);
+			SetContentView(Resource.Layout.BackgroundReportsListView);
 
 			_progressDialog = new ProgressDialog(this);
 			_progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
@@ -58,12 +59,12 @@ namespace TCheck.Droid
 			_recyclerView.SetLayoutManager(_layoutManager);
 
 			//Get our crew member data. This could be a web service.
-			SharedData.BackgroundCheckManifest = await BackgroundCheckListDataController.GetAllChecksAsync();
+			SharedData.ApplicantModel = await BackgroundCheckListDataController.GetAllChecksAsync();
 
 			//Create the adapter for the RecyclerView with our crew data, and set
 			//the adapter. Also, wire an event handler for when the user taps on each
 			//individual item.
-			_backgroundCheckListAdapter = new BackgroundCheckRecyclerViewAdapter(SharedData.BackgroundCheckManifest, Resources);
+			_backgroundCheckListAdapter = new BackgroundCheckRecyclerViewAdapter(SharedData.ApplicantModel, Resources);
 			_backgroundCheckListAdapter.ItemClick += OnItemClick;
 			_recyclerView.SetAdapter(_backgroundCheckListAdapter);
 
@@ -145,7 +146,7 @@ namespace TCheck.Droid
 			switch (e.Position)
 			{
 			case 0:
-				var mDrawerButtonMyProfile = new Intent(this, typeof (Main_Menu_Activity));
+				var mDrawerButtonMyProfile = new Intent(this, typeof (MainMenuController));
 				StartActivity(mDrawerButtonMyProfile);
 				break;
 
@@ -161,12 +162,12 @@ namespace TCheck.Droid
 			switch (e.Position)
 			{
 			case 0:
-				var mDrawerButtonFAQ = new Intent(this, typeof (Main_Menu_Activity));
+				var mDrawerButtonFAQ = new Intent(this, typeof (MainMenuController));
 				StartActivity(mDrawerButtonFAQ);
 				break;
 
 			case 1:
-				var mDrawerButtonSupport = new Intent(this, typeof (Main_Menu_Activity));
+				var mDrawerButtonSupport = new Intent(this, typeof (MainMenuController));
 				StartActivity(mDrawerButtonSupport);
 				break;
 			}
@@ -244,16 +245,16 @@ namespace TCheck.Droid
 
 		private void OnItemClick(object sender, int position)
 		{
-			var crewProfileIntent = new Intent(this, typeof (BackgroundCheckProfileActivity));
-			crewProfileIntent.PutExtra("index", position);
-			crewProfileIntent.PutExtra("imageResourceId", SharedData.BackgroundCheckManifest[position].PhotoResourceId);
+			var backgroundCheckIntent = new Intent(this, typeof (BackgroundCheckProfileActivity));
+			//backgroundCheckIntent.PutExtra("index", position);
+			//backgroundCheckIntent.PutExtra("imageResourceId", SharedData.ApplicantModel[position].Id);
 
-			StartActivity(crewProfileIntent);
+			StartActivity(backgroundCheckIntent);
 		}
 	}
 
 	internal static class SharedData
 	{
-		public static List<BackgroundCheckBindingModel> BackgroundCheckManifest { get; set; }
+		public static List<OnFido.API.Models.Applicant> ApplicantModel { get; set; }
 	}
 }

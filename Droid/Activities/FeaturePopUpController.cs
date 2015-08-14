@@ -13,28 +13,23 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	public class OnPurchaseEvent : EventArgs{
-		
-		public OnPurchaseEvent(): base() {
-			
+	public class OnIncludeFeaturePopUp : EventArgs{
+		public OnIncludeFeaturePopUp(): base() {} }
 
-
-		}
-	}
 	[Activity (Label = "Support_PopUp")]			
-	public class Purchase_Confirmation : DialogFragment
+	public class FeaturePopUpController : DialogFragment
 	{
 		private Button mPopUpButton;
-		public event EventHandler<OnPurchaseEvent> mPurchaseComplete;
+		public event EventHandler<OnIncludeFeaturePopUp> mFeatureSurveyComplete;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
-			var view = inflater.Inflate (Resource.Layout.Purchase_Confirmation, container, false);
+			var view = inflater.Inflate (Resource.Layout.IncludeFeatureView, container, false);
 
 			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
 
-			mPopUpButton.Click += mPurchaseCompletePopUp_Click; 
+			mPopUpButton.Click += mFeatureSurveyPopUp_Click; 
 
 			return view;
 		}
@@ -45,10 +40,10 @@ namespace TCheck.Droid
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mPurchaseCompletePopUp_Click(object sender, EventArgs e){
+		void mFeatureSurveyPopUp_Click(object sender, EventArgs e){
 
 			//user has clicked on signup button
-			mPurchaseComplete.Invoke(this, new OnPurchaseEvent());
+			mFeatureSurveyComplete.Invoke(this, new OnIncludeFeaturePopUp());
 			this.Dismiss ();
 
 

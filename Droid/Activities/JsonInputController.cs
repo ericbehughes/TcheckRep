@@ -12,6 +12,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using OnFido.API.Models;
+using Newtonsoft.Json;
 
 
 
@@ -21,52 +22,66 @@ namespace TCheck.Droid
 	[Activity (Label = "JsonInputController")]			
 	public class JsonInputController : Activity
 	{
-		private Button _submitQueryInfo;
+		private Button _SubmitQueryInfo;
+		private EditText _FirstName;
+		private EditText _LastName;
+		private EditText _Gender;
+		private EditText _DateOfBirth;
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 			SetContentView(Resource.Layout.InfoInputView);
 			// Create your application here
-			_submitQueryInfo = FindViewById<Button>(Resource.Id.btnSubmit);
-			_submitQueryInfo.Click += async (sender, e) => {
-				//var firstName = FindViewById<EditText> (Resource.Id.txtFirstName).Text;
-				//var lastName = FindViewById<EditText> (Resource.Id.txtLastName).Text;
-				//var gender = FindViewById<EditText> (Resource.Id.txtGender).Text;
-				//var dateOfBirth = FindViewById<EditText> (Resource.Id.txtDateOfBirth).Text;
+			_FirstName = FindViewById<EditText>(Resource.Id.txtFirstName);
+			_LastName = FindViewById<EditText>(Resource.Id.txtLastName);
+			_Gender = FindViewById<EditText>(Resource.Id.txtGender);
+			_DateOfBirth = FindViewById<EditText>(Resource.Id.txtDateOfBirth);
+			_SubmitQueryInfo = FindViewById<Button>(Resource.Id.btnSubmit);
+			_SubmitQueryInfo.Click += async (sender, e) => {
 
+				var model = new Applicant {
 
-				var model = new AccountBindingModel {
-
-					FirstName = "eric",
-					LastName = "hughes",
-					//Gender = "male",
-					//DateOfBirth = "1992-08-21",
+					//FirstName = Guid.NewGuid().ToString(),
+					FirstName = _FirstName.Text,
+					LastName = _LastName.Text,
+					Gender = _Gender.Text,
+					DateOfBirth = _DateOfBirth.Text,
+					//LastName = Guid.NewGuid().ToString()
 				};
 
 				try {
 					// authenticate
 
-					await OnFido.API.OnFidoService.Query (model);
+					// create new applicant (applicant is returned with ID)
 
+					var applicant = await OnFido.API.OnFidoService.CreateApplicant(model);
+					applicant = await OnFido.API.OnFidoService.GetApplicantById(applicant.Id);
+					FindViewById<TextView>(Resource.Id.textView1).Text = applicant.FirstName;
+					FindViewById<TextView>(Resource.Id.textView2).Text = applicant.LastName;
+					FindViewById<TextView>(Resource.Id.textView3).Text = applicant.Gender;
+					FindViewById<TextView>(Resource.Id.textView4).Text = applicant.DateOfBirth;
 
+					var applicantIntentInfo = new Intent(this, typeof (BackgroundCheckProfileActivity));
+					this.StartActivity(applicantIntentInfo);
+					//applicantIntentInfo.PutExtra(applicant.FirstName);
+					//applicantIntentInfo.PutExtra(applicant.LastName);
+					//applicantIntentInfo.PutExtra(applicant.Gender);
+					//applicantIntentInfo.PutExtra(applicant.DateOfBirth);
+
+					// get applicant info
 				} catch (Exception) {
 					throw;
 				}
 			};
 
 
+
 		}
 
-		private void ParseAndDisplay (AccountBindingModel model)
+		private void ParseAndDisplay (Applicant model)
 		{
 			// Get the weather reporting fields from the layout resource: 
-			TextView FirstName = FindViewById<TextView>(Resource.Id.textView1);
-			TextView LastName = FindViewById<TextView>(Resource.Id.textView2);
-			TextView Gender = FindViewById<TextView>(Resource.Id.textView3);
-			TextView DateOfBirth = FindViewById<TextView>(Resource.Id.textView4);
-
-			FirstName.Text = model.FirstName;
-			LastName.Text = model.LastName;
+	
 			//Gender.Text = model.Gender;
 			//DateOfBirth.Text = model.DateOfBirth;
 		}

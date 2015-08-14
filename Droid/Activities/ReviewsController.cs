@@ -14,17 +14,13 @@ using System.Collections.Generic;
 
 namespace TCheck.Droid{
 	[Activity (Label = "my_reviews_activity",Theme="@style/MyTheme")]			
-	public class My_Reviews_Activity : AppCompatActivity{
-		//private Button mButtonReviewPerson;
-		//private Button mButtonNewReview;
-		//private  string[] items;
-
+	public class ReviewsController : AppCompatActivity{
+		
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
 		private DrawerLayout mDrawerLayout;
 		private ListView mLeftDrawer;
 		private ListView mRightDrawer;
-		//private ArrayAdapter mListAdapter;
 		private ArrayAdapter mLeftAdapter;
 		private ArrayAdapter mRightAdapter;
 		private List<string> mLeftDataSet;
@@ -33,14 +29,6 @@ namespace TCheck.Droid{
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.BackgroundReportsListView);
-
-			//items = new string[] { "Vegetables","Fruits","Flower Buds","Legumes","Bulbs","Tubers" };
-			//mListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, items);
-
-
-
-
-
 
 			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
@@ -114,7 +102,7 @@ namespace TCheck.Droid{
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonMyProfile = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonMyProfile);
 				break;
 
@@ -131,12 +119,12 @@ namespace TCheck.Droid{
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonFAQ = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonFAQ);
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonSupport = new Intent (this, typeof(SupportPopUpController));
 				this.StartActivity (mDrawerButtonSupport);
 				break;
 			}
@@ -202,13 +190,13 @@ namespace TCheck.Droid{
 		}
 
 		void mButtonReviewPerson_Click (object sender, EventArgs args){	
-			Intent intent = new Intent (this, typeof(My_Reviews_Activity));
+			Intent intent = new Intent (this, typeof(SubmitReviewController));
 			this.StartActivity (intent);
 			Finish ();
 		}
 
 		void mButtonNewReview_Click (object sender, EventArgs args){	
-			Intent intent = new Intent (this, typeof(Submit_Review_Activity));
+			Intent intent = new Intent (this, typeof(SubmitReviewController));
 			this.StartActivity (intent);
 			Finish ();
 		}

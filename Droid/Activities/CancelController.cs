@@ -14,7 +14,7 @@ namespace TCheck.Droid{
 		public OnCancelEvent(){}
 	}
 	
-	class Cancel_Activity : DialogFragment{
+	class CancelController : DialogFragment{
 		private Button mYesCancelButton;
 		private Button mNoCancelButton;
 
@@ -23,7 +23,7 @@ namespace TCheck.Droid{
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			
 			base.OnCreateView (inflater, container, savedInstanceState);
-			var view = inflater.Inflate (Resource.Layout.Cancel_PopUp, container, false);
+			var view = inflater.Inflate (Resource.Layout.CancelPopUpView, container, false);
 
 			mYesCancelButton = view.FindViewById<Button> (Resource.Id.buttonYesCancel);
 			mYesCancelButton.Click += mYesCancelButton_Click; 

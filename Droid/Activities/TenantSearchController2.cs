@@ -17,8 +17,8 @@ using Android.Support.V4.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "Tenant_Search",Theme="@style/MyTheme")]			
-	public class Tenant_Search : AppCompatActivity
+	[Activity (Label = "TenantSearchController2",Theme="@style/MyTheme")]			
+	public class TenantSearchController2 : AppCompatActivity
 
 	{
 		private Button mButtonDislike;
@@ -38,7 +38,7 @@ namespace TCheck.Droid
 		{
 			base.OnCreate (bundle);
 
-			SetContentView(Resource.Layout.Tenant_Search);
+			SetContentView(Resource.Layout.TenantSearchView2);
 
 
 			mButtonDislike = FindViewById<Button>(Resource.Id.buttonDislike);
@@ -46,6 +46,15 @@ namespace TCheck.Droid
 
 			mButtonLike = FindViewById<Button>(Resource.Id.buttonLike);
 			mButtonLike.Click += mLikeButton_CLick;
+
+			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
+			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
+
+
+			mLeftDrawer.Tag = 0;
+			mRightDrawer.Tag = 1;
 
 			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
@@ -120,7 +129,7 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonMyProfile = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonMyProfile);
 				break;
 
@@ -137,18 +146,16 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonFAQ = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonFAQ);
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(Main_Menu_Activity));
+				Intent mDrawerButtonSupport = new Intent (this, typeof(SupportPopUpController));
 				this.StartActivity (mDrawerButtonSupport);
 				break;
 			}
 		}
-
-
 
 
 
@@ -214,13 +221,13 @@ namespace TCheck.Droid
 
 
 		void mDislikeButton_CLick (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(Tenant_Search2));
+			Intent intent = new Intent (this, typeof(TenantSearchController3));
 			this.StartActivity (intent);
 			Finish ();
 		}
 
 		void mLikeButton_CLick (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(Tenant_Search2));
+			Intent intent = new Intent (this, typeof(TenantSearchController3));
 			this.StartActivity (intent);
 			Finish ();
 		}
