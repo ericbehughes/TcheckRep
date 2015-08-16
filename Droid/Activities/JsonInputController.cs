@@ -61,12 +61,8 @@ namespace TCheck.Droid
 					FindViewById<TextView>(Resource.Id.textView3).Text = applicant.Gender;
 					FindViewById<TextView>(Resource.Id.textView4).Text = applicant.DateOfBirth;
 
-					var applicantIntentInfo = new Intent(this, typeof (ReportController));
+					var applicantIntentInfo = new Intent(this, typeof (ReportMainController));
 					this.StartActivity(applicantIntentInfo);
-					//applicantIntentInfo.PutExtra(applicant.FirstName);
-					//applicantIntentInfo.PutExtra(applicant.LastName);
-					//applicantIntentInfo.PutExtra(applicant.Gender);
-					//applicantIntentInfo.PutExtra(applicant.DateOfBirth);
 
 					// get applicant info
 				} catch (Exception) {
