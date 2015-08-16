@@ -1,28 +1,24 @@
 ﻿
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V7.Widget;
+using Android.Content;
 using Android.Support.V7.App;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V4.Widget;
+using Android.Widget;
+using Android.Views;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "TenantSearchController2",Theme="@style/MyTheme")]			
-	public class TenantSearchController2 : AppCompatActivity
-
+	[Activity(Label = "ReportMainController",Theme="@style/MyTheme")]
+	public class ReportMainController : AppCompatActivity
 	{
-		private Button mButtonDislike;
-		private Button mButtonLike;
+		private RecyclerView _recyclerView;
+		private RecyclerView.LayoutManager _layoutManager;
+		private ReportViewAdapter _adapter;
+		private ProgressDialog _progressDialog;
 
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
@@ -34,27 +30,44 @@ namespace TCheck.Droid
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
 
-		protected override void OnCreate (Bundle bundle)
+	
+
+		protected override async void OnCreate(Bundle bundle)
 		{
-			base.OnCreate (bundle);
+			base.OnCreate(bundle);
 
-			SetContentView(Resource.Layout.TenantSearchView2);
+			SetContentView(Resource.Layout.ReportListView);
 
+			_progressDialog = new ProgressDialog(this);
+			_progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+			_progressDialog.SetMessage("Loading  . . .");
+			_progressDialog.Show();
 
-			mButtonDislike = FindViewById<Button>(Resource.Id.buttonDislike);
-			mButtonDislike.Click += mDislikeButton_CLick;
+			//If the device is portrait, then show the RecyclerView in a vertical list,
+			//else show it in horizontal list.
+			_layoutManager = Resources.Configuration.Orientation == Android.Content.Res.Orientation.Portrait 
+				? new LinearLayoutManager(this, LinearLayoutManager.Vertical, false) 
+				: new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
 
-			mButtonLike = FindViewById<Button>(Resource.Id.buttonLike);
-			mButtonLike.Click += mLikeButton_CLick;
+			//Experiement with a GridLayoutManger! You can create some cool looking UI!
+			//This create a gridview with 2 rows that scrolls horizontally.
+			//            _layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.Horizontal, false);
 
-			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
-			mRightDrawer = FindViewById<ListView>(Resource.Id.right_drawer);
+			//Create a reference to our RecyclerView and set the layout manager;
+			_recyclerView = FindViewById<RecyclerView>(Resource.Id.reportRecyclerListView);
+			_recyclerView.SetLayoutManager(_layoutManager);
 
+			//Get our crew member data. This could be a web service.
+			SharedData.ReportManifest = await ReportListController.GetAllReportsAsync();
 
-			mLeftDrawer.Tag = 0;
-			mRightDrawer.Tag = 1;
+			//Create the adapter for the RecyclerView with our crew data, and set
+			//the adapter. Also, wire an event handler for when the user taps on each
+			//individual item.
+			_adapter = new ReportViewAdapter(SharedData.ReportManifest, this.Resources);
+			_adapter.ItemClick += OnItemClick;
+			_recyclerView.SetAdapter(_adapter);
+
+			_progressDialog.Dismiss();
 
 			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
@@ -107,6 +120,7 @@ namespace TCheck.Droid
 			mDrawerToggle.SyncState();
 
 
+
 			if (bundle != null){
 				if (bundle.GetString("DrawerState") == "Opened"){
 					SupportActionBar.SetTitle(Resource.String.openDrawer);
@@ -121,6 +135,7 @@ namespace TCheck.Droid
 				//This is the first the time the activity is ran
 				SupportActionBar.SetTitle(Resource.String.closeDrawer);
 			}
+
 		}
 
 		void mLeftDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
@@ -129,8 +144,8 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(MainMenuController));
-				this.StartActivity (mDrawerButtonMyProfile);
+				Intent mDrawerButtonMainMenu = new Intent (this, typeof(MainMenuController));
+				this.StartActivity (mDrawerButtonMainMenu);
 				break;
 
 			case 1:
@@ -146,19 +161,20 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(MainMenuController));
-				this.StartActivity (mDrawerButtonFAQ);
+				FragmentTransaction transaction1 = FragmentManager.BeginTransaction();
+				HelpPopUpController helpPopUp = new HelpPopUpController();
+				helpPopUp.Show(transaction1, "help fragment");
+				helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(SupportPopUpController));
-				this.StartActivity (mDrawerButtonSupport);
+				FragmentTransaction transaction2 = FragmentManager.BeginTransaction();
+				SupportPopUpController supportPopUp = new SupportPopUpController();
+				supportPopUp.Show(transaction2, "support fragment");
+				supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
 				break;
 			}
 		}
-
-
-
 
 		public override bool OnOptionsItemSelected (IMenuItem item){		
 			switch (item.ItemId){
@@ -193,7 +209,7 @@ namespace TCheck.Droid
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu){
-			MenuInflater.Inflate (Resource.Menu.main_action_bar, menu);
+			MenuInflater.Inflate (Resource.Menu.MainActionBar, menu);
 			return base.OnCreateOptionsMenu (menu);
 		}
 
@@ -209,9 +225,19 @@ namespace TCheck.Droid
 			base.OnSaveInstanceState (outState);
 		}
 
-		protected override void OnPostCreate (Bundle savedInstanceState){
+		/*protected override void OnPostCreate (Bundle savedInstanceState){
 			base.OnPostCreate (savedInstanceState);
 			mDrawerToggle.SyncState();
+		}
+*/
+
+		private void OnItemClick (object sender, int position)
+		{
+			var crewProfileIntent = new Intent(this, typeof(ReportController));
+			crewProfileIntent.PutExtra("index", position);
+			crewProfileIntent.PutExtra("imageResourceId", SharedData.ReportManifest[position].ProfileReportPhoto);
+
+			StartActivity(crewProfileIntent);
 		}
 
 		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig){
@@ -219,20 +245,23 @@ namespace TCheck.Droid
 			mDrawerToggle.OnConfigurationChanged(newConfig);
 		}
 
-
-		void mDislikeButton_CLick (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(TenantSearchController3));
+		void mHelpPopUpButton_Click (object sender, OnHelpEvent e){
+			Intent intent = new Intent (this, typeof(HelpPopUpController));
 			this.StartActivity (intent);
-			Finish ();
+			Finish (); 
 		}
 
-		void mLikeButton_CLick (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(TenantSearchController3));
+		void mSupportPopUpButton_Click (object sender, OnSupportEvent e){
+			Intent intent = new Intent (this, typeof(SupportPopUpController));
 			this.StartActivity (intent);
-			Finish ();
+			Finish (); 
 		}
 	}
 
-
+	internal static class SharedData
+	{
+		public static List<Report> ReportManifest { get; set;}
+	}
 }
+
 

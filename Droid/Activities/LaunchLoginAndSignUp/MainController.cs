@@ -9,7 +9,7 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 
 
 namespace TCheck.Droid{
-	[Activity (Label = "RentProof", MainLauncher = true, Icon = "@drawable/rent_proof_icon" )]
+	[Activity (Label = "RentProof", MainLauncher = true, Icon = "@drawable/iconRentProof" )]
 	public class MainActivity : Activity{
 
 		private Button _BtnSignUp; 
@@ -22,10 +22,10 @@ namespace TCheck.Droid{
 			// sets screen to Launch.axml
 			SetContentView (Resource.Layout.AppLaunchView);
 			//sign in button find view with event handler underneath
-			_BtnSignIn = FindViewById<Button>(Resource.Id.buttonSignIn);
+			_BtnSignIn = FindViewById<Button>(Resource.Id.btnAppLaunchSignIn);
 			_BtnSignIn.Click += SignInComplete_Click;
 			//sign up button find view with event handler underneath
-			_BtnSignUp = FindViewById<Button>(Resource.Id.buttonSignUp);
+			_BtnSignUp = FindViewById<Button>(Resource.Id.btnAppLaunchSignUp);
 			_BtnSignUp.Click += SignUpComplete_Click;
 		}
 

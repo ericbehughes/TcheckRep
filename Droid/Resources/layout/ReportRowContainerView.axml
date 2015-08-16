@@ -14,52 +14,53 @@
         android:minHeight="25px"
         android:paddingBottom="4dp">
         <ImageView
-            android:id="@+id/profilePhotoView"
+            android:id="@+id/imgReportRowViewPicture"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="false"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:src="@drawable/picEric" />
         <TextView
-            android:id="@+id/profileName"
-            android:layout_toRightOf="@id/profilePhotoView"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp" />
-        <TextView
-            android:id="@+id/profileBiography"
-            android:layout_toRightOf="@id/profilePhotoView"
-            android:layout_below="@id/profileName"
-            android:text=""
+            android:id="@+id/txtReportRowViewID"
+            android:layout_toRightOf="@id/imgReportRowViewPicture"
+            android:text="ID"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp" />
         <TextView
-            android:id="@+id/profileTextField2"
-            android:layout_toRightOf="@id/profilePhotoView"
-            android:layout_below="@id/profileBiography"
-            android:text=""
+            android:id="@+id/txtReportRowViewFirstName"
+            android:layout_toRightOf="@+id/imgReportRowViewPicture"
+            android:layout_below="@+id/txtReportRowViewID"
+            android:text="FirstName"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp" />
         <TextView
-            android:id="@+id/profileTextField3"
-            android:layout_toRightOf="@id/profilePhotoView"
-            android:layout_below="@id/profileTextField2"
-            android:text=""
+            android:id="@+id/txtReportRowViewLastName"
+            android:layout_toRightOf="@id/imgReportRowViewPicture"
+            android:layout_below="@+id/txtReportRowViewFirstName"
+            android:text="LastName"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp" />
         <TextView
-            android:id="@+id/profileTextField4"
-            android:layout_toRightOf="@id/profilePhotoView"
-            android:layout_below="@id/profileTextField3"
-            android:text=""
+            android:id="@+id/txtReportRowViewGender"
+            android:layout_toRightOf="@+id/imgReportRowViewPicture"
+            android:layout_below="@+id/txtReportRowViewLastName"
+            android:text="Gender"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportRowViewDateOfBirth"
+            android:layout_toRightOf="@+id/imgReportRowViewPicture"
+            android:layout_below="@+id/txtReportRowViewGender"
+            android:text="Date Of Birth"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

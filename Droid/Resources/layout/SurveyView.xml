@@ -27,7 +27,7 @@
             android:layout_width="190dp"
             android:layout_height="150dp"
             android:background="#ff2f2626"
-            android:src="@drawable/governmentId" />
+            android:src="@drawable/govmntID2" />
         <ImageView
             android:id="@+id/imgLease"
             android:scaleType="fitXY"
@@ -35,7 +35,7 @@
             android:layout_height="150dp"
             android:background="#ff2f2626"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/lease190x150" />
+            android:src="@drawable/picLease" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -159,7 +159,7 @@
                 android:height="70dp"
                 android:width="195dp"
                 android:paddingTop="2dp"
-                android:background="@drawable/ButtonSignUpStyle"
+                android:background="@drawable/btnSignUpStyling"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />

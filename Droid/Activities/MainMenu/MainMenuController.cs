@@ -1,29 +1,24 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 
 using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using Android.OS;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V7.App;
 using Android.Support.V4.Widget;
+using System.Collections.Generic;
 
-namespace TCheck.Droid
-{
-	[Activity (Label = "Tenant_Search",Theme="@style/MyTheme")]			
-	public class TenantSearchController3 : AppCompatActivity
+namespace TCheck.Droid{
+	[Activity (Label = "Main_Menu_activity",Theme="@style/MyTheme")]
+	public class MainMenuController : AppCompatActivity{
 
-	{
-		private Button mButtonDislike;
-		private Button mButtonLike;
-
+		private Button mButtonBackgroundCheck; 
+		private Button mButtonMyReview;
+		private Button mButtonMyReports;
+		private Button mButtonTenantSearch;
 
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
@@ -35,31 +30,24 @@ namespace TCheck.Droid
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
 
-		protected override void OnCreate (Bundle bundle)
-		{
+
+		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
+			//set main_menu xml file in layout directory
+			SetContentView(Resource.Layout.MainMenuView);
 
-			SetContentView(Resource.Layout.TenantSearchView3);
+			//backgroundcheck button
+			mButtonBackgroundCheck = FindViewById<Button>(Resource.Id.buttonQuery);
+			mButtonBackgroundCheck.Click += mButtonBackgroundCheck_Click;
 
+			mButtonMyReview = FindViewById<Button>(Resource.Id.buttonMyReviews);
+			mButtonMyReview.Click += mButtonMyReview_Click;
 
-			mButtonDislike = FindViewById<Button>(Resource.Id.buttonDislike);
-			mButtonDislike.Click += (object sender, EventArgs args) =>{
-				//pull up dialog
-				FragmentTransaction transaction = FragmentManager.BeginTransaction();
-				FeaturePopUpController featurePopUp = new FeaturePopUpController();
-				featurePopUp.Show(transaction, "do you like fragment");
-				featurePopUp.mFeatureSurveyComplete += mFeaturePopUpButton_Click;
-			};
+			mButtonMyReports = FindViewById<Button>(Resource.Id.buttonMyReports);
+			mButtonMyReports.Click += mButtonMyReports_Click;
 
-			mButtonLike = FindViewById<Button>(Resource.Id.buttonLike);
-			mButtonLike.Click += (object sender, EventArgs args) =>{
-				//pull up dialog
-				FragmentTransaction transaction = FragmentManager.BeginTransaction();
-				FeaturePopUpController featurePopUp = new FeaturePopUpController();
-				featurePopUp.Show(transaction, "do you like fragment");
-				featurePopUp.mFeatureSurveyComplete += mFeaturePopUpButton_Click;
-			};
-
+			mButtonTenantSearch = FindViewById<Button>(Resource.Id.buttonTenantSearch);
+			mButtonTenantSearch.Click += mButtonTenantSearch_Click;
 			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -111,6 +99,7 @@ namespace TCheck.Droid
 			mDrawerToggle.SyncState();
 
 
+
 			if (bundle != null){
 				if (bundle.GetString("DrawerState") == "Opened"){
 					SupportActionBar.SetTitle(Resource.String.openDrawer);
@@ -127,20 +116,21 @@ namespace TCheck.Droid
 			}
 		}
 
+
 		void mLeftDrawer_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
 		{
-
+			
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(MainMenuController));
-				this.StartActivity (mDrawerButtonMyProfile);
+				Intent mDrawerButtonMainMenu = new Intent (this, typeof(MainMenuController));
+				this.StartActivity (mDrawerButtonMainMenu);
 				break;
-
+		
 			case 1:
 				Intent mLogout = new Intent (this, typeof(MainActivity));
 				this.StartActivity (mLogout);
-				break;
+			break;
 			}
 		}
 
@@ -150,19 +140,21 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(HelpPopUpController));
-				this.StartActivity (mDrawerButtonFAQ);
+				FragmentTransaction transaction1 = FragmentManager.BeginTransaction();
+				HelpPopUpController helpPopUp = new HelpPopUpController();
+				helpPopUp.Show(transaction1, "help fragment");
+				helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(SupportPopUpController));
-				this.StartActivity (mDrawerButtonSupport);
+				FragmentTransaction transaction2 = FragmentManager.BeginTransaction();
+				SupportPopUpController supportPopUp = new SupportPopUpController();
+				supportPopUp.Show(transaction2, "support fragment");
+				supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
 				break;
 			}
 		}
-
-
-
+			
 		public override bool OnOptionsItemSelected (IMenuItem item){		
 			switch (item.ItemId){
 
@@ -196,7 +188,7 @@ namespace TCheck.Droid
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu){
-			MenuInflater.Inflate (Resource.Menu.main_action_bar, menu);
+			MenuInflater.Inflate (Resource.Menu.MainActionBar, menu);
 			return base.OnCreateOptionsMenu (menu);
 		}
 
@@ -212,10 +204,7 @@ namespace TCheck.Droid
 			base.OnSaveInstanceState (outState);
 		}
 
-		protected override void OnPostCreate (Bundle savedInstanceState){
-			base.OnPostCreate (savedInstanceState);
-			mDrawerToggle.SyncState();
-		}
+	
 
 		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig){
 			base.OnConfigurationChanged (newConfig);
@@ -223,13 +212,43 @@ namespace TCheck.Droid
 		}
 
 
-		void mFeaturePopUpButton_Click (object sender, OnIncludeFeaturePopUp e){
-			Intent intent = new Intent (this, typeof(TenantSearchController1));
+		void mButtonBackgroundCheck_Click (object sender, EventArgs args){
+			Intent intent = new Intent (this, typeof(JsonInputController));
+			this.StartActivity (intent);
+		}
+
+		void mButtonMyReports_Click (object sender, EventArgs args){
+			Intent intent = new Intent (this, typeof(ReportMainController));
+			this.StartActivity (intent);
+		}
+
+		void mButtonMyReview_Click (object sender, EventArgs e){
+			Intent intent = new Intent (this, typeof(MainMenuController));
+			this.StartActivity (intent);
+		}
+
+		void mHelpPopUpButton_Click (object sender, OnHelpEvent e){
+			Intent intent = new Intent (this, typeof(HelpPopUpController));
 			this.StartActivity (intent);
 			Finish (); 
 		}
+
+		void mSupportPopUpButton_Click (object sender, OnSupportEvent e){
+			Intent intent = new Intent (this, typeof(SupportPopUpController));
+			this.StartActivity (intent);
+			Finish (); 
+		}
+
+		void mButtonTenantSearch_Click (object sender, EventArgs args){
+			Intent intent = new Intent (this, typeof(TenantSearchController1));
+			this.StartActivity (intent);
+		}
+	
 	}
-
-
 }
+
+
+
+
+
 

@@ -6,36 +6,15 @@ using Android.Graphics;
 
 namespace TCheck.Droid
 {
-	public class BackgroundCheckImageManager : IDisposable
+	public class ImageManager : IDisposable
 	{
 		private readonly Dictionary<int, Bitmap> _imageCache = new Dictionary<int, Bitmap>();
-		private readonly Resources _resources;
+		private Resources _resources;
 
-		public BackgroundCheckImageManager(Resources resources)
+		public ImageManager(Resources resources)
 		{
 			_resources = resources;
 		}
-
-		#region IDisposable implementation
-
-		public void Dispose()
-		{
-			if (_imageCache == null)
-				return;
-
-			foreach (var key in _imageCache.Keys)
-			{
-				Bitmap bitmap;
-				if (_imageCache.TryGetValue(key, out bitmap))
-				{
-					Console.WriteLine("Recycling bitmap {0} . . .", key);
-					bitmap.Recycle();
-				}
-			}
-			_imageCache.Clear();
-		}
-
-		#endregion
 
 		private Task<BitmapFactory.Options> GetBitmapOptionsOfImageAsync(int resourceId)
 		{
@@ -49,7 +28,7 @@ namespace TCheck.Droid
 				InJustDecodeBounds = true
 			};
 
-			var result = BitmapFactory.DecodeResource(_resources, resourceId, options);
+			//var result = BitmapFactory.DecodeResource(_resources, resourceId, options);
 
 			return options;
 		}
@@ -58,30 +37,29 @@ namespace TCheck.Droid
 		{
 			float height = options.OutHeight;
 			float width = options.OutWidth;
-			var inSampleSize = 1D;
+			double inSampleSize = 1D;
 
 			if (height > reqHeight || width > reqWidth)
 			{
-				var halfHeight = (int) (height/2);
-				var halfWidth = (int) (width/2);
+				int halfHeight = (int)(height / 2);
+				int halfWidth = (int)(width / 2);
 
-				while ((halfHeight/inSampleSize) > reqHeight && (halfWidth/inSampleSize) > reqWidth)
+				while ((halfHeight / inSampleSize) > reqHeight && (halfWidth / inSampleSize) > reqWidth)
 				{
 					inSampleSize *= 2;
 				}
+
 			}
 
-			return (int) inSampleSize;
+			return (int)inSampleSize;
 		}
 
-		private Task<Bitmap> LoadScaledDownBitmapForDisplayAsync(BitmapFactory.Options options, int resourceId,
-			int reqWidth, int reqHeight)
+		private Task<Bitmap> LoadScaledDownBitmapForDisplayAsync(BitmapFactory.Options options, int resourceId, int reqWidth, int reqHeight)
 		{
 			return Task.Run(() => LoadScaledDownBitmapForDisplay(options, resourceId, reqWidth, reqHeight));
 		}
 
-		private Bitmap LoadScaledDownBitmapForDisplay(BitmapFactory.Options options, int resourceId, int reqWidth,
-			int reqHeight)
+		private Bitmap LoadScaledDownBitmapForDisplay(BitmapFactory.Options options, int resourceId, int reqWidth, int reqHeight)
 		{
 			options.InSampleSize = CalculateInSampleSize(options, reqWidth, reqHeight);
 			options.InJustDecodeBounds = false;
@@ -94,12 +72,13 @@ namespace TCheck.Droid
 		public Task<Bitmap> GetScaledDownBitmapFromResourceAsync(int resourceId, int requiredWidth, int requiredHeight)
 		{
 			return Task.Run(() => GetScaledDownBitmapFromResource(resourceId, requiredWidth, requiredHeight));
+
 		}
 
 		public Bitmap GetScaledDownBitmapFromResource(int resourceId, int requiredWidth, int requiredHeight)
 		{
 			Bitmap bitmap;
-			if (_imageCache.TryGetValue(resourceId, out bitmap))
+			if(_imageCache.TryGetValue(resourceId, out bitmap))
 			{
 				return bitmap;
 			}
@@ -111,5 +90,27 @@ namespace TCheck.Droid
 
 			return bitmap;
 		}
+
+		#region IDisposable implementation
+
+		public void Dispose()
+		{
+			if(_imageCache == null)
+				return;
+
+			foreach(var key in _imageCache.Keys)
+			{
+				Bitmap bitmap;
+				if(_imageCache.TryGetValue(key, out bitmap))
+				{
+					Console.WriteLine(String.Format("Recycling bitmap {0} . . .", key));
+					bitmap.Recycle();
+				}
+			}
+			_imageCache.Clear();
+		}
+
+		#endregion
 	}
 }
+

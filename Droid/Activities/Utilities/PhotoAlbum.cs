@@ -39,14 +39,7 @@ namespace TCheck.Droid
 		// a photo database:
 
 		static Photo[] mBuiltInPhotos = {
-			new Photo { mPhotoID = Resource.Drawable.sampleEsperian,
-				mCaption = "Sample Report" },
-			new Photo { mPhotoID = Resource.Drawable.sampleEsperian,
-				mCaption = "Sample Report" },
-			new Photo { mPhotoID = Resource.Drawable.sampleEsperian,
-				mCaption = "Sample Report" },
-			new Photo { mPhotoID = Resource.Drawable.sampleEsperian,
-				mCaption = "Sample Report" },
+			
 
 		};
 

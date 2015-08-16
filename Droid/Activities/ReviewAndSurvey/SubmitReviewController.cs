@@ -15,7 +15,7 @@ namespace TCheck.Droid{
 	[Activity (Label = "review_activity")]			
 	public class SubmitReviewController : Activity{
 		private Button mButtonSurvey; // id -> buttonSurvey
-		private Button mButtonHome; //id-> buttonHome
+
 
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
@@ -23,9 +23,6 @@ namespace TCheck.Droid{
 
 			mButtonSurvey = FindViewById<Button>(Resource.Id.buttonSurvey);
 			mButtonSurvey.Click += mButtonSurvey_Click;
-
-			mButtonHome = FindViewById<Button>(Resource.Id.buttonHome);
-
 
 		}
 

@@ -11,11 +11,12 @@ using Android.Support.V7.App;
 using Android.Support.V4.Widget;
 using System.Collections.Generic;
 
-
 namespace TCheck.Droid{
-	[Activity (Label = "my_reviews_activity",Theme="@style/MyTheme")]			
-	public class ReviewsController : AppCompatActivity{
-		
+	[Activity (Label = "query_activity",Theme="@style/MyTheme")]			
+	public class PaymentController : AppCompatActivity{
+		private Button mButtonPay;
+		private Button mButtonCancelQuery;
+
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
 		private DrawerLayout mDrawerLayout;
@@ -25,10 +26,29 @@ namespace TCheck.Droid{
 		private ArrayAdapter mRightAdapter;
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
-
 		protected override void OnCreate (Bundle bundle){
 			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.BackgroundReportsListView);
+
+			// Create your application here
+			SetContentView (Resource.Layout.PaymentView);
+
+			mButtonPay = FindViewById<Button> (Resource.Id.buttonPay);
+			mButtonPay.Click += (object sender, EventArgs args) =>{
+				//pull up dialog
+				FragmentTransaction transaction = FragmentManager.BeginTransaction();
+				PurchaseConfirmationController paymentConfirmationPopUp = new PurchaseConfirmationController();
+				paymentConfirmationPopUp.Show(transaction, "purchase confirmation fragment");
+				paymentConfirmationPopUp.mPurchaseComplete += mButtonPay_Click;
+			};
+
+			mButtonCancelQuery = FindViewById<Button> (Resource.Id.buttonCancel);
+			mButtonCancelQuery.Click += (object sender, EventArgs args) => {
+				//pull up dialog
+				FragmentTransaction transaction = FragmentManager.BeginTransaction ();
+				CancelController cancelScreen = new CancelController ();
+				cancelScreen.Show (transaction, "cancel fragment");
+				cancelScreen.mOnCancel += cancelScreen_mOnCancel;
+			};
 
 			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
@@ -80,6 +100,7 @@ namespace TCheck.Droid{
 			SupportActionBar.SetDisplayShowTitleEnabled(true);
 			mDrawerToggle.SyncState();
 
+
 			if (bundle != null){
 				if (bundle.GetString("DrawerState") == "Opened"){
 					SupportActionBar.SetTitle(Resource.String.openDrawer);
@@ -124,12 +145,11 @@ namespace TCheck.Droid{
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(SupportPopUpController));
+				Intent mDrawerButtonSupport = new Intent (this, typeof(MainMenuController));
 				this.StartActivity (mDrawerButtonSupport);
 				break;
 			}
 		}
-
 
 
 		public override bool OnOptionsItemSelected (IMenuItem item){		
@@ -163,7 +183,7 @@ namespace TCheck.Droid{
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu){
-			MenuInflater.Inflate (Resource.Menu.main_action_bar, menu);
+			MenuInflater.Inflate (Resource.Menu.MainActionBar, menu);
 			return base.OnCreateOptionsMenu (menu);
 		}
 
@@ -179,6 +199,7 @@ namespace TCheck.Droid{
 			base.OnSaveInstanceState (outState);
 		}
 
+
 		protected override void OnPostCreate (Bundle savedInstanceState){
 			base.OnPostCreate (savedInstanceState);
 			mDrawerToggle.SyncState();
@@ -188,28 +209,26 @@ namespace TCheck.Droid{
 			base.OnConfigurationChanged (newConfig);
 			mDrawerToggle.OnConfigurationChanged(newConfig);
 		}
-
-		void mButtonReviewPerson_Click (object sender, EventArgs args){	
-			Intent intent = new Intent (this, typeof(SubmitReviewController));
+			
+		void mButtonMenuButton_Click (object sender, EventArgs args){
+			Intent intent = new Intent (this, typeof(MainMenuController));
 			this.StartActivity (intent);
 			Finish ();
 		}
 
-		void mButtonNewReview_Click (object sender, EventArgs args){	
-			Intent intent = new Intent (this, typeof(SubmitReviewController));
+		void mButtonPay_Click (object sender, OnPurchaseEvent args){
+			Intent intent = new Intent (this, typeof(MainMenuController));
 			this.StartActivity (intent);
 			Finish ();
 		}
 
+
+		void cancelScreen_mOnCancel (object sender, EventArgs e){
+			Intent intent = new Intent (this, typeof(MainMenuController));
+			this.StartActivity (intent);
+		}
 
 
 	}
 }
-
-
-
-
-
-
-
 

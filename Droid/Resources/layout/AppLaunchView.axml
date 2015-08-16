@@ -4,13 +4,13 @@
     android:background="#7491A3"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/launch_screen">
+    android:id="@+id/AppLaunchMainLinearLayout">
     <TextView
         android:text="RentProof"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1"
+        android:id="@+id/txtAppName"
         android:layout_weight="1"
         android:layout_gravity="center"
         android:paddingTop="40dp"
@@ -21,30 +21,26 @@
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
+        android:id="@+id/linearLayoutBtnSignIn"
         android:layout_weight="1">
         <Button
-            android:id="@+id/buttonSignIn"
+            android:id="@+id/btnAppLaunchSignIn"
             android:text="Sign In"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp" />
     </LinearLayout>
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayoutBtnSignUp"
         android:layout_weight="1">
         <Button
-            android:id="@+id/buttonSignUp"
+            android:id="@+id/btnAppLaunchSignUp"
             android:text="Sign Up"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"

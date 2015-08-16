@@ -1,28 +1,26 @@
 ﻿
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V7.Widget;
+using Android.Content;
 using Android.Support.V7.App;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V4.Widget;
+using Android.Widget;
+using Android.Views;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "Tenant_Search",Theme="@style/MyTheme")]			
-	public class TenantSearchController1 : AppCompatActivity
-
+	[Activity(Label = "Profile",Theme="@style/MyTheme")]			
+	public class ReportController : AppCompatActivity
 	{
-		private Button mButtonDislike;
-		private Button mButtonLike;
+		private TextView _FirstName;
+		private TextView _LastName;
+		private TextView _Gender;
+		private TextView _DateOfBirth;
+		private TextView _Biography;
+		private ImageView _ProfilePhoto;
 
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
@@ -34,18 +32,32 @@ namespace TCheck.Droid
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
 
-		protected override void OnCreate (Bundle bundle)
+		protected override async void OnCreate(Bundle bundle)
 		{
-			base.OnCreate (bundle);
+			base.OnCreate(bundle);
 
-			SetContentView(Resource.Layout.TenantSearchView1);
+			SetContentView(Resource.Layout.ReportProfilePageView);
 
+			_FirstName = FindViewById<TextView>(Resource.Id.txtReportProfilePageFirstName);
 
-			mButtonDislike = FindViewById<Button>(Resource.Id.buttonDislike);
-			mButtonDislike.Click += mDislikeButton_CLick;
+			_ProfilePhoto = FindViewById<ImageView>(Resource.Id.imgReportProfilePage);
 
-			mButtonLike = FindViewById<Button>(Resource.Id.buttonLike);
-			mButtonLike.Click += mLikeButton_CLick;
+			var index = Intent.GetIntExtra("index", -1);
+			if(index < 0)
+			{
+				return;
+			}
+
+			var imageResourceId = Intent.GetIntExtra("imageResourceId", -1);
+
+			var currentReport = SharedData.ReportManifest[index];
+
+			_FirstName.Text = currentReport.FirstName;
+
+			var imageManager = new ImageManager(this.Resources);
+			var bitmap = await imageManager.GetScaledDownBitmapFromResourceAsync(imageResourceId, 150, 150);
+
+			_ProfilePhoto.SetImageBitmap(bitmap);
 
 			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
@@ -98,6 +110,7 @@ namespace TCheck.Droid
 			mDrawerToggle.SyncState();
 
 
+
 			if (bundle != null){
 				if (bundle.GetString("DrawerState") == "Opened"){
 					SupportActionBar.SetTitle(Resource.String.openDrawer);
@@ -120,8 +133,8 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonMyProfile = new Intent (this, typeof(MainMenuController));
-				this.StartActivity (mDrawerButtonMyProfile);
+				Intent mDrawerButtonMainMenu = new Intent (this, typeof(MainMenuController));
+				this.StartActivity (mDrawerButtonMainMenu);
 				break;
 
 			case 1:
@@ -137,21 +150,20 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent mDrawerButtonFAQ = new Intent (this, typeof(MainMenuController));
-				this.StartActivity (mDrawerButtonFAQ);
+				FragmentTransaction transaction1 = FragmentManager.BeginTransaction();
+				HelpPopUpController helpPopUp = new HelpPopUpController();
+				helpPopUp.Show(transaction1, "help fragment");
+				helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
 				break;
 
 			case 1:
-				Intent mDrawerButtonSupport = new Intent (this, typeof(SupportPopUpController));
-				this.StartActivity (mDrawerButtonSupport);
+				FragmentTransaction transaction2 = FragmentManager.BeginTransaction();
+				SupportPopUpController supportPopUp = new SupportPopUpController();
+				supportPopUp.Show(transaction2, "support fragment");
+				supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
 				break;
 			}
 		}
-
-
-
-
-
 
 		public override bool OnOptionsItemSelected (IMenuItem item){		
 			switch (item.ItemId){
@@ -186,7 +198,7 @@ namespace TCheck.Droid
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu){
-			MenuInflater.Inflate (Resource.Menu.main_action_bar, menu);
+			MenuInflater.Inflate (Resource.Menu.MainActionBar, menu);
 			return base.OnCreateOptionsMenu (menu);
 		}
 
@@ -202,30 +214,27 @@ namespace TCheck.Droid
 			base.OnSaveInstanceState (outState);
 		}
 
-		protected override void OnPostCreate (Bundle savedInstanceState){
+		/*protected override void OnPostCreate (Bundle savedInstanceState){
 			base.OnPostCreate (savedInstanceState);
 			mDrawerToggle.SyncState();
 		}
-
+*/
 		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig){
 			base.OnConfigurationChanged (newConfig);
 			mDrawerToggle.OnConfigurationChanged(newConfig);
 		}
 
-
-		void mDislikeButton_CLick (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(TenantSearchController2));
+		void mHelpPopUpButton_Click (object sender, OnHelpEvent e){
+			Intent intent = new Intent (this, typeof(HelpPopUpController));
 			this.StartActivity (intent);
-			Finish ();
+			Finish (); 
 		}
 
-		void mLikeButton_CLick (object sender, EventArgs e){
-			Intent intent = new Intent (this, typeof(TenantSearchController2));
+		void mSupportPopUpButton_Click (object sender, OnSupportEvent e){
+			Intent intent = new Intent (this, typeof(SupportPopUpController));
 			this.StartActivity (intent);
-			Finish ();
+			Finish (); 
 		}
 	}
-
-
 }
 

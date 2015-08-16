@@ -7,13 +7,13 @@ android:id="@+id/add_and_remove_bar">
   <item
       android:id="@+id/add"
       android:title="New"
-      android:icon="@drawable/ic_action_new"
+      android:icon="@drawable/newAction"
       android:showAsAction="always"/>
 
 	<item
       android:id="@+id/discard"
       android:title="Discard"
-      android:icon="@drawable/ic_action_discard"
+      android:icon="@drawable/discard"
       android:showAsAction="always"/>
 
      <item android:id="@+id/action_help"

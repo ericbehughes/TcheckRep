@@ -13,15 +13,11 @@ using Android.Widget;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "")]			
-	public class swipe_activity_test : Activity
+	[Activity (Label = "Report")]			
+	public class Report
 	{
-		protected override void OnCreate (Bundle bundle)
-		{
-			base.OnCreate (bundle);
-
-			// Create your application here
-		}
+		public string FirstName { get; set; }
+		public int ProfileReportPhoto { get; set; }
 	}
 }
 
