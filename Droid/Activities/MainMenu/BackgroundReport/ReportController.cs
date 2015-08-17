@@ -71,9 +71,9 @@ namespace TCheck.Droid
 			_DisplayLastName.Text = _ApplicantReport.LastName;
 			_DisplayGender.Text = _ApplicantReport.Gender;
 			_DisplayDateOfBirth.Text = _ApplicantReport.DateOfBirth;
-			_DisplayTelephone.Text = _ApplicantReport.Telephone;
-			_DisplayMobile.Text = _ApplicantReport.Mobile;
-			_DisplayCountry.Text = _ApplicantReport.Country;
+			//_DisplayTelephone.Text = _ApplicantReport.Telephone;
+			//_DisplayMobile.Text = _ApplicantReport.Mobile;
+			//_DisplayCountry.Text = _ApplicantReport.Country;
 
 			var imageManager = new ImageManager(this.Resources);
 			var bitmap = await imageManager.GetScaledDownBitmapFromResourceAsync(imageResourceId, 150, 150);

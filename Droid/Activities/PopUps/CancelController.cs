@@ -25,10 +25,10 @@ namespace TCheck.Droid{
 			base.OnCreateView (inflater, container, savedInstanceState);
 			var view = inflater.Inflate (Resource.Layout.CancelPopUpView, container, false);
 
-			mYesCancelButton = view.FindViewById<Button> (Resource.Id.buttonYesCancel);
+			mYesCancelButton = view.FindViewById<Button> (Resource.Id.btnYesCancel);
 			mYesCancelButton.Click += mYesCancelButton_Click; 
 
-			mNoCancelButton = view.FindViewById<Button> (Resource.Id.buttonNoCancel);
+			mNoCancelButton = view.FindViewById<Button> (Resource.Id.btnNoCancel);
 			mNoCancelButton.Click += mNoCancelButton_Click; 
 			return view;
 		}

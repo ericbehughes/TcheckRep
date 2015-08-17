@@ -15,6 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnFido.API", "..\OnFido.API
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentProof.API", "..\DefaultCollection\_git\RentProofAPI\RentProof.API.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28EEABDD-B047-4B43-8222-D8A12AE4044E}"
+	ProjectSection(SolutionItems) = preProject
+		InfoInputView.axml = InfoInputView.axml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +131,8 @@ Global
 		{B5A9BB2A-F84F-4564-B42B-39864048AADD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{B5A9BB2A-F84F-4564-B42B-39864048AADD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B5A9BB2A-F84F-4564-B42B-39864048AADD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

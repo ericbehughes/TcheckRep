@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#DEDEDC"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/login_screen">
+    android:layout_height="fill_parent">
     <EditText
         android:id="@+id/txtLoginEmail"
         android:layout_width="match_parent"
@@ -18,7 +17,7 @@
         android:paddingLeft="10dp"
         android:textColor="#000" />
     <EditText
-        android:id="@+id/txtPassword"
+        android:id="@+id/txtLoginPassword"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -34,10 +33,10 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtPassword"
+        android:layout_below="@id/txtLoginPassword"
         android:layout_marginTop="50dp">
         <Button
-            android:id="@+id/buttonLogIn"
+            android:id="@+id/btnLogIn"
             android:text="Sign In"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +50,6 @@
             android:height="70dp"
             android:paddingTop="2dp"
             android:background="#7491A3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp" />
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </RelativeLayout>

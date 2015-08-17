@@ -2,36 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#DEDEDC"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/help_popup">
+    android:layout_height="wrap_content">
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/layoutTermsAndConditions"
+        android:id="@+id/linearLayoutIncludeFeature"
         android:layout_below="@+id/txtPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp">
         <TextView
             android:text="Do you like this screen?"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/titleTermsAndConditions"
+            android:id="@+id/txtDoYouLikeThisScreen"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="#000" />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/checkBox1"
+            android:id="@+id/chkIncludeFeature"
             android:textColor="#000"
             android:gravity="center_vertical"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp" />
     </LinearLayout>
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/txtPassword"
@@ -39,7 +38,7 @@
         android:minWidth="25px"
         android:minHeight="25px">
         <Button
-            android:id="@+id/popUpButton"
+            android:id="@+id/btnIncludeFeatureSubmit"
             android:text="Submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +52,6 @@
             android:height="70dp"
             android:paddingTop="2dp"
             android:background="#7491A3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp" />
-    </RelativeLayout>
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
 </RelativeLayout>

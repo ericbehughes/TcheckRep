@@ -56,9 +56,12 @@ namespace TCheck.Droid
 			var currentReport = _reportList[position];
 
 			//Bind our data from our data source to our View References
-			viewHolder.ReportProfileFirstName.Text = currentReport.FirstName;
-			var photoBitmap = await _imageManager.GetScaledDownBitmapFromResourceAsync(currentReport.ProfileReportPhoto, 120, 120);
-			viewHolder.ReportProfilePhoto.SetImageBitmap(photoBitmap);
+			viewHolder.DisplayFirstName.Text = currentReport.FirstName;
+			viewHolder.DisplayLastName.Text = currentReport.LastName;
+			viewHolder.DisplayGender.Text = currentReport.Gender;
+			viewHolder.DisplayDateOfBirth.Text = currentReport.DateOfBirth;
+			//var photoBitmap = await _imageManager.GetScaledDownBitmapFromResourceAsync(currentReport.ProfileReportPhoto, 120, 120);
+			//viewHolder.ReportProfilePhoto.SetImageBitmap(photoBitmap);
 		}
 
 		//This will fire any event handlers that are registered with our ItemClick

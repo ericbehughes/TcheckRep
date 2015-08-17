@@ -28,17 +28,21 @@ namespace TCheck.Droid
 		private EditText _LastName;
 		private EditText _Gender;
 		private EditText _DateOfBirth;
-		public static List<Applicant> _reportList;
+		private EditText _Mobile;
+		private EditText _Country;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			SetContentView(Resource.Layout.InfoInputView);
+			SetContentView(Resource.Layout.ApplicantInfoInputView);
 			// Create your application here
-			_FirstName = FindViewById<EditText>(Resource.Id.txtFirstName);
-			_LastName = FindViewById<EditText>(Resource.Id.txtLastName);
-			_Gender = FindViewById<EditText>(Resource.Id.txtGender);
-			_DateOfBirth = FindViewById<EditText>(Resource.Id.txtDateOfBirth);
-			_SubmitQueryInfo = FindViewById<Button>(Resource.Id.btnSubmit);
+			_FirstName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputFirstName);
+			_LastName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputLastName);
+			_Gender = FindViewById<EditText>(Resource.Id.txtScrollInfoInputGender);
+			_DateOfBirth = FindViewById<EditText>(Resource.Id.txtScrollInfoInputDateOfBirth);
+
+			//_Country = FindViewById<EditText>(Resource.Id.txtScrollInfoInputDateOfBirth);
+			_SubmitQueryInfo = FindViewById<Button>(Resource.Id.btnScrollInfoInputSubmit);
 			_SubmitQueryInfo.Click += async (sender, e) => {
 
 				var model = new Applicant {
@@ -50,9 +54,8 @@ namespace TCheck.Droid
 					LastName = _LastName.Text,
 					Gender = _Gender.Text,
 					DateOfBirth = _DateOfBirth.Text,
-					Telephone = "",
-					Mobile = "",
-					Country = "gbr"
+					Mobile = "1324356475",
+					Country = "can"
 	
 					//LastName = Guid.NewGuid().ToString()
 				};
@@ -65,7 +68,7 @@ namespace TCheck.Droid
 					var applicant = await OnFido.API.OnFidoService.CreateApplicant(model);
 					applicant = await OnFido.API.OnFidoService.GetApplicantById(applicant.Id);
 
-					var applicantIntentInfo = new Intent(this, typeof (ReportController));
+					var applicantIntentInfo = new Intent(this, typeof (ReportMainController));
 
 					applicantIntentInfo.PutExtra("Applicant",JsonConvert.SerializeObject(applicant));
 					//_reportList.Add(applicant);

@@ -10,7 +10,7 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView1">
+        android:id="@+id/scrollInfoInput">
         <TableLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -19,7 +19,7 @@
                 android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtFirstName"
+                android:id="@+id/txtScrollInfoInputFirstName"
                 android:background="@drawable/editTextStyling1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -27,15 +27,11 @@
                 android:hint="First Name"
                 android:textColorHint="#000"
                 android:textColor="#000" />
-            <TextView
-                android:text="Text"
-                android:id="@+id/textView1"
-                android:layout_marginLeft="50dp" />
             <EditText
                 android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtLastName"
+                android:id="@+id/txtScrollInfoInputLastName"
                 android:background="@drawable/editTextStyling1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -43,15 +39,11 @@
                 android:hint="Last Name"
                 android:textColorHint="#000"
                 android:textColor="#000" />
-            <TextView
-                android:text="Text"
-                android:id="@+id/textView2"
-                android:layout_marginLeft="50dp" />
             <EditText
+                android:id="@+id/txtScrollInfoInputGender"
                 android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtGender"
                 android:background="@drawable/editTextStyling1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -59,15 +51,11 @@
                 android:hint="Gender"
                 android:textColorHint="#000"
                 android:textColor="#000" />
-            <TextView
-                android:text="Text"
-                android:id="@+id/textView3"
-                android:layout_marginLeft="50dp" />
             <EditText
+                android:id="@+id/txtScrollInfoInputDateOfBirth"
                 android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtDateOfBirth"
                 android:background="@drawable/editTextStyling1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -75,18 +63,17 @@
                 android:hint="Date of Birth"
                 android:textColorHint="#000"
                 android:textColor="#000" />
-            <TextView
-                android:text="Text"
-                android:id="@+id/textView4"
-                android:layout_marginLeft="50dp" />
             <Button
-                android:id="@+id/btnSubmit"
+                android:id="@+id/btnScrollInfoInputSubmit"
                 android:text="Submit"
                 android:textColor="#000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp" />
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="15dp" />
         </TableLayout>
     </ScrollView>
 </LinearLayout>

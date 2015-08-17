@@ -3,24 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#DEDEDC"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/dialog_sign_up">
+    android:layout_height="fill_parent">
 <!-- The Main Content View -->
     <EditText
-        android:id="@+id/txtFirstName"
+        android:id="@+id/txtSignUpFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/editTextStyling1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:hint="FirstName"
+        android:textColorHint="#d3d3d3"
+        android:paddingLeft="10dp"
+        android:textColor="#000"
+        android:layout_marginBottom="10dp" />
+    <EditText
+        android:id="@+id/txtSignUpLastName"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="@drawable/editTextStyling1"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="25dp"
-        android:hint="Name"
+        android:hint="LastName"
         android:textColorHint="#d3d3d3"
         android:paddingLeft="10dp"
-        android:textColor="#000" />
+        android:textColor="#000"
+        android:layout_below="@id/txtSignUpFirstName" />
     <EditText
-        android:id="@+id/txtEmail"
+        android:id="@+id/txtSignUpEmail"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -32,9 +44,9 @@
         android:textColorHint="#d3d3d3"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:layout_below="@id/txtFirstName" />
+        android:layout_below="@id/txtSignUpLastName" />
     <EditText
-        android:id="@+id/txtSecurityNumber"
+        android:id="@+id/txtSignUpSSN"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -45,9 +57,9 @@
         android:textColorHint="#d3d3d3"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:layout_below="@+id/txtEmail" />
+        android:layout_below="@+id/txtSignUpEmail" />
     <EditText
-        android:id="@+id/txtPassword"
+        android:id="@+id/txtSignUpPassword"
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -59,48 +71,48 @@
         android:textColorHint="#d3d3d3"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:layout_below="@+id/txtSecurityNumber" />
+        android:layout_below="@+id/txtSignUpSSN" />
     <LinearLayout
+        android:id="@+id/linearLayoutTermsAndConditions"
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/layoutTermsAndConditions"
-        android:layout_below="@+id/txtPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/txtSignUpPassword">
         <TextView
+            android:id="@+id/txtSignUpTermsAndConditions"
             android:text="I Agree To Terms and Conditions"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/titleTermsAndConditions"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:layout_below="@+id/txtSignUpPassword" />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/checkBox1"
+            android:id="@+id/chckSignUpTermsAndConditions"
             android:textColor="#000"
             android:gravity="center_vertical"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp" />
+            android:layout_below="@+id/txtSignUpTermsAndConditions"
+            android:layout_marginBottom="7dp" />
     </LinearLayout>
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/txtPassword"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:minWidth="25px"
-        android:minHeight="25px">
+        android:minHeight="25px"
+        android:layout_below="@+id/linearLayoutTermsAndConditions">
         <Button
             android:id="@+id/popUpButton"
             android:text="Sign Up!"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:layout_marginTop="30dp"
             android:textColor="#fff"
             android:textStyle="bold"
             android:paddingLeft="5dp"
@@ -109,8 +121,7 @@
             android:height="70dp"
             android:paddingTop="2dp"
             android:background="#7491A3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp" />
-    </RelativeLayout>
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
 <!-- Navigation Drawers -->
 </RelativeLayout>

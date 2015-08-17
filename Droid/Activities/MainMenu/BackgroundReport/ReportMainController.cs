@@ -33,7 +33,7 @@ namespace TCheck.Droid
 		private ArrayAdapter mRightAdapter;
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
-
+		private Applicant _ApplicantReport;
 
 
 		protected override async void OnCreate(Bundle bundle)
@@ -42,7 +42,7 @@ namespace TCheck.Droid
 
 			SetContentView(Resource.Layout.ReportListView);
 
-
+			_ApplicantReport = JsonConvert.DeserializeObject<Applicant> (Intent.GetStringExtra ("Applicant"));
 
 			_progressDialog = new ProgressDialog(this);
 			_progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
@@ -64,12 +64,14 @@ namespace TCheck.Droid
 			_recyclerView.SetLayoutManager(_layoutManager);
 
 			//Get our crew member data. This could be a web service.
-			SharedData.ReportManifest = await ReportListController.GetAllReportsAsync();
+			var reportList = new List<Applicant>();
+
+			reportList.Add (_ApplicantReport);
 
 			//Create the adapter for the RecyclerView with our crew data, and set
 			//the adapter. Also, wire an event handler for when the user taps on each
 			//individual item.
-			_adapter = new ReportViewAdapter(SharedData.ReportManifest, this.Resources);
+			_adapter = new ReportViewAdapter(reportList, this.Resources);
 			_adapter.ItemClick += OnItemClick;
 			_recyclerView.SetAdapter(_adapter);
 
@@ -262,10 +264,7 @@ namespace TCheck.Droid
 		}
 	}
 
-	internal static class SharedData
-	{
-		public static List<Applicant> ReportManifest { get; set;}
-	}
+
 }
 
 

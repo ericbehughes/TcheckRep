@@ -37,12 +37,6 @@
         android:text="Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/JsonDisplayTelephone"
-        android:textColor="#fff" />
-    <TextView
-        android:text="Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/JsonDisplayMobile"
         android:textColor="#fff" />
     <TextView
