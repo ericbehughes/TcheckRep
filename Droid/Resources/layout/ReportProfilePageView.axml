@@ -35,9 +35,9 @@
                 android:layout_centerVertical="false"
                 android:padding="5dp" />
             <TextView
-                android:id="@+id/txtReportProfilePageID"
+                android:id="@+id/txtReportProfilePageCreatedAt"
                 android:layout_toRightOf="@id/imgReportProfilePage"
-                android:text="ID"
+                android:text="CreatedAt"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             <TextView
                 android:id="@+id/txtReportProfilePageFirstName"
                 android:layout_toRightOf="@+id/imgReportProfilePage"
-                android:layout_below="@+id/txtReportProfilePageID"
+                android:layout_below="@+id/txtReportProfilePageCreatedAt"
                 android:text="FirstName"
                 android:textSize="14dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -77,6 +77,36 @@
                 android:layout_toRightOf="@+id/imgReportProfilePage"
                 android:layout_below="@+id/txtReportProfilePageGender"
                 android:text="Date Of Birth"
+                android:textSize="14dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp" />
+            <TextView
+                android:id="@+id/txtReportProfilePageTelephone"
+                android:layout_toRightOf="@+id/imgReportProfilePage"
+                android:layout_below="@+id/txtReportProfilePageDOB"
+                android:text="Telephone"
+                android:textSize="14dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp" />
+            <TextView
+                android:id="@+id/txtReportProfilePageMobile"
+                android:layout_toRightOf="@+id/imgReportProfilePage"
+                android:layout_below="@+id/txtReportProfilePageTelephone"
+                android:text="Mobile"
+                android:textSize="14dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp" />
+            <TextView
+                android:id="@+id/txtReportProfilePageCountry"
+                android:layout_toRightOf="@+id/imgReportProfilePage"
+                android:layout_below="@+id/txtReportProfilePageMobile"
+                android:text="Country"
                 android:textSize="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"

@@ -9,6 +9,8 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.V4.Widget;
 using Android.Widget;
 using Android.Views;
+using OnFido.API.Models;
+using Newtonsoft.Json;
 
 namespace TCheck.Droid
 {
@@ -20,6 +22,8 @@ namespace TCheck.Droid
 		private ReportViewAdapter _adapter;
 		private ProgressDialog _progressDialog;
 
+
+
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
 		private DrawerLayout mDrawerLayout;
@@ -30,13 +34,15 @@ namespace TCheck.Droid
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
 
-	
+
 
 		protected override async void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 
 			SetContentView(Resource.Layout.ReportListView);
+
+
 
 			_progressDialog = new ProgressDialog(this);
 			_progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
@@ -233,11 +239,9 @@ namespace TCheck.Droid
 
 		private void OnItemClick (object sender, int position)
 		{
-			var crewProfileIntent = new Intent(this, typeof(ReportController));
-			crewProfileIntent.PutExtra("index", position);
-			crewProfileIntent.PutExtra("imageResourceId", SharedData.ReportManifest[position].ProfileReportPhoto);
+			var reportIntent = new Intent(this, typeof(ReportController));
 
-			StartActivity(crewProfileIntent);
+			StartActivity(reportIntent);
 		}
 
 		public override void OnConfigurationChanged (Android.Content.Res.Configuration newConfig){
@@ -260,7 +264,7 @@ namespace TCheck.Droid
 
 	internal static class SharedData
 	{
-		public static List<Report> ReportManifest { get; set;}
+		public static List<Applicant> ReportManifest { get; set;}
 	}
 }
 

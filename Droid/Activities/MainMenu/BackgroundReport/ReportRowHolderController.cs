@@ -11,7 +11,7 @@ namespace TCheck.Droid
 	public class ReportRowHolder : RecyclerView.ViewHolder
 	{
 		public ImageView ReportProfilePhoto { get; set; }
-		public TextView ReportProfileFirstName { get; set; }
+		public TextView ReportProfileFirstName; 
 
 
 		public ReportRowHolder(View itemView, Action<int> listener) 
@@ -20,7 +20,7 @@ namespace TCheck.Droid
 			//Creates and caches our views defined in our layout
 			ReportProfilePhoto = itemView.FindViewById<ImageView>(Resource.Id.imgReportRowViewPicture);
 			ReportProfileFirstName = itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewFirstName);
-			//ReportProfileLastName = itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewLastName);
+
 
 			// Detect user clicks on the item view and report which item
 			// was clicked (by position) to the listener:

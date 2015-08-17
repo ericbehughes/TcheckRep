@@ -4,6 +4,7 @@ using Android.Graphics;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Content.Res;
+using OnFido.API.Models;
 
 namespace TCheck.Droid
 {
@@ -13,12 +14,12 @@ namespace TCheck.Droid
 		//on each individual item.
 		public event EventHandler<int> ItemClick;
 
-		private List<Report> _reportList;
+		private List<Applicant> _reportList;
 		private readonly ImageManager _imageManager;
 
-		public ReportViewAdapter(List<Report> reports, Resources resources)
+		public ReportViewAdapter(List<Applicant> applicantReport, Resources resources)
 		{
-			_reportList = reports;
+			_reportList = applicantReport;
 			_imageManager = new ImageManager(resources);
 		}
 
