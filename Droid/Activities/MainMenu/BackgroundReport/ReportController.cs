@@ -17,17 +17,8 @@ namespace TCheck.Droid
 	[Activity(Label = "Profile",Theme="@style/MyTheme")]			
 	public class ReportController : AppCompatActivity
 	{
-		private TextView _DisplayCreatedAt;
-		private TextView _DisplayFirstName;
-		private TextView _DisplayLastName;
-		private TextView _DisplayGender;
-		private TextView _DisplayDateOfBirth;
-		private TextView _DisplayTelephone;
-		private TextView _DisplayMobile;
-		private TextView _DisplayCountry;
 		//private TextView _DisplayHref;
-		private ImageView _ProfilePhoto;
-		private Applicant _ApplicantReport;
+		//private ImageView _ProfilePhoto;
 
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
@@ -39,22 +30,22 @@ namespace TCheck.Droid
 		private List<string> mLeftDataSet;
 		private List<string> mRightDataSet;
 
-		protected override async void OnCreate(Bundle bundle)
+		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
-
+			var currentReport = ReportViewAdapter.ApplicantReport;
 			SetContentView(Resource.Layout.ReportProfilePageView);
-			_ApplicantReport = JsonConvert.DeserializeObject<Applicant> (Intent.GetStringExtra ("Applicant"));
-			_DisplayCreatedAt = FindViewById<TextView>(Resource.Id.txtReportProfilePageCreatedAt);
-			_DisplayFirstName = FindViewById<TextView>(Resource.Id.txtReportProfilePageFirstName);
-			_DisplayLastName = FindViewById<TextView>(Resource.Id.txtReportProfilePageLastName);
-			_DisplayGender = FindViewById<TextView>(Resource.Id.txtReportProfilePageGender);
-			_DisplayDateOfBirth = FindViewById<TextView>(Resource.Id.txtReportProfilePageDOB);
-			_DisplayTelephone = FindViewById<TextView>(Resource.Id.txtReportProfilePageTelephone);
-			_DisplayMobile = FindViewById<TextView>(Resource.Id.txtReportProfilePageMobile);
-			_DisplayCountry = FindViewById<TextView>(Resource.Id.txtReportProfilePageCountry);
 
-			_ProfilePhoto = FindViewById<ImageView>(Resource.Id.imgReportProfilePage);
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageCreatedAt).Text = currentReport.CreatedAt;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageFirstName).Text = currentReport.FirstName;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageLastName).Text = currentReport.LastName;
+			FindViewById<TextView> (Resource.Id.txtReportProfilePageGender).Text = currentReport.Gender;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageDOB).Text = currentReport.DateOfBirth;;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageTelephone).Text = currentReport.Telephone;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageMobile).Text = currentReport.Mobile;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageCountry).Text = currentReport.Country;
+
+			//_ProfilePhoto = FindViewById<ImageView>(Resource.Id.imgReportProfilePage);
 
 			var index = Intent.GetIntExtra("index", -1);
 			if(index < 0)
@@ -62,23 +53,6 @@ namespace TCheck.Droid
 				return;
 			}
 
-			var imageResourceId = Intent.GetIntExtra("imageResourceId", -1);
-
-			//var currentReport = SharedData.ReportManifest[index];
-			_ApplicantReport = JsonConvert.DeserializeObject<Applicant> (Intent.GetStringExtra ("Applicant"));
-			_DisplayCreatedAt.Text = _ApplicantReport.CreatedAt;
-			_DisplayFirstName.Text = _ApplicantReport.FirstName;
-			_DisplayLastName.Text = _ApplicantReport.LastName;
-			_DisplayGender.Text = _ApplicantReport.Gender;
-			_DisplayDateOfBirth.Text = _ApplicantReport.DateOfBirth;
-			//_DisplayTelephone.Text = _ApplicantReport.Telephone;
-			//_DisplayMobile.Text = _ApplicantReport.Mobile;
-			//_DisplayCountry.Text = _ApplicantReport.Country;
-
-			var imageManager = new ImageManager(this.Resources);
-			var bitmap = await imageManager.GetScaledDownBitmapFromResourceAsync(imageResourceId, 150, 150);
-
-			_ProfilePhoto.SetImageBitmap(bitmap);
 
 			/************TOOLBAR******************************************************/
 			mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);

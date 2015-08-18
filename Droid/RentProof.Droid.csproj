@@ -138,10 +138,7 @@
     <Compile Include="Activities\PopUps\PurchaseConfirmationController.cs" />
     <Compile Include="Activities\PopUps\SupportPopUpController.cs" />
     <Compile Include="Activities\MainMenu\BackgroundReport\ImageManager.cs" />
-    <Compile Include="Activities\MainMenu\BackgroundReport\Report.cs" />
     <Compile Include="Activities\MainMenu\BackgroundReport\ReportController.cs" />
-    <Compile Include="Activities\MainMenu\BackgroundReport\ReportListController.cs" />
-    <Compile Include="Activities\MainMenu\BackgroundReport\ReportViewAdapter.cs" />
     <Compile Include="Activities\MainMenu\TenantSearch\TenantSearchController1.cs" />
     <Compile Include="Activities\MainMenu\TenantSearch\TenantSearchController2.cs" />
     <Compile Include="Activities\MainMenu\TenantSearch\TenantSearchController3.cs" />
@@ -154,9 +151,9 @@
     <Compile Include="Activities\ReviewAndSurvey\SubmitReviewController.cs" />
     <Compile Include="Activities\ReviewAndSurvey\SubmitSurveyController.cs" />
     <Compile Include="Activities\MainMenu\BackgroundReport\ReportMainController.cs" />
-    <Compile Include="Activities\MainMenu\BackgroundReport\ReportRowHolderController.cs" />
-    <Compile Include="Activities\JsonDisplayController.cs" />
     <Compile Include="Activities\JsonInputController.cs" />
+    <Compile Include="Activities\MainMenu\BackgroundReport\ReportRowHolder.cs" />
+    <Compile Include="Activities\MainMenu\BackgroundReport\ReportViewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -214,7 +211,6 @@
     <AndroidResource Include="Resources\layout\TenantSearchView2.axml" />
     <AndroidResource Include="Resources\layout\TenantSearchView3.axml" />
     <AndroidResource Include="Resources\layout\ReportProfilePageView.axml" />
-    <AndroidResource Include="Resources\layout\JsonDisplayView.axml" />
     <AndroidResource Include="Resources\layout\ApplicantInfoInputView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

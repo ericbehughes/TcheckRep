@@ -36,7 +36,7 @@ namespace TCheck.Droid
 		private Applicant _ApplicantReport;
 
 
-		protected override async void OnCreate(Bundle bundle)
+		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 
@@ -74,6 +74,7 @@ namespace TCheck.Droid
 			_adapter = new ReportViewAdapter(reportList, this.Resources);
 			_adapter.ItemClick += OnItemClick;
 			_recyclerView.SetAdapter(_adapter);
+
 
 			_progressDialog.Dismiss();
 
@@ -241,8 +242,8 @@ namespace TCheck.Droid
 
 		private void OnItemClick (object sender, int position)
 		{
-			var reportIntent = new Intent(this, typeof(ReportController));
 
+			var reportIntent = new Intent(this, typeof(ReportController));
 			StartActivity(reportIntent);
 		}
 
@@ -262,9 +263,13 @@ namespace TCheck.Droid
 			this.StartActivity (intent);
 			Finish (); 
 		}
+
+
 	}
-
-
+		
 }
+
+
+
 
 

@@ -23,41 +23,24 @@ namespace TCheck.Droid
 	public class JsonInputController : Activity
 	{
 		private Button _SubmitQueryInfo;
-	
-		private EditText _FirstName;
-		private EditText _LastName;
-		private EditText _Gender;
-		private EditText _DateOfBirth;
-		private EditText _Mobile;
-		private EditText _Country;
+		
+
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 			SetContentView(Resource.Layout.ApplicantInfoInputView);
-			// Create your application here
-			_FirstName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputFirstName);
-			_LastName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputLastName);
-			_Gender = FindViewById<EditText>(Resource.Id.txtScrollInfoInputGender);
-			_DateOfBirth = FindViewById<EditText>(Resource.Id.txtScrollInfoInputDateOfBirth);
-
-			//_Country = FindViewById<EditText>(Resource.Id.txtScrollInfoInputDateOfBirth);
 			_SubmitQueryInfo = FindViewById<Button>(Resource.Id.btnScrollInfoInputSubmit);
 			_SubmitQueryInfo.Click += async (sender, e) => {
 
 				var model = new Applicant {
 
-					//FirstName = Guid.NewGuid().ToString(),
-
-
-					FirstName = _FirstName.Text,
-					LastName = _LastName.Text,
-					Gender = _Gender.Text,
-					DateOfBirth = _DateOfBirth.Text,
-					Mobile = "1324356475",
-					Country = "can"
-	
-					//LastName = Guid.NewGuid().ToString()
+					FirstName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputFirstName).Text,
+					LastName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputLastName).Text,
+					Gender = FindViewById<EditText>(Resource.Id.txtScrollInfoInputGender).Text,
+					DateOfBirth = FindViewById<EditText>(Resource.Id.txtScrollInfoInputDateOfBirth).Text,
+					Mobile = FindViewById<EditText>(Resource.Id.txtScrollInfoInputMobile).Text,
+					Country = FindViewById<EditText>(Resource.Id.txtScrollInfoInputCountry).Text
 				};
 
 				try {
@@ -74,7 +57,6 @@ namespace TCheck.Droid
 					//_reportList.Add(applicant);
 					this.StartActivity(applicantIntentInfo);
 				
-
 				} catch (Exception) {
 					throw;
 				}

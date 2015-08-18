@@ -63,6 +63,42 @@
                 android:hint="Date of Birth"
                 android:textColorHint="#000"
                 android:textColor="#000" />
+            <EditText
+                android:id="@+id/txtScrollInfoInputMobile"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/editTextStyling1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:hint="Mobile"
+                android:textColorHint="#000"
+                android:textColor="#000" />
+            <EditText
+                android:id="@+id/txtScrollInfoInputCountry"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/editTextStyling1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:hint="Country"
+                android:textColorHint="#000"
+                android:textColor="#000" />
+            <EditText
+                android:id="@+id/txtScrollInfoInputSSN"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/editTextStyling1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:hint="SSN"
+                android:textColorHint="#000"
+                android:textColor="#000" />
             <Button
                 android:id="@+id/btnScrollInfoInputSubmit"
                 android:text="Submit"

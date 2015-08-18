@@ -5,6 +5,8 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Content.Res;
 using OnFido.API.Models;
+using Newtonsoft.Json;
+using Android.Content;
 
 namespace TCheck.Droid
 {
@@ -13,9 +15,11 @@ namespace TCheck.Droid
 		//Create an Event so that our our clients can act when a user clicks
 		//on each individual item.
 		public event EventHandler<int> ItemClick;
-
 		private List<Applicant> _reportList;
+		public static Applicant ApplicantReport;
 		private readonly ImageManager _imageManager;
+
+
 
 		public ReportViewAdapter(List<Applicant> applicantReport, Resources resources)
 		{
@@ -49,17 +53,21 @@ namespace TCheck.Droid
 		//Must override, this is the important one.  This method is used to
 		//bind our current data to your view holder.  Think of this as the equivalent
 		//of GetView for regular Adapters.
-		public override async void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
+		public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
 		{
 			var viewHolder = holder as ReportRowHolder;
 
-			var currentReport = _reportList[position];
+			ApplicantReport = _reportList[position];
 
 			//Bind our data from our data source to our View References
-			viewHolder.DisplayFirstName.Text = currentReport.FirstName;
-			viewHolder.DisplayLastName.Text = currentReport.LastName;
-			viewHolder.DisplayGender.Text = currentReport.Gender;
-			viewHolder.DisplayDateOfBirth.Text = currentReport.DateOfBirth;
+			viewHolder.DisplayID.Text = ApplicantReport.Id;
+			viewHolder..Text = ApplicantReport.Id.ToString();
+			viewHolder.FirstName.Text = ApplicantReport.FirstName;
+			viewHolder.LastName.Text = ApplicantReport.LastName;
+			viewHolder.Gender.Text = ApplicantReport.Gender;
+			viewHolder.DateOfBirth.Text = ApplicantReport.DateOfBirth;
+
+
 			//var photoBitmap = await _imageManager.GetScaledDownBitmapFromResourceAsync(currentReport.ProfileReportPhoto, 120, 120);
 			//viewHolder.ReportProfilePhoto.SetImageBitmap(photoBitmap);
 		}
@@ -70,6 +78,7 @@ namespace TCheck.Droid
 		{
 			if(ItemClick != null)
 			{
+
 				ItemClick(this, position);
 			}
 		}
