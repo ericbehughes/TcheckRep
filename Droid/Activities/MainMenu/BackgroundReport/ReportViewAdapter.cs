@@ -61,7 +61,7 @@ namespace TCheck.Droid
 
 			//Bind our data from our data source to our View References
 			viewHolder.DisplayID.Text = ApplicantReport.Id;
-			viewHolder..Text = ApplicantReport.Id.ToString();
+			//viewHolder..Text = ApplicantReport.Id.ToString();
 			viewHolder.FirstName.Text = ApplicantReport.FirstName;
 			viewHolder.LastName.Text = ApplicantReport.LastName;
 			viewHolder.Gender.Text = ApplicantReport.Gender;
