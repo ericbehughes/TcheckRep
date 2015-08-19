@@ -19,7 +19,7 @@ namespace TCheck.Droid
 	{
 		//private TextView _DisplayHref;
 		//private ImageView _ProfilePhoto;
-		private Applicant _PassedApplicantReport;
+		private Applicant _applicantReport;
 		private SupportToolbar mToolbar;
 		private NavigationBar mDrawerToggle;
 		private DrawerLayout mDrawerLayout;
@@ -33,17 +33,21 @@ namespace TCheck.Droid
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
-//			var currentReport = ReportViewAdapter.ApplicantReport;
-//			SetContentView(Resource.Layout.ReportProfilePageView);
-			_PassedApplicantReport = JsonConvert.DeserializeObject<Applicant> (Intent.GetStringExtra ("Applicant"));
-//			FindViewById<TextView>(Resource.Id.txtReportProfilePageCreatedAt).Text = currentReport.CreatedAt;
-//			FindViewById<TextView>(Resource.Id.txtReportProfilePageFirstName).Text = currentReport.FirstName;
-//			FindViewById<TextView>(Resource.Id.txtReportProfilePageLastName).Text = currentReport.LastName;
-//			FindViewById<TextView> (Resource.Id.txtReportProfilePageGender).Text = currentReport.Gender;
-//			FindViewById<TextView>(Resource.Id.txtReportProfilePageDOB).Text = currentReport.DateOfBirth;;
-//			FindViewById<TextView>(Resource.Id.txtReportProfilePageTelephone).Text = currentReport.Telephone;
-//			FindViewById<TextView>(Resource.Id.txtReportProfilePageMobile).Text = currentReport.Mobile;
-//			FindViewById<TextView>(Resource.Id.txtReportProfilePageCountry).Text = currentReport.Country;
+			SetContentView(Resource.Layout.ReportProfilePageView);
+			//Verify that this does not return an empty string or null
+			var applicantReportJson = Intent.GetStringExtra ("Applicant");
+
+			//Verify that this does not return null;  If it does, then your something wrong with your Applicant class
+			_applicantReport = JsonConvert.DeserializeObject<Applicant> (applicantReportJson);
+
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageCreatedAt).Text = _applicantReport.CreatedAt;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageFirstName).Text = _applicantReport.FirstName;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageLastName).Text = _applicantReport.LastName;
+			FindViewById<TextView> (Resource.Id.txtReportProfilePageGender).Text = _applicantReport.Gender;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageDOB).Text = _applicantReport.DateOfBirth;;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageTelephone).Text = _applicantReport.Telephone;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageMobile).Text = _applicantReport.Mobile;
+			FindViewById<TextView>(Resource.Id.txtReportProfilePageCountry).Text = _applicantReport.Country;
 
 			//_ProfilePhoto = FindViewById<ImageView>(Resource.Id.imgReportProfilePage);
 

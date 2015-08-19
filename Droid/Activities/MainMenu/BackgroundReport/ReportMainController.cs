@@ -71,7 +71,7 @@ namespace TCheck.Droid
 			//Create the adapter for the RecyclerView with our crew data, and set
 			//the adapter. Also, wire an event handler for when the user taps on each
 			//individual item.
-			_adapter = new ReportViewAdapter(_reportList, this.Resources);
+			_adapter = new ReportViewAdapter(_reportList,this.Resources);
 			_adapter.ItemClick += OnItemClick;
 			_recyclerView.SetAdapter(_adapter);
 
@@ -242,11 +242,16 @@ namespace TCheck.Droid
 
 		private void OnItemClick (object sender, int position)
 		{
-			Context con;
 			var reportIntent = new Intent(this ,typeof(ReportController));
-			//var reportIntent = new Intent(con, typeof(ReportController));
+
+			// Verify using the debugger that this is not null
 			_ApplicantReport = _reportList [position];
-			reportIntent.PutExtra("Applicant",JsonConvert.SerializeObject(_ApplicantReport));
+
+			//Verify using the debugger that this is not null or an empty string.
+			var appReportJson = JsonConvert.SerializeObject(_ApplicantReport);
+
+			reportIntent.PutExtra("Applicant", appReportJson);
+
 			StartActivity(reportIntent);
 		}
 
