@@ -16,7 +16,8 @@ namespace TCheck.Droid
 		//on each individual item.
 		public event EventHandler<int> ItemClick;
 		private List<Applicant> _reportList;
-		public static Applicant ApplicantReport;
+
+		private Applicant ApplicantReport;
 		private readonly ImageManager _imageManager;
 
 
@@ -60,8 +61,7 @@ namespace TCheck.Droid
 			ApplicantReport = _reportList[position];
 
 			//Bind our data from our data source to our View References
-			viewHolder.DisplayID.Text = ApplicantReport.Id;
-			//viewHolder..Text = ApplicantReport.Id.ToString();
+			viewHolder.ID.Text = ApplicantReport.Id.ToString();
 			viewHolder.FirstName.Text = ApplicantReport.FirstName;
 			viewHolder.LastName.Text = ApplicantReport.LastName;
 			viewHolder.Gender.Text = ApplicantReport.Gender;
@@ -78,7 +78,7 @@ namespace TCheck.Droid
 		{
 			if(ItemClick != null)
 			{
-
+				
 				ItemClick(this, position);
 			}
 		}

@@ -13,18 +13,21 @@ namespace TCheck.Droid
 	//for our View references.
 	public class ReportRowHolder : RecyclerView.ViewHolder
 	{
-		
+		public TextView ID, FirstName, LastName, Gender, DateOfBirth,
+			Mobile, Country;
+
 		public ReportRowHolder(View itemView, Action<int> listener) 
 			: base (itemView)
 		{
 			//Creates and caches our views defined in our layout
-			TextView ID,FirstName,LastName,Gender,DateOfBirth;
 
-			itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewID) = ID;
-			itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewFirstName)= FirstName;
-			itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewLastName) = LastName;
-			itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewGender) = Gender;
-			itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewDateOfBirth) = DateOfBirth;
+			ID = itemView.FindViewById<TextView> (Resource.Id.txtReportRowViewID);
+			FirstName = itemView.FindViewById<TextView> (Resource.Id.txtReportRowViewFirstName);
+			LastName = itemView.FindViewById<TextView> (Resource.Id.txtReportRowViewLastName);
+			Gender = itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewGender);
+			DateOfBirth = itemView.FindViewById<TextView>(Resource.Id.txtReportRowViewDateOfBirth);
+			//Mobile = itemView.FindViewById<TextView>(Resource.Id.reportrow);
+
 
 			// Detect user clicks on the item view and report which item
 			// was clicked (by position) to the listener:
