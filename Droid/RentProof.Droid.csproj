@@ -151,9 +151,9 @@
     <Compile Include="Activities\ReviewAndSurvey\SubmitReviewController.cs" />
     <Compile Include="Activities\ReviewAndSurvey\SubmitSurveyController.cs" />
     <Compile Include="Activities\MainMenu\BackgroundReport\ReportMainController.cs" />
-    <Compile Include="Activities\JsonInputController.cs" />
     <Compile Include="Activities\MainMenu\BackgroundReport\ReportRowHolder.cs" />
     <Compile Include="Activities\MainMenu\BackgroundReport\ReportViewAdapter.cs" />
+    <Compile Include="Activities\MainMenu\BackgroundReport\JsonInputController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
