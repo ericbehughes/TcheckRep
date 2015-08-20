@@ -19,8 +19,6 @@ namespace TCheck.Droid
 
 		private Applicant ApplicantReport;
 		private readonly ImageManager _imageManager;
-		private Context _context;
-
 
 		public ReportViewAdapter(List<Applicant> applicantReport, Resources resources)
 		{

@@ -41,7 +41,7 @@ namespace TCheck.Droid
 			try
 			{
 				// authenticate
-			//	await API.Service.Login(model);
+			await RentProof.API.Service.Login(model);
 
 
 				// proceed to main menu

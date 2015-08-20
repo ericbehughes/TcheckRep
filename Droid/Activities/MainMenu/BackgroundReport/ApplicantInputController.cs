@@ -11,18 +11,14 @@ using Android.Widget;
 using Android.Views;
 using OnFido.API.Models;
 using Newtonsoft.Json;
+using System;
 
 namespace TCheck.Droid
 {
-	[Activity(Label = "ReportMainController",Theme="@style/MyTheme")]
-	public class ReportMainController : AppCompatActivity
+	[Activity (Label = "JsonInputController")]			
+	public class ApplicantInputController : AppCompatActivity
 	{
-		private RecyclerView _recyclerView;
-		private RecyclerView.LayoutManager _layoutManager;
-		private ReportViewAdapter _adapter;
-		private ProgressDialog _progressDialog;
-		private List<Applicant> _reportList = new List<Applicant>();
-		private Applicant _applicantReport;
+		private Button _SubmitQueryInfo;
 
 		private SupportToolbar _toolbar;
 		private NavigationBar _drawerToggle;
@@ -34,48 +30,38 @@ namespace TCheck.Droid
 		private List<string> _leftDataSet;
 		private List<string> _rightDataSet;
 
-
-		protected override void OnCreate(Bundle bundle)
+		protected override void OnCreate (Bundle bundle)
 		{
-			base.OnCreate(bundle);
+			base.OnCreate (bundle);
+			SetContentView(Resource.Layout.ApplicantInfoInputView);
+			_SubmitQueryInfo = FindViewById<Button>(Resource.Id.btnScrollInfoInputSubmit);
+			_SubmitQueryInfo.Click += async (sender, e) => {
 
-			SetContentView(Resource.Layout.ReportListView);
+				var model = new Applicant {
 
-			_applicantReport = JsonConvert.DeserializeObject<Applicant> (Intent.GetStringExtra ("Applicant"));
+					FirstName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputFirstName).Text,
+					LastName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputLastName).Text,
+					Gender = FindViewById<EditText>(Resource.Id.txtScrollInfoInputGender).Text,
+					DateOfBirth = FindViewById<EditText>(Resource.Id.txtScrollInfoInputDateOfBirth).Text,
+					Mobile = FindViewById<EditText>(Resource.Id.txtScrollInfoInputMobile).Text,
+					Country = FindViewById<EditText>(Resource.Id.txtScrollInfoInputCountry).Text
+				};
 
-			_progressDialog = new ProgressDialog(this);
-			_progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
-			_progressDialog.SetMessage("Loading  . . .");
-			_progressDialog.Show();
+				try {
+					// create new applicant (applicant is returned with ID)
+					var applicant = await OnFido.API.OnFidoService.CreateApplicant(model);
+					applicant = await OnFido.API.OnFidoService.GetApplicantById(applicant.Id);
+					// pass applicant info to recycler view 
+					var applicanInfo = new Intent(this, typeof (ReportMainController));
+					applicanInfo.PutExtra("Applicant",JsonConvert.SerializeObject(applicant));
+					this.StartActivity(applicanInfo);
+					//finish activity
+					Finish();
 
-			//If the device is portrait, then show the RecyclerView in a vertical list,
-			//else show it in horizontal list.
-			_layoutManager = Resources.Configuration.Orientation == Android.Content.Res.Orientation.Portrait 
-				? new LinearLayoutManager(this, LinearLayoutManager.Vertical, false) 
-				: new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
-
-			//Experiement with a GridLayoutManger! You can create some cool looking UI!
-			//This create a gridview with 2 rows that scrolls horizontally.
-			//            _layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.Horizontal, false);
-
-			//Create a reference to our RecyclerView and set the layout manager;
-			_recyclerView = FindViewById<RecyclerView>(Resource.Id.reportRecyclerListView);
-			_recyclerView.SetLayoutManager(_layoutManager);
-
-			//Get our crew member data. This could be a web service.
-
-
-			_reportList.Add (_applicantReport);
-
-			//Create the adapter for the RecyclerView with our crew data, and set
-			//the adapter. Also, wire an event handler for when the user taps on each
-			//individual item.
-			_adapter = new ReportViewAdapter(_reportList,this.Resources);
-			_adapter.ItemClick += OnItemClick;
-			_recyclerView.SetAdapter(_adapter);
-
-			_progressDialog.Dismiss();
-
+				} catch (Exception) {
+					throw;
+				}
+			};
 
 			/************TOOLBAR******************************************************/
 			_toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
@@ -140,8 +126,7 @@ namespace TCheck.Droid
 				//This is the first the time the activity is ran
 				SupportActionBar.SetTitle(Resource.String.closeDrawer);
 			}
-			//*****************END OF ONCREATE TOOLBAR***********
-
+			//*****************END OF ONCREATE TOO
 		}
 
 		void LeftDrawerRowClick (object sender, AdapterView.ItemClickEventArgs e)
@@ -150,8 +135,8 @@ namespace TCheck.Droid
 			switch (e.Position) {
 
 			case 0:
-				Intent DrawerButtonMainMenu = new Intent (this, typeof(MainMenuController));
-				this.StartActivity (DrawerButtonMainMenu);
+				Intent mDrawerButtonMainMenu = new Intent (this, typeof(MainMenuController));
+				this.StartActivity (mDrawerButtonMainMenu);
 				break;
 
 			case 1:
@@ -170,14 +155,14 @@ namespace TCheck.Droid
 				FragmentTransaction transaction1 = FragmentManager.BeginTransaction();
 				HelpPopUpController helpPopUp = new HelpPopUpController();
 				helpPopUp.Show(transaction1, "help fragment");
-				helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
+				helpPopUp.mHelpPopUpEvent += HelpPopUpButtonClick;
 				break;
 
 			case 1:
 				FragmentTransaction transaction2 = FragmentManager.BeginTransaction();
 				SupportPopUpController supportPopUp = new SupportPopUpController();
 				supportPopUp.Show(transaction2, "support fragment");
-				supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
+				supportPopUp.mSupportPopUpEvent += SupportPopUpButtonClick;
 				break;
 			}
 		}
@@ -236,24 +221,7 @@ namespace TCheck.Droid
 			base.OnPostCreate (savedInstanceState);
 			mDrawerToggle.SyncState();
 		}
-*/
-
-		private void OnItemClick (object sender, int position)
-		{
-			var reportIntent = new Intent(this ,typeof(ReportController));
-
-			// Verify using the debugger that this is not null
-			_applicantReport = _reportList [position];
-
-			//Verify using the debugger that this is not null or an empty string.
-			var appReportJson = JsonConvert.SerializeObject(_applicantReport);
-
-			reportIntent.PutExtra("Applicant", appReportJson);
-
-			StartActivity(reportIntent);
-		}
-
-
+*/		
 		void HelpPopUpButtonClick (object sender, OnHelpEvent e){
 			Intent intent = new Intent (this, typeof(HelpPopUpController));
 			this.StartActivity (intent);
@@ -265,13 +233,5 @@ namespace TCheck.Droid
 			this.StartActivity (intent);
 			Finish (); 
 		}
-
-
 	}
-		
 }
-
-
-
-
-

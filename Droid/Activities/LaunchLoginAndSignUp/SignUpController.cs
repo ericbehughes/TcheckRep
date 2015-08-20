@@ -23,6 +23,7 @@ namespace TCheck.Droid
 		private EditText _email;
 		private EditText _SSN;
 		private EditText _Password;
+
 		protected override void OnCreate (Bundle bundle){
 
 			base.OnCreate (bundle);
@@ -38,12 +39,11 @@ namespace TCheck.Droid
 
 			}
 
-		private void BtnSignUp_Click(object sender, EventArgs args)
+		private async void BtnSignUp_Click(object sender, EventArgs args)
 		{
 			
-			var intent = new Intent(this, typeof (MainMenuController));
-			this.StartActivity (intent);
-			// build models
+
+//			// build models
 //			var registerModel = new RegisterBindingModel
 //			{
 //				Name = _name.Text,
@@ -57,16 +57,17 @@ namespace TCheck.Droid
 //				Email = _email.Text,
 //				Password = _Password.Text
 //			};
-
-			// register user
-			//await API.Service.Register(registerModel);
-			//await  API.Service.Register (registerModel);
-
-			// auto-authenticate
-			//await API.Service.Login (loginModel);
 //
+//			 //register user
+//			await RentProof.API.Service.Register(registerModel);
+//			await  RentProof.API.Service.Register (registerModel);
+//
+//			// auto-authenticate
+//			await RentProof.API.Service.Login (loginModel);
+
 				// user has clicked on signup button
-				
+			var intent = new Intent(this, typeof (MainMenuController));
+			this.StartActivity (intent);
 			}
 			
 

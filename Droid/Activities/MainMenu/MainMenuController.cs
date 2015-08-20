@@ -213,7 +213,7 @@ namespace TCheck.Droid{
 
 
 		void mButtonBackgroundCheck_Click (object sender, EventArgs args){
-			Intent intent = new Intent (this, typeof(JsonInputController));
+			Intent intent = new Intent (this, typeof(ApplicantInputController));
 			this.StartActivity (intent);
 		}
 
