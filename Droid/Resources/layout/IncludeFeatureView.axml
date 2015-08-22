@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#DEDEDC"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="250dp">
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
@@ -12,14 +12,15 @@
         android:id="@+id/linearLayoutIncludeFeature"
         android:layout_below="@+id/txtPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="50dp">
         <TextView
             android:text="Do you like this screen?"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtDoYouLikeThisScreen"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:layout_marginTop="2dp" />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -30,28 +31,21 @@
             android:layout_gravity="center"
             android:layout_marginBottom="5dp" />
     </LinearLayout>
-    <LinearLayout
+    <Button
+        android:id="@+id/btnIncludeFeatureSubmit"
+        android:text="Submit"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/txtPassword"
-        android:layout_marginTop="50dp"
-        android:minWidth="25px"
-        android:minHeight="25px">
-        <Button
-            android:id="@+id/btnIncludeFeatureSubmit"
-            android:text="Submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_marginTop="30dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:paddingLeft="5dp"
-            android:paddingBottom="5dp"
-            android:paddingRight="5dp"
-            android:height="70dp"
-            android:paddingTop="2dp"
-            android:background="#7491A3"
-            android:layout_centerHorizontal="true" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:paddingLeft="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="5dp"
+        android:height="70dp"
+        android:paddingTop="2dp"
+        android:background="#7491A3"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linearLayoutIncludeFeature" />
 </RelativeLayout>

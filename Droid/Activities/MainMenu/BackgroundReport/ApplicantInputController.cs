@@ -15,7 +15,7 @@ using System;
 
 namespace TCheck.Droid
 {
-	[Activity (Label = "JsonInputController")]			
+	[Activity (Label = "JsonInputController",Theme="@style/MyTheme")]			
 	public class ApplicantInputController : AppCompatActivity
 	{
 		private Button _SubmitQueryInfo;
@@ -34,17 +34,17 @@ namespace TCheck.Droid
 		{
 			base.OnCreate (bundle);
 			SetContentView(Resource.Layout.ApplicantInfoInputView);
-			_SubmitQueryInfo = FindViewById<Button>(Resource.Id.btnScrollInfoInputSubmit);
+			_SubmitQueryInfo = FindViewById<Button>(Resource.Id.btntxtApplicantInfoInputSubmit);
 			_SubmitQueryInfo.Click += async (sender, e) => {
 
 				var model = new Applicant {
 
-					FirstName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputFirstName).Text,
-					LastName = FindViewById<EditText>(Resource.Id.txtScrollInfoInputLastName).Text,
-					Gender = FindViewById<EditText>(Resource.Id.txtScrollInfoInputGender).Text,
-					DateOfBirth = FindViewById<EditText>(Resource.Id.txtScrollInfoInputDateOfBirth).Text,
-					Mobile = FindViewById<EditText>(Resource.Id.txtScrollInfoInputMobile).Text,
-					Country = FindViewById<EditText>(Resource.Id.txtScrollInfoInputCountry).Text
+					FirstName = FindViewById<EditText>(Resource.Id.txtApplicantInfoInputFirstName).Text,
+					LastName = FindViewById<EditText>(Resource.Id.txtApplicantInfoInputLastName).Text,
+					Gender = FindViewById<EditText>(Resource.Id.txtApplicantInfoInputGender).Text,
+					DateOfBirth = FindViewById<EditText>(Resource.Id.txtApplicantInfoInputDateOfBirth).Text,
+					Mobile = FindViewById<EditText>(Resource.Id.txtApplicantInfoInputInputMobile).Text,
+					Country = FindViewById<EditText>(Resource.Id.txtApplicantInfoInputCountry).Text
 				};
 
 				try {

@@ -20,7 +20,7 @@ namespace TCheck.Droid
 	[Activity (Label = "Support_PopUp")]			
 	public class PurchaseConfirmationController : DialogFragment
 	{
-		private Button mPopUpButton;
+		private Button _btnConfirmPurchase;
 		public event EventHandler<OnPurchaseEvent> mPurchaseComplete;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -28,9 +28,8 @@ namespace TCheck.Droid
 
 			var view = inflater.Inflate (Resource.Layout.PurchaseConfirmationView, container, false);
 
-			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
-
-			mPopUpButton.Click += mPurchaseCompletePopUp_Click; 
+			_btnConfirmPurchase = view.FindViewById<Button> (Resource.Id.popUpButton);
+			_btnConfirmPurchase.Click += PurchaseCompletePopUpClick; 
 
 			return view;
 		}
@@ -41,7 +40,7 @@ namespace TCheck.Droid
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mPurchaseCompletePopUp_Click(object sender, EventArgs e){
+		void PurchaseCompletePopUpClick(object sender, EventArgs e){
 
 			//user has clicked on signup button
 			mPurchaseComplete.Invoke(this, new OnPurchaseEvent());

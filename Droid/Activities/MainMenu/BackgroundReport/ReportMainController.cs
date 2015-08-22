@@ -170,14 +170,14 @@ namespace TCheck.Droid
 				FragmentTransaction transaction1 = FragmentManager.BeginTransaction();
 				HelpPopUpController helpPopUp = new HelpPopUpController();
 				helpPopUp.Show(transaction1, "help fragment");
-				helpPopUp.mHelpPopUpEvent += mHelpPopUpButton_Click;
+				helpPopUp.mHelpPopUpEvent += HelpPopUpButtonClick;
 				break;
 
 			case 1:
 				FragmentTransaction transaction2 = FragmentManager.BeginTransaction();
 				SupportPopUpController supportPopUp = new SupportPopUpController();
 				supportPopUp.Show(transaction2, "support fragment");
-				supportPopUp.mSupportPopUpEvent += mSupportPopUpButton_Click;
+				supportPopUp.mSupportPopUpEvent += SupportPopUpButtonClick;
 				break;
 			}
 		}

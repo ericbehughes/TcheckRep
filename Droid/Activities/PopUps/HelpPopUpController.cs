@@ -19,7 +19,7 @@ namespace TCheck.Droid
 	[Activity (Label = "Help_PopUp")]			
 	public class HelpPopUpController : DialogFragment
 	{
-		private Button mPopUpButton;
+		private Button _btnHelp;
 		public event EventHandler<OnHelpEvent> mHelpPopUpEvent;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -27,9 +27,9 @@ namespace TCheck.Droid
 
 			var view = inflater.Inflate (Resource.Layout.SupportPopUpView, container, false);
 
-			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
+			_btnHelp = view.FindViewById<Button> (Resource.Id.popUpButton);
 
-			mPopUpButton.Click += mHelpPopUpEvent_Click; 
+			_btnHelp.Click += HelpPopUpClick; 
 
 			return view;
 		}
@@ -40,7 +40,7 @@ namespace TCheck.Droid
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mHelpPopUpEvent_Click(object sender, EventArgs e){
+		void HelpPopUpClick(object sender, EventArgs e){
 
 			//user has clicked on signup button
 			this.Dismiss ();

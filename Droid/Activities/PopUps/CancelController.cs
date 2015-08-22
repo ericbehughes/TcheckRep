@@ -15,8 +15,8 @@ namespace TCheck.Droid{
 	}
 	
 	class CancelController : DialogFragment{
-		private Button mYesCancelButton;
-		private Button mNoCancelButton;
+		private Button _btnYesCancel;
+		private Button _btnNoCancel;
 
 		public event EventHandler<OnCancelEvent> mOnCancel ;
 
@@ -25,11 +25,11 @@ namespace TCheck.Droid{
 			base.OnCreateView (inflater, container, savedInstanceState);
 			var view = inflater.Inflate (Resource.Layout.CancelPopUpView, container, false);
 
-			mYesCancelButton = view.FindViewById<Button> (Resource.Id.btnYesCancel);
-			mYesCancelButton.Click += mYesCancelButton_Click; 
+			_btnYesCancel = view.FindViewById<Button> (Resource.Id.btnYesCancel);
+			_btnYesCancel.Click += YesCancelButtonClick; 
 
-			mNoCancelButton = view.FindViewById<Button> (Resource.Id.btnNoCancel);
-			mNoCancelButton.Click += mNoCancelButton_Click; 
+			_btnNoCancel = view.FindViewById<Button> (Resource.Id.btnNoCancel);
+			_btnNoCancel.Click += NoCancelButtonClick; 
 			return view;
 		}
 
@@ -39,12 +39,12 @@ namespace TCheck.Droid{
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mYesCancelButton_Click(object sender, EventArgs e){
+		void YesCancelButtonClick(object sender, EventArgs e){
 			//user has clicked on signup button
 			mOnCancel.Invoke(this, new OnCancelEvent());
 			this.Dismiss();
 		}
-		void mNoCancelButton_Click(object sender, EventArgs e){
+		void NoCancelButtonClick(object sender, EventArgs e){
 			//user has clicked on signup button
 			//mOnSignUpComplete.Invoke(this, new OnSignUpEventArgs(mTxtFirstName.Text, mTxtEmail.Text,mTxtSecurityNumber.Text, mTxtPassword.Text ));
 			this.Dismiss();

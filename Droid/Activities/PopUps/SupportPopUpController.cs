@@ -16,21 +16,18 @@ namespace TCheck.Droid
 	public class OnSupportEvent : EventArgs{
 		
 		public OnSupportEvent(): base() {} }
-	[Activity (Label = "Support_PopUp")]			
+	[Activity (Label = "SupportPopUp")]			
 	public class SupportPopUpController : DialogFragment
 	{
-		private Button mPopUpButton;
+		private Button _btnSupport;
 		public event EventHandler<OnSupportEvent> mSupportPopUpEvent;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 			base.OnCreateView (inflater, container, savedInstanceState);
 
 			var view = inflater.Inflate (Resource.Layout.SupportPopUpView, container, false);
-
-			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
-
-			mPopUpButton.Click += mSupportPopUp_Click; 
-
+			_btnSupport = view.FindViewById<Button> (Resource.Id.popUpButton);
+			_btnSupport.Click += mSupportPopUpClick; 
 			return view;
 		}
 
@@ -40,7 +37,7 @@ namespace TCheck.Droid
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mSupportPopUp_Click(object sender, EventArgs e){
+		void mSupportPopUpClick(object sender, EventArgs e){
 			this.Dismiss ();
 		}
 	}

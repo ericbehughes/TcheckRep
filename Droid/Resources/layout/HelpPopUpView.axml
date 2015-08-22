@@ -6,19 +6,6 @@
     android:layout_height="fill_parent">
 <!-- The Main Content View -->
     <EditText
-        android:id="@+id/txtHelpPopUpName"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="#fff"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="25dp"
-        android:hint="Name"
-        android:textColorHint="#d3d3d3"
-        android:paddingLeft="10dp"
-        android:textColor="#000" />
-    <EditText
         android:id="@+id/txtHelpPopUpEmail"
         android:inputType="text"
         android:layout_width="match_parent"
@@ -31,7 +18,7 @@
         android:textColorHint="#d3d3d3"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:layout_below="@id/txtHelpPopUpName" />
+        android:layout_marginTop="20dp" />
     <EditText
         android:id="@+id/txtHelpPopUpMessage"
         android:inputType="number"
@@ -45,30 +32,22 @@
         android:paddingLeft="10dp"
         android:textColor="#000"
         android:layout_below="@+id/txtHelpPopUpEmail" />
-    <RelativeLayout
+    <Button
+        android:id="@+id/btnHelpPopUp"
+        android:text="Submit"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/txtHelpPopUpMessage"
-        android:layout_marginTop="10dp"
-        android:minWidth="25px"
-        android:minHeight="25px">
-        <Button
-            android:id="@+id/btnHelpPopUp"
-            android:text="Submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_marginTop="30dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:paddingLeft="5dp"
-            android:paddingBottom="5dp"
-            android:paddingRight="5dp"
-            android:height="70dp"
-            android:paddingTop="2dp"
-            android:background="#7491A3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp" />
-    </RelativeLayout>
-<!-- Navigation Drawers -->
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:paddingLeft="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="5dp"
+        android:height="70dp"
+        android:paddingTop="2dp"
+        android:background="#7491A3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/txtHelpPopUpMessage" />
 </RelativeLayout>

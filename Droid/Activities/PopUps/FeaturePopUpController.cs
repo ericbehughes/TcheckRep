@@ -19,7 +19,7 @@ namespace TCheck.Droid
 	[Activity (Label = "Support_PopUp")]			
 	public class FeaturePopUpController : DialogFragment
 	{
-		private Button mPopUpButton;
+		private Button _btnIncludeFeature;
 		public event EventHandler<OnIncludeFeaturePopUp> mFeatureSurveyComplete;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -27,9 +27,9 @@ namespace TCheck.Droid
 
 			var view = inflater.Inflate (Resource.Layout.IncludeFeatureView, container, false);
 
-			mPopUpButton = view.FindViewById<Button> (Resource.Id.popUpButton);
+			_btnIncludeFeature = view.FindViewById<Button> (Resource.Id.popUpButton);
 
-			mPopUpButton.Click += mFeatureSurveyPopUp_Click; 
+			_btnIncludeFeature.Click += IncludeFeatureClick; 
 
 			return view;
 		}
@@ -40,7 +40,7 @@ namespace TCheck.Droid
 			Dialog.Window.Attributes.WindowAnimations = Resource.Style.popup_animation;
 		}
 
-		void mFeatureSurveyPopUp_Click(object sender, EventArgs e){
+		void IncludeFeatureClick(object sender, EventArgs e){
 
 			//user has clicked on signup button
 			mFeatureSurveyComplete.Invoke(this, new OnIncludeFeaturePopUp());

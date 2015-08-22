@@ -5,111 +5,144 @@
     android:background="#DEDEDC"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <ScrollView
-        android:minWidth="25px"
-        android:minHeight="25px"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollInfoInput">
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:stretchColumns="1">
-            <EditText
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtScrollInfoInputFirstName"
-                android:background="@drawable/editTextStyling1"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp"
-                android:hint="First Name"
-                android:textColorHint="#000"
-                android:textColor="#000" />
-            <EditText
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtScrollInfoInputLastName"
-                android:background="@drawable/editTextStyling1"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp"
-                android:hint="Last Name"
-                android:textColorHint="#000"
-                android:textColor="#000" />
-            <EditText
-                android:id="@+id/txtScrollInfoInputGender"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/editTextStyling1"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp"
-                android:hint="Gender"
-                android:textColorHint="#000"
-                android:textColor="#000" />
-            <EditText
-                android:id="@+id/txtScrollInfoInputDateOfBirth"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/editTextStyling1"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp"
-                android:hint="Date of Birth"
-                android:textColorHint="#000"
-                android:textColor="#000" />
-            <EditText
-                android:id="@+id/txtScrollInfoInputMobile"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/editTextStyling1"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp"
-                android:hint="Mobile"
-                android:textColorHint="#000"
-                android:textColor="#000" />
-            <EditText
-                android:id="@+id/txtScrollInfoInputCountry"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/editTextStyling1"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp"
-                android:hint="Country"
-                android:textColorHint="#000"
-                android:textColor="#000" />
-            <EditText
-                android:id="@+id/txtScrollInfoInputSSN"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/editTextStyling1"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp"
-                android:hint="SSN"
-                android:textColorHint="#000"
-                android:textColor="#000" />
-            <Button
-                android:id="@+id/btnScrollInfoInputSubmit"
-                android:text="Submit"
-                android:textColor="#000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="15dp" />
-        </TableLayout>
-    </ScrollView>
+        android:minHeight="?attr/actionBarSize"
+        android:background="#000"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <!-- The Main Content View -->
+        <ScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollInfoInput">
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:stretchColumns="1">
+                <EditText
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtApplicantInfoInputFirstName"
+                    android:background="@drawable/editTextStyling1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="25dp"
+                    android:hint="First Name"
+                    android:textColorHint="#000"
+                    android:textColor="#000" />
+                <EditText
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtApplicantInfoInputLastName"
+                    android:background="@drawable/editTextStyling1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="25dp"
+                    android:hint="Last Name"
+                    android:textColorHint="#000"
+                    android:textColor="#000" />
+                <EditText
+                    android:id="@+id/txtApplicantInfoInputGender"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/editTextStyling1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="25dp"
+                    android:hint="Gender"
+                    android:textColorHint="#000"
+                    android:textColor="#000" />
+                <EditText
+                    android:id="@+id/txtApplicantInfoInputDateOfBirth"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/editTextStyling1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="25dp"
+                    android:hint="Date of Birth"
+                    android:textColorHint="#000"
+                    android:textColor="#000" />
+                <EditText
+                    android:id="@+id/txtApplicantInfoInputInputMobile"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/editTextStyling1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="25dp"
+                    android:hint="Mobile"
+                    android:textColorHint="#000"
+                    android:textColor="#000" />
+                <EditText
+                    android:id="@+id/txtApplicantInfoInputCountry"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/editTextStyling1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="25dp"
+                    android:hint="Country"
+                    android:textColorHint="#000"
+                    android:textColor="#000" />
+                <EditText
+                    android:id="@+id/txtApplicantInfoInputSSN"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/editTextStyling1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="25dp"
+                    android:hint="SSN"
+                    android:textColorHint="#000"
+                    android:textColor="#000" />
+                <Button
+                    android:id="@+id/btntxtApplicantInfoInputSubmit"
+                    android:text="Submit"
+                    android:textColor="#000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp" />
+            </TableLayout>
+        </ScrollView>
+    <!-- Navigation Drawers -->
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:divider="#818181"
+            android:dividerHeight="1dp"
+            android:background="#9E9E9E" />
+        <ListView
+            android:id="@+id/right_drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:choiceMode="singleChoice"
+            android:divider="#E2E2E2"
+            android:dividerHeight="1dp"
+            android:background="#9E9E9E" />
+    </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

@@ -21,7 +21,7 @@ namespace TCheck.Droid{
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.SubmitSurveyView);
 
-			mButtonSurvey = FindViewById<Button>(Resource.Id.buttonSurvey);
+			mButtonSurvey = FindViewById<Button>(Resource.Id.btnStartSurvey);
 			mButtonSurvey.Click += mButtonSurvey_Click;
 
 		}

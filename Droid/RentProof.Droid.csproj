@@ -212,6 +212,7 @@
     <AndroidResource Include="Resources\layout\TenantSearchView3.axml" />
     <AndroidResource Include="Resources\layout\ReportProfilePageView.axml" />
     <AndroidResource Include="Resources\layout\ApplicantInfoInputView.axml" />
+    <AndroidResource Include="Resources\menu\nav_menu.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

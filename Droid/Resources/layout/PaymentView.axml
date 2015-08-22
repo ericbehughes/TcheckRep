@@ -21,14 +21,13 @@
             android:orientation="vertical"
             android:background="#DEDEDC"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/query_screen">
+            android:layout_height="fill_parent">
             <TextView
                 android:text="Query"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/queryTitle"
+                android:id="@+id/txtPaymentViewQueryTitle"
                 android:textAllCaps="true"
                 android:gravity="center"
                 android:textColor="#ff220f0f"
@@ -37,23 +36,23 @@
                 android:textSize="25dp"
                 android:layout_weight="1" />
             <TextView
-                android:id="@+id/txtPayee"
+                android:id="@+id/txtPaymentViewPayee"
                 android:text="Person A"
-                android:inputType="number"
+                android:inputType="textPersonName"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
             <EditText
+                android:id="@+id/txtPaymentViewPayee"
                 android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="SIN Number"
                 android:textColorHint="#d3d3d3"
                 android:textColor="#000"
-                android:background="@drawable/editTextStyling1"
-                android:id="@+id/txtSecurityNumberQS" />
+                android:background="@drawable/editTextStyling1" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
