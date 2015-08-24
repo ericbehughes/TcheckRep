@@ -7,130 +7,172 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:id="@+id/linearLayoutReportProfilePage">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+<!-- The Main Content View -->
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="#000"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <!-- The Main Content View -->
-        <RelativeLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:paddingBottom="4dp">
-            <ImageView
-                android:id="@+id/imgReportProfilePage"
-                android:layout_width="180dp"
-                android:layout_height="140dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="false"
-                android:padding="5dp" />
-            <TextView
-                android:id="@+id/txtReportProfilePageCreatedAt"
-                android:layout_toRightOf="@id/imgReportProfilePage"
-                android:text="CreatedAt"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp" />
-            <TextView
-                android:id="@+id/txtReportProfilePageFirstName"
-                android:layout_toRightOf="@+id/imgReportProfilePage"
-                android:layout_below="@+id/txtReportProfilePageCreatedAt"
-                android:text="FirstName"
-                android:textSize="14dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp" />
-            <TextView
-                android:id="@+id/txtReportProfilePageLastName"
-                android:layout_toRightOf="@id/imgReportProfilePage"
-                android:layout_below="@+id/txtReportProfilePageFirstName"
-                android:text="LastName"
-                android:textSize="14dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp" />
-            <TextView
-                android:id="@+id/txtReportProfilePageGender"
-                android:layout_toRightOf="@+id/imgReportProfilePage"
-                android:layout_below="@+id/txtReportProfilePageLastName"
-                android:text="Gender"
-                android:textSize="14dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp" />
-            <TextView
-                android:id="@+id/txtReportProfilePageDOB"
-                android:layout_toRightOf="@+id/imgReportProfilePage"
-                android:layout_below="@+id/txtReportProfilePageGender"
-                android:text="Date Of Birth"
-                android:textSize="14dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp" />
-            <TextView
-                android:id="@+id/txtReportProfilePageTelephone"
-                android:layout_toRightOf="@+id/imgReportProfilePage"
-                android:layout_below="@+id/txtReportProfilePageDOB"
-                android:text="Telephone"
-                android:textSize="14dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp" />
-            <TextView
-                android:id="@+id/txtReportProfilePageMobile"
-                android:layout_toRightOf="@+id/imgReportProfilePage"
-                android:layout_below="@+id/txtReportProfilePageTelephone"
-                android:text="Mobile"
-                android:textSize="14dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp" />
-            <TextView
-                android:id="@+id/txtReportProfilePageCountry"
-                android:layout_toRightOf="@+id/imgReportProfilePage"
-                android:layout_below="@+id/txtReportProfilePageMobile"
-                android:text="Country"
-                android:textSize="14dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp" />
-        </RelativeLayout>
-    <!-- Navigation Drawers -->
-        <ListView
-            android:id="@+id/left_drawer"
-            android:layout_width="240dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:choiceMode="singleChoice"
-            android:divider="#818181"
-            android:dividerHeight="1dp"
-            android:background="#9E9E9E" />
-        <ListView
-            android:id="@+id/right_drawer"
-            android:layout_width="240dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:choiceMode="singleChoice"
-            android:divider="#E2E2E2"
-            android:dividerHeight="1dp"
-            android:background="#9E9E9E" />
-    </android.support.v4.widget.DrawerLayout>
+        android:layout_height="match_parent"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:paddingBottom="4dp">
+        <TextView
+            android:id="@+id/txtReportProfilePageCreatedAtLabel"
+            android:text="CreatedAt"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportProfilePageCreatedAt"
+            android:layout_toRightOf="@id/txtReportProfilePageCreatedAtLabel"
+            android:text="CA"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/txtReportProfilePageFirstNameLabel"
+            android:layout_below="@+id/txtReportProfilePageCreatedAtLabel"
+            android:text="FirstName"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportProfilePageFirstName"
+            android:layout_toRightOf="@+id/txtReportProfilePageFirstNameLabel"
+            android:layout_below="@+id/txtReportProfilePageCreatedAt"
+            android:text="FN"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/txtReportProfilePageLastNameLabel"
+            android:layout_below="@+id/txtReportProfilePageFirstNameLabel"
+            android:text="LastName"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportProfilePageLastName"
+            android:layout_below="@+id/txtReportProfilePageFirstName"
+            android:layout_toRightOf="@+id/txtReportProfilePageLastNameLabel"
+            android:text="LN"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/txtReportProfilePageGenderLabel"
+            android:layout_below="@+id/txtReportProfilePageLastNameLabel"
+            android:text="Gender"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportProfilePageGender"
+            android:layout_toRightOf="@+id/txtReportProfilePageGenderLabel"
+            android:layout_below="@+id/txtReportProfilePageLastName"
+            android:text="Gndr"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/txtReportProfilePageDOBLabel"
+            android:layout_below="@+id/txtReportProfilePageGenderLabel"
+            android:text="Date Of Birth"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportProfilePageDOB"
+            android:layout_toRightOf="@+id/txtReportProfilePageDOBLabel"
+            android:layout_below="@+id/txtReportProfilePageGender"
+            android:text="DOB"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/txtReportProfilePageTelephoneLabel"
+            android:layout_below="@+id/txtReportProfilePageDOBLabel"
+            android:text="Telephone"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportProfilePageTelephone"
+            android:layout_toRightOf="@+id/txtReportProfilePageTelephoneLabel"
+            android:layout_below="@+id/txtReportProfilePageDOB"
+            android:text="Tlphn"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/txtReportProfilePageMobileLabel"
+            android:layout_below="@+id/txtReportProfilePageTelephoneLabel"
+            android:text="Mobile"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportProfilePageMobile"
+            android:layout_below="@+id/txtReportProfilePageTelephone"
+            android:layout_toRightOf="@+id/txtReportProfilePageMobileLabel"
+            android:text="Mobl"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:id="@+id/txtReportProfilePageCountryLabel"
+            android:layout_below="@+id/txtReportProfilePageMobileLabel"
+            android:text="Country"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+        <TextView
+            android:id="@+id/txtReportProfilePageCountry"
+            android:layout_below="@+id/txtReportProfilePageMobile"
+            android:layout_toRightOf="@+id/txtReportProfilePageCountryLabel"
+            android:text="Cuntry"
+            android:textSize="14dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+<!-- Navigation Drawers -->
 </LinearLayout>
